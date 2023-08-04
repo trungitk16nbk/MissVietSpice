@@ -359,13 +359,10 @@
             "label": "Yok"
           },
           "options__2": {
-            "label": "Dikey lift"
+            "label": "3D lift"
           },
           "label": "Üzerine gelme efekti",
-          "info": "Kartları ve düğmeleri etkiler.",
-          "options__3": {
-            "label": "3D lift"
-          }
+          "info": "Kartları ve düğmeleri etkiler."
         }
       }
     }
@@ -437,9 +434,6 @@
           "label": "Görsel davranışı",
           "options__3": {
             "label": "Sabit arka plan konumu"
-          },
-          "options__4": {
-            "label": "Kaydırarak yakınlaştır"
           }
         }
       }
@@ -473,38 +467,11 @@
       },
       "settings": {
         "auto_rotate": {
-          "label": "Duyuruları otomatik olarak döndür"
+          "label": "Slaytları otomatik olarak döndür"
         },
         "change_slides_speed": {
-          "label": "Şu zaman aralığında değiştir:"
-        },
-        "header__1": {
-          "content": "Sosyal medya simgeleri",
-          "info": "Sosyal medya hesaplarınızın görüntülenmesi için bu hesapları [tema ayarlarınızda](/editor?context=theme&category=social%20media) bağlayın."
-        },
-        "header__2": {
-          "content": "Duyurular"
-        },
-        "show_social": {
-          "label": "Simgeleri masaüstünde göster"
-        },
-        "header__3": {
-          "content": "Ülke/bölge seçici",
-          "info": "Ülke/bölge eklemek için [pazar ayarlarınıza](/admin/settings/markets) gidin."
-        },
-        "enable_country_selector": {
-          "label": "Ülke/bölge seçiciyi etkinleştir"
-        },
-        "header__4": {
-          "content": "Dil seçici",
-          "info": "Dil eklemek için [dil ayarlarınıza](/admin/settings/languages) gidin."
-        },
-        "enable_language_selector": {
-          "label": "Dil seçiciyi etkinleştir"
+          "label": "Slaytları şu zaman aralığında değiştir:"
         }
-      },
-      "presets": {
-        "name": "Duyuru çubuğu"
       }
     },
     "collage": {
@@ -660,8 +627,8 @@
       "name": "Özel Liquid",
       "settings": {
         "custom_liquid": {
-          "label": "Liquid kodu",
-          "info": "Gelişmiş özelleştirmeler oluşturmak için uygulama parçacıkları veya başka bir kod ekleyin. [Daha fazla bilgi edinin](https://shopify.dev/docs/api/liquid)"
+          "label": "Özel Liquid",
+          "info": "Gelişmiş özelleştirmeler oluşturmak için uygulama parçacıkları veya başka Liquid kodu ekleyin."
         }
       },
       "presets": {
@@ -994,12 +961,6 @@
         },
         "enable_language_selector": {
           "label": "Dil seçiciyi etkinleştir"
-        },
-        "header__1": {
-          "content": "Renk"
-        },
-        "menu_color_scheme": {
-          "label": "Menü renk şeması"
         }
       }
     },
@@ -1011,6 +972,9 @@
         },
         "image_2": {
           "label": "İkinci görsel"
+        },
+        "color_scheme": {
+          "info": "Kapsayıcı gösterildiğinde görünür."
         },
         "stack_images_on_mobile": {
           "label": "Mobilde görselleri üst üste ekle"
@@ -1282,9 +1246,6 @@
             },
             "button_link": {
               "label": "Düğme bağlantısı"
-            },
-            "outline_button": {
-              "label": "Dış çizgi düğme stilini kullan"
             }
           }
         },
@@ -1657,8 +1618,8 @@
               "info": "Müşteriler, mağazanızda bulunan ödeme yöntemlerini kullanarak PayPal veya Apple Pay gibi tercih ettikleri seçeneği görür. [Daha fazla bilgi edinin](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
             },
             "show_gift_card_recipient": {
-              "label": "Hediye kartları için alıcı bilgi formunu göster",
-              "info": "Alıcıların, planlanmış bir tarihte kişisel bir mesajla birlikte hediye kartları göndermesine olanak sağlar. [Daha fazla bilgi edinin](https://help.shopify.com/manual/online-store/themes/customizing-themes/add-gift-card-recipient-fields)"
+              "label": "Hediye kartı ürünleri için alıcı bilgi formunu göster",
+              "info": "Hediye kartı ürünleri isteğe bağlı olarak kişisel bir mesajla birlikte, planlanan bir tarihte doğrudan bir alıcıya gönderilebilir. [Daha fazla bilgi edinin](https://help.shopify.com/manual/online-store/themes/customizing-themes/add-gift-card-recipient-fields)"
             }
           }
         },
@@ -1840,6 +1801,15 @@
             },
             "page": {
               "label": "Sayfa"
+            }
+          }
+        },
+        "custom_liquid": {
+          "name": "Özel liquid",
+          "settings": {
+            "custom_liquid": {
+              "label": "Özel liquid",
+              "info": "Gelişmiş özelleştirmeler oluşturmak için uygulama parçacıkları veya başka Liquid kodu ekleyin."
             }
           }
         },
@@ -2518,6 +2488,14 @@
             }
           }
         },
+        "custom_liquid": {
+          "name": "Özel liquid",
+          "settings": {
+            "custom_liquid": {
+              "label": "Özel liquid"
+            }
+          }
+        },
         "rating": {
           "name": "Ürün puanı",
           "settings": {
@@ -2670,9 +2648,6 @@
             "label": "Sağ"
           },
           "label": "Mobil içerik hizalaması"
-        },
-        "color_scheme": {
-          "info": "Kapsayıcı gösterildiğinde görünür."
         }
       },
       "blocks": {
@@ -3308,20 +3283,6 @@
       },
       "presets": {
         "name": "Çok satırlı"
-      }
-    },
-    "quick-order-list": {
-      "name": "Hızlı sipariş listesi",
-      "settings": {
-        "show_image": {
-          "label": "Görselleri göster"
-        },
-        "show_sku": {
-          "label": "SKU'ları göster"
-        }
-      },
-      "presets": {
-        "name": "Hızlı sipariş listesi"
       }
     }
   }

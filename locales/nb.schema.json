@@ -139,7 +139,7 @@
           "label": "Aktiver søkeforslag"
         },
         "predictive_search_show_vendor": {
-          "label": "Vis produktselger",
+          "label": "Vis produktleverandør",
           "info": "Synlig når søkeforslag er aktivert."
         },
         "predictive_search_show_price": {
@@ -359,13 +359,10 @@
             "label": "Ingen"
           },
           "options__2": {
-            "label": "Vertikalt løft"
+            "label": "3D-løft"
           },
           "label": "Musepekereffekt",
-          "info": "Påvirker kort og knapper.",
-          "options__3": {
-            "label": "3D-løft"
-          }
+          "info": "Påvirker kort og knapper."
         }
       }
     }
@@ -437,9 +434,6 @@
           "label": "Bildeatferd",
           "options__3": {
             "label": "Låst bakgrunnsposisjon"
-          },
-          "options__4": {
-            "label": "Zoom inn på rulling"
           }
         }
       }
@@ -473,38 +467,11 @@
       },
       "settings": {
         "auto_rotate": {
-          "label": "Roter kunngjøringer automatisk"
+          "label": "Autoroter lysbildene"
         },
         "change_slides_speed": {
-          "label": "Endre hver"
-        },
-        "header__1": {
-          "content": "Ikoner for sosiale medier",
-          "info": "Koble til kontoer i sosiale medier i [temainnstillingene](/editor?context=theme&category=social%20media) for å vise dem."
-        },
-        "header__2": {
-          "content": "Kunngjøringer"
-        },
-        "show_social": {
-          "label": "Vis ikoner på skrivebordet"
-        },
-        "header__3": {
-          "content": "Land-/områdevelger",
-          "info": "Gå til [markedsinnstillinger](/admin/settings/markets) for å legge til land/område."
-        },
-        "enable_country_selector": {
-          "label": "Aktiver land-/områdevelger"
-        },
-        "header__4": {
-          "content": "Språkvelger",
-          "info": "Gå til [språkinnstillingene](/admin/settings/languages) for å legge til et språk."
-        },
-        "enable_language_selector": {
-          "label": "Aktiver språkvelger"
+          "label": "Endre lysbilde hvert"
         }
-      },
-      "presets": {
-        "name": "Kunngjøringslinje"
       }
     },
     "collage": {
@@ -660,8 +627,8 @@
       "name": "Egendefinert Liquid",
       "settings": {
         "custom_liquid": {
-          "label": "Liquid-kode",
-          "info": "Legg til kodeutdrag fra app eller en annen kode for å opprette avanserte tilpasninger. [Finn ut mer](https://shopify.dev/docs/api/liquid)"
+          "label": "Egendefinert Liquid",
+          "info": "Legg til kodeutdrag fra apper eller annen Liquid-kode for å opprette avanserte tilpasninger."
         }
       },
       "presets": {
@@ -994,12 +961,6 @@
         },
         "enable_language_selector": {
           "label": "Aktiver språkvelger"
-        },
-        "header__1": {
-          "content": "Farge"
-        },
-        "menu_color_scheme": {
-          "label": "Menyens fargepalett"
         }
       }
     },
@@ -1011,6 +972,9 @@
         },
         "image_2": {
           "label": "Andre bilde"
+        },
+        "color_scheme": {
+          "info": "Synlig når beholderen vises."
         },
         "stack_images_on_mobile": {
           "label": "Stable bilder på mobil"
@@ -1282,9 +1246,6 @@
             },
             "button_link": {
               "label": "Knappekobling"
-            },
-            "outline_button": {
-              "label": "Bruk knappestil med omriss"
             }
           }
         },
@@ -1657,8 +1618,8 @@
               "info": "Kundene vil se sitt foretrukne alternativ, som PayPal eller Apple Pay, av betalingsmåtene som er tilgjengelig i butikken. [Finn ut mer](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
             },
             "show_gift_card_recipient": {
-              "label": "Vis skjema med mottakerinformasjon for gavekort",
-              "info": "Tillat at kjøpere sender gavekort på en planlagt dato sammen med en personlig hilsen. [Finn ut mer](https://help.shopify.com/manual/online-store/themes/customizing-themes/add-gift-card-recipient-fields)"
+              "label": "Vis mottakerinformasjonsskjema for produktgavekort",
+              "info": "Produktgavekort kan alternativt sendes direkte til en mottaker på en planlagt dato, sammen med en personlig melding. [Finn ut mer](https://help.shopify.com/manual/online-store/themes/customizing-themes/add-gift-card-recipient-fields)"
             }
           }
         },
@@ -1840,6 +1801,15 @@
             },
             "page": {
               "label": "Side"
+            }
+          }
+        },
+        "custom_liquid": {
+          "name": "Egendefinert liquid",
+          "settings": {
+            "custom_liquid": {
+              "label": "Egendefinert liquid",
+              "info": "Legg til kodeutdrag fra apper eller annen Liquid-kode for å opprette avanserte tilpasninger."
             }
           }
         },
@@ -2518,6 +2488,14 @@
             }
           }
         },
+        "custom_liquid": {
+          "name": "Egendefinert liquid",
+          "settings": {
+            "custom_liquid": {
+              "label": "Egendefinert liquid"
+            }
+          }
+        },
         "rating": {
           "name": "Produktvurdering",
           "settings": {
@@ -2670,9 +2648,6 @@
             "label": "Høyre"
           },
           "label": "Innholdsjustering på mobiltelefon"
-        },
-        "color_scheme": {
-          "info": "Synlig når beholderen vises."
         }
       },
       "blocks": {
@@ -3308,20 +3283,6 @@
       },
       "presets": {
         "name": "Flere rader"
-      }
-    },
-    "quick-order-list": {
-      "name": "Hurtigordreliste",
-      "settings": {
-        "show_image": {
-          "label": "Vis bilder"
-        },
-        "show_sku": {
-          "label": "Vis SKU-er"
-        }
-      },
-      "presets": {
-        "name": "Hurtigordreliste"
       }
     }
   }
