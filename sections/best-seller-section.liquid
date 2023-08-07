@@ -1,0 +1,63 @@
+<style>
+  .best-seller-section {
+    text-align: center;
+  }
+
+  .best-seller-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+  }
+
+  .product-item {
+    width: 250px;
+    margin: 0 10px;
+  }
+
+  /* Các quy tắc CSS responsive */
+  @media screen and (max-width: 768px) {
+    .best-seller-slider {
+      flex-wrap: nowrap;
+    }
+    .product-item {
+      width: 50%;
+      flex-shrink: 0;
+    }
+  }
+</style>
+
+<section class="best-seller-section">
+  <h2>Best Sellers</h2>
+  <div class="best-seller-slider">
+    {% for product in best_sellers %}
+      <div class="product-item">
+        <a href="{{ product.url }}">
+          <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+          <h3>{{ product.title }}</h3>
+          <p>{{ product.price | money }}</p>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('.best-seller-slider').slick({
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      prevArrow: '<button type="button" class="slick-prev">Previous</button>',
+      nextArrow: '<button type="button" class="slick-next">Next</button>',
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 2
+          }
+        }
+      ]
+    });
+  });
+</script>

@@ -1,0 +1,25 @@
+.best-seller-section {
+  text-align: center;
+}
+
+.best-seller-slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.product-item {
+  width: 250px;
+  margin: 0 10px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .best-seller-slider {
+    flex-wrap: nowrap;
+  }
+  .product-item {
+    width: 50%;
+    flex-shrink: 0;
+  }
+}
