@@ -43,39 +43,20 @@ class CartItems extends HTMLElement {
   }
 
   onChange(event) {
-    this.updateQuantity(event.target.dataset.index, event.target.value, document.activeElement.getAttribute('name'), event.target.dataset.quantityVariantId);
+    this.updateQuantity(event.target.dataset.index, event.target.value, document.activeElement.getAttribute('name'));
   }
 
   onCartUpdate() {
-    if (this.tagName === 'CART-DRAWER-ITEMS') {
-      fetch(`${routes.cart_url}?section_id=cart-drawer`)
-        .then((response) => response.text())
-        .then((responseText) => {
-          const html = new DOMParser().parseFromString(responseText, 'text/html');
-          const selectors = ['cart-drawer-items', '.cart-drawer__footer'];
-          for (const selector of selectors) {
-            const targetElement = document.querySelector(selector);
-            const sourceElement = html.querySelector(selector);
-            if (targetElement && sourceElement) {
-              targetElement.replaceWith(sourceElement);
-            }
-          }
-        })
-        .catch((e) => {
-          console.error(e);
-        });
-    } else {
-      fetch(`${routes.cart_url}?section_id=main-cart-items`)
-        .then((response) => response.text())
-        .then((responseText) => {
-          const html = new DOMParser().parseFromString(responseText, 'text/html');
-          const sourceQty = html.querySelector('cart-items');
-          this.innerHTML = sourceQty.innerHTML;
-        })
-        .catch((e) => {
-          console.error(e);
-        });
-    }
+    fetch(`${routes.cart_url}?section_id=main-cart-items`)
+      .then((response) => response.text())
+      .then((responseText) => {
+        const html = new DOMParser().parseFromString(responseText, 'text/html');
+        const sourceQty = html.querySelector('cart-items');
+        this.innerHTML = sourceQty.innerHTML;
+      })
+      .catch((e) => {
+        console.error(e);
+      });
   }
 
   getSectionsToRender() {
@@ -103,7 +84,7 @@ class CartItems extends HTMLElement {
     ];
   }
 
-  updateQuantity(line, quantity, name, variantId) {
+  updateQuantity(line, quantity, name) {
     this.enableLoading(line);
 
     const body = JSON.stringify({
@@ -166,8 +147,7 @@ class CartItems extends HTMLElement {
         } else if (document.querySelector('.cart-item') && cartDrawerWrapper) {
           trapFocus(cartDrawerWrapper, document.querySelector('.cart-item__name'));
         }
-
-        publish(PUB_SUB_EVENTS.cartUpdate, { source: 'cart-items', cartData: parsedState, variantId: variantId });
+        publish(PUB_SUB_EVENTS.cartUpdate, { source: 'cart-items' });
       })
       .catch(() => {
         this.querySelectorAll('.loading-overlay').forEach((overlay) => overlay.classList.add('hidden'));

@@ -22,7 +22,6 @@ slideshow-component .slideshow.banner {
   position: relative;
   display: flex;
   flex-direction: column;
-  visibility: visible;
 }
 
 @media screen and (max-width: 749px) {
