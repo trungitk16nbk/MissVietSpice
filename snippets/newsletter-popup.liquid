@@ -1,0 +1,134 @@
+<div class="popup_wrapper modal fade" id="news-letter-modal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="newsletter_popup_inner" style="background-image: url('{% if settings.newsletter_bg_img %}{{ settings.newsletter_bg_img | img_url: 'master' }}{% else %}https://via.placeholder.com/460x342{% endif %}');">
+          <button type="button" class="close" data-bs-dismiss="modal"><i class="ion-close-round"></i></button>
+          <div class="subscribe_area">
+            <div class="subscribe-heading">
+              {%- include 'company-logo' -%}
+              <h2 style="color: {{ settings.popup_newsletter_title_color }};">{{ settings.newletter_popup_title }}</h2>
+              <p>{{ settings.newsletter_text }}</p>
+            </div>
+            <div class="subscribe-form-group">
+              {% form 'customer' %}
+              {{ form.errors | default_errors }}
+              {% if form.posted_successfully? %}
+              <p class="text-success">
+              <span>{{ 'general.newsletter_form.confirmation' | t }}</span>
+              </p>
+              {% endif %}
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <input type="email" class="subscribe-form" id="E-mail" value="{% if customer %}{{ customer.email }}{% endif %}" name="contact[email]" placeholder="{{ 'settings.email_placeholder }}" required>
+              <button type="submit" name="commit" class="btn btn-style1" id="Subscribe">{{ settings.newsletter_button_name }}</button>
+              {% endform %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  addEventListener('DOMContentLoaded', (event) => {
+  $(window).on('load',function(){
+    var popup = localStorage.getItem('popup_value'); 
+    if(popup != 1){
+      $('#news-letter-modal').modal('show');
+    }
+  });
+  $('.close,.btn-style').on('click',function(){
+    localStorage.setItem('popup_value', '1');
+  });
+  });
+</script>
+<style type="text/css">
+.popup_wrapper .modal-content .close {
+    cursor: pointer;
+    float: none;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 0;
+    text-shadow: none;
+    opacity: 1;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.popup_wrapper .modal-content .close:hover{
+  color: var(--color-primary);
+}
+
+.popup_wrapper .modal-content{
+    border: none;
+    border-radius: 0;
+}
+.popup_wrapper .modal-body{
+    padding: 0px;
+}
+.popup_wrapper .newsletter_popup_inner{
+    padding: 60px; 
+    background-color: #fff;
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.popup_wrapper .newsletter_popup_inner .subscribe-form-group{
+  margin-top: 30px;
+}
+.popup_wrapper .newsletter_popup_inner .subscribe_area{
+    text-align: center;
+    position: relative;
+}
+.popup_wrapper .newsletter_popup_inner .subscribe_area .subscribe-heading h2{
+    font-size: 18px;
+    margin-top: 8px;
+    font-weight: 600;
+}
+.popup_wrapper .newsletter_popup_inner .subscribe_area .subscribe-heading p{
+    font-size: 14px;
+    font-weight: 300;
+    margin-top: 9px;
+}
+.popup_wrapper .newsletter_popup_inner .subscribe-block{
+    margin-top: 22px;
+}
+.popup_wrapper .newsletter_popup_inner .subscribe_area form input{
+    width: 100%;
+    padding: 8px 15px;
+    background-color: #f7f7f7;
+}
+.popup_wrapper .newsletter_popup_inner .subscribe_area form button{
+    margin-top: 16px;
+}
+@media (max-width : 767px){
+  .popup_wrapper .newsletter_popup_inner{
+      padding: 30px 15px;
+  }
+  .popup_wrapper .newsletter_popup_inner .close{
+      right: 0;
+      top: -20px;
+      color: #fff;
+  }
+  .popup_wrapper .modal-body{
+      padding: 0px;
+  }
+  .popup_wrapper .newsletter_popup_inner .subscribe-block{
+      margin-top: 12px;
+  }
+  .popup_wrapper .newsletter_popup_inner .subscribe_area .subscribe-heading h2{
+      font-size: 18px;
+  }
+  .popup_wrapper .newsletter_popup_inner .subscribe-form-group{
+    margin-top: 30px;
+  }
+}
+@media (max-width : 600px){
+    .popup_wrapper .modal-dialog{
+        margin: 15px;
+    }
+}
+</style>
+
+

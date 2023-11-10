@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "wishlist": {
+      "type": "wishlist",
+      "settings": {
+        "wish_title": "My wishlist:",
+        "wish_item_title": "Item",
+        "wish_cart_title": "Add to cart",
+        "wish_cart_loading": "ion-load-a",
+        "wish_cart_add": "Done!",
+        "wish_cart_unvlbe": "ion-android-alert",
+        "wish_cart_stock_out": "Out of stock",
+        "wish_buy_now": "Buy now",
+        "wish_cart_conti": "Continue shopping",
+        "wish_cart_clear": "Clear wishlist"
+      }
+    }
+  },
+  "order": [
+    "wishlist"
+  ]
+}

@@ -1,0 +1,89 @@
+{% form 'localization', id: "localization_form_tag", class: "dropup" %}
+  <div class="LocaleBtn">
+    {% if form.current_locale.iso_code == 'en' %}
+      <img src="https://cdn.shopify.com/s/files/1/0804/5556/5631/files/united-kingdom.png?v=1696299654" alt="English Flag">
+    {% elsif form.current_locale.iso_code == 'es' %}
+      <img src="https://cdn.shopify.com/s/files/1/0804/5556/5631/files/spain.png?v=1696299650" alt="Spanish Flag">
+    {% endif %}
+  </div>
+  <div class="dropup-content">
+    {% for locale in shop.published_locales %}
+      {% unless form.current_locale.iso_code == locale.iso_code %}
+        <a
+          href="#"
+          class="localeItem"
+          lang="{{locale.iso_code}}">
+          {% if locale.iso_code == 'en' %}
+            <img src="https://cdn.shopify.com/s/files/1/0804/5556/5631/files/united-kingdom.png?v=1696299654" alt="English Flag">
+          {% elsif locale.iso_code == 'es' %}
+            <img src="https://cdn.shopify.com/s/files/1/0804/5556/5631/files/spain.png?v=1696299650" alt="Spanish Flag">
+          {% endif %}
+
+        </a>
+      {% endunless %}
+    {% endfor %}
+  </div>
+
+  <input
+    type="hidden"
+    name="locale_code"
+    value="{{ form.current_locale.iso_code }}"
+    id="localeCode">
+
+{% endform %}
+
+<script>
+  
+  document.addEventListener("DOMContentLoaded", () => {
+    const selectedLanguage = localStorage.getItem("selectedLanguage");
+    if (selectedLanguage) { // Set the selected language in the dropdown
+      document.querySelectorAll(".localeItem").forEach(item => {
+        if (item.getAttribute("lang") === selectedLanguage) {
+          document.getElementById("localeCode").value = selectedLanguage;
+          document.getElementById("localization_form_tag").submit();
+        }
+      });
+    }
+  })
+
+  document.querySelectorAll(".localeItem").forEach(item => {
+    item.addEventListener("click", event => {
+      event.preventDefault(); // Prevent default link behavior
+
+      const languageSelected = item.getAttribute("lang");
+      document.getElementById("localeCode").value = languageSelected;
+
+// Save the selected language to Local Storage
+      localStorage.setItem("selectedLanguage", languageSelected);
+
+      document.getElementById("localization_form_tag").submit();
+    });
+  });
+</script>
+
+<style>
+  .dropup {
+    position: relative;
+    display: inline-block;
+  }
+
+  .LocaleBtn {
+    max-width: 30px !important;
+  }
+
+  .dropup-content {
+    display: none;
+    min-height: 40px;
+    opacity: 1;
+    position: fixed;
+  }
+
+  .dropup-content a {
+    display: block;
+    max-width: 30px !important;
+  }
+
+  .dropup:hover .dropup-content {
+    display: block;
+  }
+</style>

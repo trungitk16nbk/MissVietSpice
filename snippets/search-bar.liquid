@@ -1,0 +1,23 @@
+<div class="modal fade searchmodal" id="searchmodal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="container main-search-active">
+          <div class="sidebar-search-input">
+            <form action="/search" method="get" class="search-bar" role="search">
+              <div class="input-form">
+                <div class="form-search">
+                  <input type="search" name="q" placeholder="{{ 'general.search.placeholder' | t }}" value="{{ search.terms | escape }}" required id="search" class="input-text">
+                  <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+                </div>
+                <div class="search-close">
+                  <button type="button" class="close" data-bs-dismiss="modal"><i class="ion-close-round"></i></button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

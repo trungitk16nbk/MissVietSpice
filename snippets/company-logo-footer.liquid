@@ -1,0 +1,30 @@
+{%- if settings.logo_footer_svg_url != '' %}
+{%- assign logo_footer_svg_url = settings.logo_footer_svg_url | file_url -%}
+<a href="{{ shop.url }}" class="theme-footer-logo">
+  <img src="{{ logo_footer_svg_url }}" class="img-fluid" alt="{{ shop.name | escape }}" style="width: {{ settings.logo_footer_max_width }}px;">
+</a>
+{%- elsif settings.logo_footer -%}
+<a href="{{ shop.url }}" class="theme-footer-logo">
+  <img src="{%- if settings.logo_footer -%}{{ settings.logo_footer | img_url: 'master' }}{% else %}https://dummyimage.com/107x26/f7f7f7/999999{% endif %}" class="img-fluid" alt="{{ settings.logo_footer.alt | default: shop.name }}" style="width: {{ settings.logo_footer_max_width }}px;">
+</a>
+{%- else -%}
+<a href="{{ shop.url }}" class="shop-footer-name">
+  <span>{{ shop.name }}</span>
+</a>
+{%- endif -%}
+<style>
+  /* logo css */
+  a.theme-footer-logo {
+    display: block;
+  }
+  
+  /* store css */
+  a.shop-footer-name {
+    display: block;
+  }
+  a.shop-footer-name span {
+    color: var(--color-secondary);
+    font-size: 16px;
+    font-weight: 600;
+  }
+</style>

@@ -1,74 +1,124 @@
-{% comment %}
-  Renders a set of links for paginated results. Must be used within paginate tags.
+<ul class="pagination-box">
+  {% if paginate.previous %}
+  <li class="prev np-icon">
+    <a href="{{ paginate.previous.url }}" class="previous" aria-label="Previous" title="{{ paginate.previous.title }}">
+      <i class="ti-angle-left"></i>
+    </a>
+  </li>
+  {% endif %}
+  {% for part in paginate.parts %}
+  {% if part.is_link %}
+  <li class="number">
+    <a href="{{ part.url }}" title="{{ part.title }}">{{ part.title }}</a>
+  </li>
+  {% else %}
+  {% if part.title == paginate.current_page %}
+  <li class="number active">
+    <a href="javascript:void(0)">{{ part.title }}</a>
+  </li>
+  {% else %}
+  <li class="number">
+    <a href="javascript:void(0)">{{ part.title }}</a>
+  </li>
+  {% endif %}
+  {% endif %}
+  {% endfor %}
+  {% if paginate.next %}
+  <li class="next np-icon">
+    <a href="{{ paginate.next.url }}" class="next" aria-label="Next" title="{{ paginate.next.title }}">
+      <i class="ti-angle-right"></i>
+    </a>
+  </li>
+  {% endif %}
+</ul>
+<script>
+addEventListener('DOMContentLoaded', (event) => {
+  $(".theme-default-pagination .disabled a"). removeAttr("href");
+  $(".theme-default-pagination li.active a"). removeAttr("href");
+});
+</script>
+<style type="text/css">
+  /* page-area css */
+.paginatoin-area{
+  padding-top: {{ settings.section_padding_top }}px;
+}
+@media (max-width: 1199px) {
+  .paginatoin-area{
+    padding-top: {{ settings.section_padding_top_ip }}px;
+  }
+}
+@media (max-width: 767px) {
+  .paginatoin-area{
+    padding-top: {{ settings.section_padding_top_xs }}px;
+  }
+}
 
-  Usage:
-  {% paginate results by 2 %}
-    {% render 'pagination', paginate: paginate, anchor: '#yourID' %}
-  {% endpaginate %}
+/* page-showing-result css */
+.paginatoin-area ul.paginate li.page-numerous p{
+  margin-bottom: 23px;
+  text-align: center;
+}
 
-  Accepts:
-  - paginate: {Object}
-  - anchor: {String} (optional) This can be added so that on page reload it takes you to wherever you've placed your anchor tag.
-{% endcomment %}
-
-{{ 'component-pagination.css' | asset_url | stylesheet_tag }}
-
-{%- if paginate.parts.size > 0 -%}
-  <div class="pagination-wrapper">
-    <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
-      <ul class="pagination__list list-unstyled" role="list">
-        {%- if paginate.previous -%}
-          <li>
-            <a
-              href="{{ paginate.previous.url }}{{ anchor }}"
-              class="pagination__item pagination__item--next pagination__item-arrow link motion-reduce"
-              aria-label="{{ 'general.pagination.previous' | t }}"
-            >
-              {% render 'icon-caret' %}
-            </a>
-          </li>
-        {%- endif -%}
-
-        {%- for part in paginate.parts -%}
-          <li>
-            {%- if part.is_link -%}
-              <a
-                href="{{ part.url }}{{ anchor }}"
-                class="pagination__item link"
-                aria-label="{{ 'general.pagination.page' | t: number: part.title }}"
-              >
-                {{- part.title -}}
-              </a>
-            {%- else -%}
-              {%- if part.title == paginate.current_page -%}
-                <a
-                  role="link"
-                  aria-disabled="true"
-                  class="pagination__item pagination__item--current light"
-                  aria-current="page"
-                  aria-label="{{ 'general.pagination.page' | t: number: part.title }}"
-                >
-                  {{- part.title -}}
-                </a>
-              {%- else -%}
-                <span class="pagination__item">{{ part.title }}</span>
-              {%- endif -%}
-            {%- endif -%}
-          </li>
-        {%- endfor -%}
-
-        {%- if paginate.next -%}
-          <li>
-            <a
-              href="{{ paginate.next.url }}{{ anchor }}"
-              class="pagination__item pagination__item--prev pagination__item-arrow link motion-reduce"
-              aria-label="{{ 'general.pagination.next' | t }}"
-            >
-              {%- render 'icon-caret' -%}
-            </a>
-          </li>
-        {%- endif -%}
-      </ul>
-    </nav>
-  </div>
-{%- endif -%}
+/* page-number css */
+.paginatoin-area ul.pagination-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.paginatoin-area ul.pagination-box li{
+  {% if settings.enable_rtl %}
+  margin-left: 5px;
+  {% else %}
+  margin-right: 5px;
+  {% endif %}
+  line-height: 0;
+}
+.paginatoin-area ul.pagination-box li:last-child{
+  {% if settings.enable_rtl %}
+  margin-left: 0px;
+  {% else %}
+  margin-right: 0px;
+  {% endif %}
+}
+.paginatoin-area ul.pagination-box li.number a{
+  color: var(--color-primary);
+  font-size: 14px;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0px 0px 12px 0px rgb(0 0 0 / 10%);
+}
+.paginatoin-area ul.pagination-box li.number:hover a,
+.paginatoin-area ul.pagination-box li.number.active a{
+  color: #FFFFFF;
+  background-color: var(--color-primary);
+}
+.paginatoin-area ul.pagination-box li.np-icon a{
+  color: #FFFFFF;
+  font-size: 14px;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-secondary);
+  border-radius: 3px;
+}
+.paginatoin-area ul.pagination-box li.np-icon:hover a{
+  color: #FFFFFF;
+  background-color: var(--color-primary);
+}
+.paginatoin-area ul.pagination-box li a i{
+  display: block;
+  {%- if settings.enable_rtl -%}
+  -webkit-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  transform: scaleX(-1);
+  {%- endif -%}
+  line-height: 0;
+}
+</style>

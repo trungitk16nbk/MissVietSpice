@@ -1,97 +1,91 @@
-{{ 'component-cart.css' | asset_url | stylesheet_tag }}
-{{ 'component-totals.css' | asset_url | stylesheet_tag }}
-{{ 'component-price.css' | asset_url | stylesheet_tag }}
-{{ 'component-discounts.css' | asset_url | stylesheet_tag }}
+<section class="cart-body-total{% if cart == empty %} is-empty{% endif %}" id="main-cart-footer" data-id="{{ section.id }}">
+  <div class="container">
+  <div class="cart-footer">
+    <div class="cart-actions accordion" id="accordionExample">
+      <div class="cart-actions-header">
+        <button class="" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true">
+        <span class="icon">
+          <i class="ti-pencil"></i>
+        </span>
+        {{ section.settings.note_heading }}
+      </button>
+      <button class="" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="true">
+        <span class="icon">
+          <i class="ti-truck"></i>
+        </span>
+        {{ section.settings.shipping_heading }}
+      </button>
+      <button class="coupon-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="true">
+        <span class="icon">
+          <i class="ti-ticket"></i>
+        </span>
+        {{ section.settings.coupon_heading }}
+      </button>
+      </div>
 
-<div class="page-width{% if cart == empty %} is-empty{% endif %}" id="main-cart-footer" data-id="{{ section.id }}">
-  <div>
-    <div class="cart__footer">
       {%- if settings.show_cart_note -%}
-        <cart-note class="cart__note field">
-          <label for="Cart-note">{{ 'sections.cart.note' | t }}</label>
-          <textarea
-            class="text-area field__input"
-            name="note"
-            form="cart"
-            id="Cart-note"
-            placeholder="{{ 'sections.cart.note' | t }}"
-          >{{ cart.note }}</textarea>
+      <div class="collapse" id="collapse1" data-bs-parent="#accordionExample">
+        <cart-note class="cart-note">
+          <h6>{{ 'sections.cart.note' | t }}</h6>
+          <textarea class="text-area" name="note" form="cart" id="Cart-note" placeholder="{{ 'sections.cart.note' | t }}" rows="5">{{ cart.note }}</textarea>
         </cart-note>
+      </div>
       {%- endif -%}
 
-      <div class="cart__blocks">
-        {% for block in section.blocks %}
-          {%- case block.type -%}
-            {%- when '@app' -%}
-              {% render block %}
-            {%- when 'subtotal' -%}
-              <div class="js-contents" {{ block.shopify_attributes }}>
-                <div class="totals">
-                  <h2 class="totals__subtotal">{{ 'sections.cart.subtotal' | t }}</h2>
-                  <p class="totals__subtotal-value">{{ cart.total_price | money_with_currency }}</p>
-                </div>
+      {%- if section.settings.shipping_calculator_enable -%}
+      <div class="collapse" id="collapse2" data-bs-parent="#accordionExample">
+        {%- include 'cart-shipping-calculator' -%}
+      </div>
+      {%- endif -%}
 
-                <div>
-                  {%- if cart.cart_level_discount_applications.size > 0 -%}
-                    <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
-                      {%- for discount in cart.cart_level_discount_applications -%}
-                        <li class="discounts__discount discounts__discount--position">
-                          {%- render 'icon-discount' -%}
-                          {{ discount.title }}
-                          (-{{ discount.total_allocated_amount | money }})
-                        </li>
-                      {%- endfor -%}
-                    </ul>
-                  {%- endif -%}
-                </div>
-
-                <small class="tax-note caption-large rte">
-                  {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
-                    {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
-                  {%- elsif cart.taxes_included -%}
-                    {{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
-                  {%- elsif shop.shipping_policy.body != blank -%}
-                    {{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
-                  {%- else -%}
-                    {{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
-                  {%- endif -%}
-                </small>
-              </div>
-            {%- else -%}
-              <div class="cart__ctas" {{ block.shopify_attributes }}>
-                <noscript>
-                  <button type="submit" class="cart__update-button button button--secondary" form="cart">
-                    {{ 'sections.cart.update' | t }}
-                  </button>
-                </noscript>
-
-                <button
-                  type="submit"
-                  id="checkout"
-                  class="cart__checkout-button button"
-                  name="checkout"
-                  {% if cart == empty %}
-                    disabled
-                  {% endif %}
-                  form="cart"
-                >
-                  {{ 'sections.cart.checkout' | t }}
-                </button>
-              </div>
-
-              {%- if additional_checkout_buttons -%}
-                <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
-                  {{ content_for_additional_checkout_buttons }}
-                </div>
-              {%- endif -%}
-          {%- endcase -%}
-        {% endfor %}
-
-        <div id="cart-errors"></div>
+      {%- if section.settings.cart_discount_enable -%}
+      <div class="collapse" id="collapse3" data-bs-parent="#accordionExample">
+          <div class="proceed-to-discount">
+            <h6>{{ section.settings.coupon_title }}</h6>
+            <form action="/cart" method="post">
+                <input type="text" id="input-discount" name="discount" placeholder="{{ section.settings.cart_discount_placeholder_text }}">
+            </form>
+          </div>
+      </div>
+      {%- endif -%}
+    </div>
+    <div class="cart-blocks">
+      <div class="js-contents" {{ block.shopify_attributes }}>
+        <div class="totals">
+          <span>{{ 'sections.cart.subtotal' | t }}</span>
+          <span>{{ cart.total_price | money_with_currency }}</span>
+        </div>
+        {%- if cart.cart_level_discount_applications.size > 0 -%}
+          <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+            {%- for discount in cart.cart_level_discount_applications -%}
+              <li class="discounts__discount discounts__discount--position">
+                {{ discount.title }}
+                (-{{ discount.total_allocated_amount | money }})
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+        <small class="tax-note caption-large rte">
+          {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
+            {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+          {%- elsif cart.taxes_included -%}
+            {{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
+          {%- elsif shop.shipping_policy.body != blank -%}
+            {{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+          {%- else -%}
+            {{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
+          {%- endif -%}
+        </small>
+      </div>
+      <div class="checkout-btn" {{ block.shopify_attributes }}>
+        <button type="submit" id="checkout" class="btn-style1" name="checkout" {% if cart == empty %} disabled {% endif %} form="cart">
+          {{ 'sections.cart.checkout' | t }}
+        </button>
       </div>
     </div>
   </div>
-</div>
+  </div>
+</section>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
@@ -116,22 +110,130 @@
 
 {% schema %}
 {
-  "name": "t:sections.main-cart-footer.name",
-  "class": "cart__footer-wrapper",
-  "blocks": [
+  "name": "Subtotal",
+  "settings": [
     {
-      "type": "subtotal",
-      "name": "t:sections.main-cart-footer.blocks.subtotal.name",
-      "limit": 1
+      "type": "header",
+      "content": "Section Padding"
+  },
+  {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Section Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+  },
+  {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Section Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+  },
+  {
+      "type" : "paragraph",
+      "content" : "Mobile"
+  },
+  {
+      "type": "range",
+      "id": "section_padding_top_xs",
+      "label": "Section Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+  },
+  {
+      "type": "range",
+      "id": "section_padding_bottom_xs",
+      "label": "Section Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+  },
+    {
+        "type": "text",
+        "id": "note_heading",
+        "label": "Note Title",
+        "default": "Note"
     },
     {
-      "type": "buttons",
-      "name": "t:sections.main-cart-footer.blocks.buttons.name",
-      "limit": 1
+        "type": "header",
+        "content": "Shipping Calculator"
     },
     {
-      "type": "@app"
+        "type": "text",
+        "id": "shipping_heading",
+        "label": "Shipping Title",
+        "default": "Shipping"
+    },
+    {
+        "type": "checkbox",
+        "id": "shipping_calculator_enable",
+        "label": "Show calculator enable",
+        "default": true
+    },
+    {
+        "type": "text",
+        "id": "shipping_calculator_heading",
+        "label": "Shipping Calculator Title",
+        "default": "Shipping Charge"
+    },
+    {
+        "type": "text",
+        "id": "shipping_calculator_button_title",
+        "label": "Shipping Calculator Button Title",
+        "default": "Calculate shipping"
+    },
+    {
+        "type": "header",
+        "content": "Cart Discount Code"
+    },
+    {
+        "type": "checkbox",
+        "id": "cart_discount_enable",
+        "label": "Show Discount enable",
+        "default": true
+    },
+    {
+        "type": "text",
+        "id": "coupon_heading",
+        "label": "Coupon Title",
+        "default": "Coupon"
+    },
+    {
+        "type": "text",
+        "id": "coupon_title",
+        "label": "Coupon Heading",
+        "default": "Add a discount code"
+    },
+    {
+        "type": "text",
+        "id": "cart_discount_placeholder_text",
+        "label": "Discount Placeholder Text",
+        "default": "Discount code"
     }
   ]
 }
 {% endschema %}
+<style type="text/css">
+  .cart-body-total {
+    padding-top: {{ section.settings.section_padding_top }}px;
+      padding-bottom: {{ section.settings.section_padding_bottom }}px;
+  }
+  @media(max-width: 1199px) {
+      .cart-body-total {
+          padding-top: {{ section.settings.section_padding_top_xs }}px;
+          padding-bottom: {{ section.settings.section_padding_bottom_xs }}px;
+      }
+  }
+</style>

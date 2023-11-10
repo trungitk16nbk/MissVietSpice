@@ -1,1 +1,35 @@
-{"sections":{"cart-items":{"type":"main-cart-items","settings":{"padding_top":36,"padding_bottom":36}},"cart-footer":{"type":"main-cart-footer","blocks":{"subtotal":{"type":"subtotal","settings":{}},"buttons":{"type":"buttons","settings":{}}},"block_order":["subtotal","buttons"],"settings":{}}},"order":["cart-items","cart-footer"]}
+{
+  "sections": {
+    "cart-items": {
+      "type": "main-cart-items",
+      "settings": {
+        "section_padding_top": 80,
+        "section_padding_bottom": 80,
+        "section_padding_top_xs": 40,
+        "section_padding_bottom_xs": 40
+      }
+    },
+    "cart-footer": {
+      "type": "main-cart-footer",
+      "settings": {
+        "section_padding_top": 0,
+        "section_padding_bottom": 80,
+        "section_padding_top_xs": 0,
+        "section_padding_bottom_xs": 40,
+        "note_heading": "Note",
+        "shipping_heading": "Shipping",
+        "shipping_calculator_enable": true,
+        "shipping_calculator_heading": "Shipping charge",
+        "shipping_calculator_button_title": "Calculate shipping",
+        "cart_discount_enable": true,
+        "coupon_heading": "Coupon",
+        "coupon_title": "Add a discount code",
+        "cart_discount_placeholder_text": "Discount code"
+      }
+    }
+  },
+  "order": [
+    "cart-items",
+    "cart-footer"
+  ]
+}

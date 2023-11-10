@@ -1,0 +1,40 @@
+{%- liquid
+  assign product_form_id = 'quick-add-' | append: section_id | append: product.id
+  assign qty_rules = true
+  if product.selected_or_first_available_variant.quantity_rule.min > 1 or product.selected_or_first_available_variant.quantity_rule.max != null or product.selected_or_first_available_variant.quantity_rule.increment > 1
+    assign qty_rules = true
+  endif
+-%}
+
+<modal-opener data-modal="#QuickAdd-{{ product.id }}" class="quick-view">
+  <button id="{{ product_form_id }}-submit" type="submit" name="add" class="quick-add-btn" aria-haspopup="dialog" aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ product.id }}" data-product-url="{{ product.url }}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ settings.quickview_title }}">
+    <span class="cart-title"><i class="fa fa-eye"></i></span>
+    <div class="ajax-loader hidden">
+      <span class="spinner-border"></span>
+    </div>
+  </button>
+</modal-opener>
+<quick-add-modal id="QuickAdd-{{ product.id }}" class="quickview-modal">
+  <div role="dialog" aria-label="{{ 'products.product.choose_product_options' | t: product_name: product.title | escape }}" aria-modal="true" class="quickview-block global-settings-popup" tabindex="999">
+    <button id="ModalClose-{{ product.id }}" type="button" class="modal-close" aria-label="{{ 'accessibility.close' | t }}"><i class="ti-close"></i></button>
+    <div id="QuickAddInfo-{{ product.id }}" class="quick-view"></div>
+  </div>
+</quick-add-modal>
+ {% comment %} {%- else -%}
+<product-form class="quick-view">
+  {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form'-%}
+    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" disabled>
+    <button id="{{ product_form_id }}-submit" type="submit" name="add" class="quick-add-btn" aria-haspopup="dialog" aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ product.id }}" aria-live="polite" data-sold-out-message="true" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ settings.quickview_title }}">
+      <span class="cart-title">
+        {%- if product.selected_or_first_available_variant.available -%}
+          <i class="fa fa-eye"></i>
+        {%- else -%}
+          <i class="fa fa-eye"></i>
+        {%- endif -%}
+      </span>
+      <div class="ajax-loader hidden">
+        <span class="spinner-border"></span>
+      </div>
+    </button>
+  {%- endform -%} 
+</product-form> {% endcomment %}

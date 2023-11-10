@@ -1,0 +1,166 @@
+<section class="blog-wrap">
+  <div class="container">
+    <div class="section-capture">
+      <div class="section-title">
+        {% if section.settings.section_sub_title !='' %}
+        <span class="sub-title">{{ section.settings.section_sub_title }}</span>
+        {% endif %}
+        <h2>{{ section.settings.blog_title1 }}</h2>
+      </div>
+    </div>
+    {%- if section.settings.blog != blank -%}
+    {%- assign blog_handle = blogs[section.settings.blog] -%}
+    <div class="blog-slider owl-carousel owl-theme" id="blog-slider">
+      {% for article in blog_handle.articles %}
+      <div class="item">
+        {% include 'blog-grid-item' %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+<script type="text/javascript">
+addEventListener('DOMContentLoaded', (event) => {
+  $('#blog-slider').owlCarousel({
+    loop: false,
+    rewind: true,
+    margin: 10,
+    lazyLoad:true,
+    nav: false,
+    dots: false,
+    responsive: true,
+    {%- if settings.enable_rtl -%}
+    rtl: true,
+    {%- endif -%}
+    responsive:{
+      0:{
+        items:1,
+        margin: 15
+      },
+      479:{
+        items:1,
+        margin: 15
+      },
+      768:{
+        items:2
+      },
+      979:{
+        items:3
+      },
+      1199:{
+        items: 3
+      }
+    }
+  });
+  });
+</script>
+{% schema %}
+{
+  "name": "Home Blog",
+  "settings": [
+ {
+      "type": "header",
+      "content": "Section Padding"
+  },
+  {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Section Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+  },
+  {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Section Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+  },
+  {
+      "type" : "paragraph",
+      "content" : "Mobile"
+  },
+  {
+      "type": "range",
+      "id": "section_padding_top_xs",
+      "label": "Section Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+  },
+  {
+      "type": "range",
+      "id": "section_padding_bottom_xs",
+      "label": "Section Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+  },
+  {
+    "type" : "header",
+    "content" : "Section title"
+  },
+  {
+    "type": "text",
+    "id": "section_sub_title",
+    "label": "Section Sub Title",
+    "default": "Top Stories"
+  },
+  {
+    "type": "text",
+    "id": "blog_title1",
+    "label": "Section Title",
+    "default": "Recent News"
+  },
+  {
+    "type" : "header",
+    "content" : "Background Color"
+  },
+  {
+    "type" : "color",
+    "id" : "blog_bgcolor",
+    "label" : "Background Color",
+    "default" : "#fff"
+  },
+  {
+  "type": "header",
+  "content": "Choose blog settings"
+  },
+  {
+    "type": "blog",
+    "id": "blog",
+    "label": "Choose blog"
+  }
+  ],
+  "presets": [
+  {
+    "name": "Home Blog",
+    "category": "Blog Post"
+  }
+  ]
+}
+{% endschema %}
+<style>
+.blog-wrap {
+  background-color: {{ section.settings.blog_bgcolor }};
+  padding-top: {{ section.settings.section_padding_top }}px;
+  padding-bottom: {{ section.settings.section_padding_bottom }}px;
+}
+@media(max-width: 1199px) {
+  .blog-wrap {
+      padding-top: {{ section.settings.section_padding_top_xs }}px;
+      padding-bottom: {{ section.settings.section_padding_bottom_xs }}px;
+  }
+}
+</style>

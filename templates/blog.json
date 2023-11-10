@@ -1,1 +1,19 @@
-{"sections":{"main":{"type":"main-blog","settings":{"layout":"collage","show_image":true,"image_height":"medium","show_date":true,"show_author":false,"padding_top":36,"padding_bottom":36}}},"order":["main"]}
+{
+  "sections": {
+    "blog-template": {
+      "type": "blog-template",
+      "settings": {
+        "blog_news_column": "6",
+        "blog_news_limit_handle": "6",
+        "blog_news_cmt": "Comment",
+        "blog_news_sidebar_handle": "right_sidebar_handle",
+        "recent_post_enable": true,
+        "archive_enable": true,
+        "tags_enable": true
+      }
+    }
+  },
+  "order": [
+    "blog-template"
+  ]
+}

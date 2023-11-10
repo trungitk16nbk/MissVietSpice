@@ -1,0 +1,237 @@
+<!-- banner-area start -->
+<div class="banner-grid">
+  <div class="container">
+    <ul class="banner-wrap">
+      {% for block in section.blocks %}
+        <li class="banner-wrapper">
+          <div class="banner-block">
+            <a href="{{ block.settings.banner_url }}">
+              <img
+                class="img-fluid"
+                src="{% if block.settings.banner_img %}{{ block.settings.banner_img | img_url: 'master' }}{% else %}https://via.placeholder.com/750x355{% endif %}"
+              >
+            </a>
+            <div class="banner-content">
+              {% if block.settings.banner_subtitle != '' %}
+                <span style="color: {{ block.settings.banner_subtitle_color }};">
+                  {{- block.settings.banner_subtitle -}}
+                </span>
+              {% endif %}
+              {% if block.settings.banner_title != '' %}
+                <h2 style="color: {{ block.settings.banner_title_color }};">{{ block.settings.banner_title }}</h2>
+              {% endif %}
+              {% if block.settings.banner_button_text != '' %}
+                <a href="{{ block.settings.banner_url }}" class="banner-btn btn-style1">
+                  {{- block.settings.banner_button_text -}}
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+<!-- banner-area end -->
+{% schema %}
+{
+	"name": "Banner Grid",
+	"settings": [
+	{
+	  "type": "header",
+	  "content": "Section Padding"
+	},
+	{
+	  "type": "range",
+	  "id": "section_padding_top",
+	  "label": "Section Padding Top",
+	  "min": 0,
+	  "max": 100,
+	  "step": 5,
+	  "unit": "px",
+	  "default": 80
+	},
+	{
+	  "type": "range",
+	  "id": "section_padding_bottom",
+	  "label": "Section Padding Bottom",
+	  "min": 0,
+	  "max": 100,
+	  "step": 5,
+	  "unit": "px",
+	  "default": 80
+	},
+	{
+	  "type" : "paragraph",
+	  "content" : "Mobile"
+	},
+	{
+	  "type": "range",
+	  "id": "section_padding_top_xs",
+	  "label": "Section Padding Top",
+	  "min": 0,
+	  "max": 100,
+	  "step": 5,
+	  "unit": "px",
+	  "default": 50
+	},
+	{
+	  "type": "range",
+	  "id": "section_padding_bottom_xs",
+	  "label": "Section Padding Bottom",
+	  "min": 0,
+	  "max": 100,
+	  "step": 5,
+	  "unit": "px",
+	  "default": 50
+	}
+	],
+	"blocks":[
+	{
+		"type": "full_width_banner",
+		"name": "Banner Grid",
+		"settings": [
+		{
+			"type": "image_picker",
+			"id": "banner_img",
+			"label": "Banner BG Image",
+			"info": "Recommended Size: 750x355px"
+		},
+		{
+            "type": "color",
+            "id": "banner_subtitle_color",
+            "label": "Banner subtitle color",
+            "default": "#fff"
+        },
+        {
+            "type": "text",
+            "id": "banner_subtitle",
+            "label": "Banner subtitle",
+            "default": "Fresh farm vegetables"
+        },
+        {
+            "type" : "color",
+            "id" : "banner_title_color",
+            "label" : "Title color",
+            "default" : "#fff"
+        },
+        {
+            "type": "text",
+            "id": "banner_title",
+            "label": "Banner title",
+            "default": "Vegetable supermarket"
+        },
+        {
+            "type": "text",
+            "id": "banner_button_text",
+            "label": "Button Text",
+            "default": "Shop now"
+        },
+        {
+            "type": "url",
+            "id": "banner_url",
+            "label": "Banner url"
+        }
+		]
+	}
+	],
+	"presets":[
+	{
+		"name": "Banner Grid"
+	}
+	]
+}
+{% endschema %}
+<style>
+  .banner-grid {
+    padding-top: {{ section.settings.section_padding_top }}px;
+    padding-bottom: {{ section.settings.section_padding_bottom }}px;
+  }
+  @media(max-width: 1199px) {
+      .banner-grid {
+          padding-top: {{ section.settings.section_padding_top_xs }}px;
+          padding-bottom: {{ section.settings.section_padding_bottom_xs }}px;
+      }
+  }
+  .banner-grid ul.banner-wrap {
+  	display: flex;
+  	flex-wrap: wrap;
+  	justify-content: center;
+  	{% if settings.enable_rtl %}
+      margin: -30px -30px 0 0;
+      {% else %}
+      margin: -30px 0 0 -30px;
+      {% endif %}
+  }
+  .banner-grid ul.banner-wrap li.banner-wrapper{
+  	width: calc(25% - 30px);
+  	{% if settings.enable_rtl %}
+      margin: 30px 30px 0 0;
+      {% else %}
+      margin-right: 30px;
+      {% endif %}
+  }
+  .banner-grid ul.banner-wrap li.banner-wrapper:nth-child(3){
+  	width: calc(50% - 30px);
+  	{% if settings.enable_rtl %}
+      margin: 30px 30px 0 0;
+      {% else %}
+      margin: 0;
+      {% endif %}
+  }
+  .banner-grid .banner-content {
+      position: absolute;
+      bottom: 50%;
+      width: 40%;
+      left: 30px;
+      transform: translateY(50%);
+  }
+  .banner-grid .banner-content span {
+      font-size: 16px;
+  }
+  .banner-grid .banner-content h2 {
+      font-size: 30px;
+      margin-top: 15px;
+      font-weight: 600;
+      line-height: 40px;
+  }
+  .banner-grid .banner-content .banner-btn {
+      margin-top: 20px;
+  }
+  @media (max-width: 1199px) {
+  	.banner-grid .banner-content h2{
+  		font-size: 24px;
+  		line-height: 30px;
+  	}
+  }
+  @media (max-width: 991px) {
+  	.banner-grid ul.banner-wrap {
+      	{% if settings.enable_rtl %}
+          margin: -30px -15px 0 0;
+          {% else %}
+          margin: -30px 0 0 -15px;
+          {% endif %}
+  	}
+  	.banner-grid ul.banner-wrap li.banner-wrapper{
+      	width: calc(100% - 15px) !important;
+      	{% if settings.enable_rtl %}
+          margin: 30px 15px 0 0;
+          {% else %}
+          margin: 30px 0 0 15px !important;
+          {% endif %}
+  	}
+  }
+  @media (max-width: 600px) {
+  	.banner-grid a img{
+  	    height: 350px;
+      	object-fit: cover;
+  	}
+  	.banner-grid .banner-content{
+  		left: 15px;
+  		width: 60%;
+  	}
+  	.banner-grid .banner-content span {
+  		font-size: 14px;
+  	}
+  }
+</style>

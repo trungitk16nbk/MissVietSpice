@@ -1,0 +1,242 @@
+<!-- Browuse categoryies -->
+<section class="slider-category">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-5 col-lg-5 col-md-12">
+        <div class="banner-wrap">
+          <a href="{{ section.settings.banner_url }}">
+             <img src="{% if section.settings.banner_img %}{{ section.settings.banner_img | img_url: 'master' }}{% else %}https://via.placeholder.com/443x605{% endif %}">
+          </a>
+        </div>
+      </div>
+      <div class="col-xl-7 col-lg-7 col-md-12">
+        <div class="section-title">
+          <h2>{{ section.settings.section_title }}</h2>
+        </div>
+        <ul class="cat-slider">
+          {% for block in section.blocks %}
+          {% assign category_product = collections[block.settings.slider_category_handle] %}
+          <li class="item">
+            <div class="category-wrap">
+              <a href="{{ category_product.url }}" class="category-image">
+                <img src="{% if block.settings.collection_img %}{{ block.settings.collection_img | img_url: 'master' }}{% else %}https://via.placeholder.com/315x388{% endif %}">
+              </a>
+              <div class="text-content">
+                <a href="{{ category_product.url }}" class="cat-content">
+                  <span class="cat-title">{{ category_product.title }}</span>
+                </a>
+                <span class="item-count">{{ category_product.products_count }} {{ block.settings.item_title}} </span>
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Category Section",
+  "settings": [
+  {
+      "type": "header",
+      "content": "Section Padding"
+  },
+  {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Section Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+  },
+  {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Section Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+  },
+  {
+      "type" : "paragraph",
+      "content" : "Mobile"
+  },
+  {
+      "type": "range",
+      "id": "section_padding_top_xs",
+      "label": "Section Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+  },
+  {
+      "type": "range",
+      "id": "section_padding_bottom_xs",
+      "label": "Section Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+  },
+  {
+    "type" : "color",
+    "id" : "our_ser_bgcolor",
+    "label" : "Background Color",
+    "default" : "#fff"
+  },
+  {
+    "type" : "text",
+    "id" : "section_title",
+    "label" : "Section Title",
+    "default" : "The best trusted farms in the world"
+  },
+  {
+    "type": "image_picker",
+    "id": "banner_img",
+    "label": "Banner image",
+    "info": "Recommended Size: 443px x 605px"
+  },
+  {
+    "type": "url",
+    "id": "banner_url",
+    "label": "Banner URL"
+  }
+  ],
+  "blocks" : [
+    {
+      "name" : "slider-category",
+      "type" : "product_tab",
+      "settings" : [
+        {
+          "type": "collection",
+          "id": "slider_category_handle",
+          "label": "Select Your Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "collection_img",
+          "label": "Collection image",
+          "info": "Recommended Size: 315px x 388px"
+        },
+        {
+          "type": "text",
+          "id": "item_title",
+          "label": "item title",
+          "default": "items"
+        }
+      ]
+    }
+  ],
+  "presets":[
+    {
+      "name": "Category By Collection"
+    }
+  ]
+}
+{% endschema %}
+<style>
+.slider-category {
+  {% if section.settings.our_ser_check %}
+  background-color: {{ section.settings.our_ser_bgcolor }};
+  {% endif %}
+  padding-top: {{ section.settings.section_padding_top }}px;
+  padding-bottom: {{ section.settings.section_padding_bottom }}px;
+}
+@media(max-width: 1199px) {
+    .slider-category {
+        padding-top: {{ section.settings.section_padding_top_xs }}px;
+        padding-bottom: {{ section.settings.section_padding_bottom_xs }}px;
+    }
+}
+
+.slider-category .section-title h2{
+  max-width: 60%;
+  margin: 0 auto;
+}
+.slider-category .banner-wrap {
+  text-align: center;
+  width: 100%;
+}
+ul.cat-slider {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -30px;
+}
+ul.cat-slider li.item{
+  width: calc(33.33% - 30px);
+  margin-left: 30px;
+  margin-top: 50px;
+}
+.cat-slider .category-wrap {
+  text-align: center;
+}
+.cat-slider .category-wrap .category-image{
+  position: relative;
+}
+.cat-slider .category-wrap span.cat-title {
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 600;
+}
+.cat-slider .category-wrap .text-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 30px;
+}
+.cat-slider .category-wrap span.item-count{
+  font-size: 14px;
+  color: #7e7e7e;
+  font-weight: 500;
+  line-height: 1;
+  margin-top: 10px;
+}
+@media(max-width: 1599px){
+  .cat-slider .category-wrap .text-content{
+    margin-top: 15px;
+  }
+  .cat-slider .category-wrap span.cat-title{
+    font-size: 14px;
+  }
+}
+@media(max-width: 1199px){
+  ul.cat-slider li.item{
+    margin-top: 30px;
+  }
+}
+@media(max-width: 991px){
+  .slider-category .section-title h2{
+    text-align:  center;
+    max-width: 50%;
+    margin: 0 auto;
+  }
+}
+@media(max-width: 767px){
+  .slider-category .section-title h2{
+    max-width: 100%;
+  }
+  ul.cat-slider{
+    margin-left: -15px;
+  }
+  ul.cat-slider li.item{
+    width: calc(50% - 15px);
+    margin-left: 15px;
+  }
+}
+@media(max-width: 320px){ 
+  ul.cat-slider li.item{
+    width: calc(100% - 15px);
+    margin-left: 15px;
+  }
+}
+</style>

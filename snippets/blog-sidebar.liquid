@@ -1,0 +1,321 @@
+<!-- shop-sidebar-wrap start -->
+<div class="blog-sidebar-wrap">
+  {% if section.settings.archive_enable %}
+  <div class="blog-sidebar blog-archive">
+    {% if settings.archive_title != '' %}
+    <h3 class="blog-sidebar-title">{{ settings.archive_title }}</h3>
+    {% endif %}
+
+    {% capture ddmm %}{{ 'now' | date: "%B %Y" }}{% endcapture %}
+    {% capture month %}{{ 'now' | date: "%B" }}{% endcapture %}
+    {% capture year %}{{ 'now' | date: "%Y" }}{% endcapture %}
+    {% case month %}
+    {% when 'January' %}{% assign k = 1 %}
+    {% when 'February' %}{% assign k = 2 %}
+    {% when 'March' %}{% assign k = 3 %}
+    {% when 'April' %}{% assign k = 4 %}
+    {% when 'June' %}{% assign k = 5 %}
+    {% when 'July' %}{% assign k = 6 %}
+    {% when 'August' %}{% assign k = 7 %}
+    {% when 'September' %}{% assign k = 8 %}
+    {% when 'October' %}{% assign k = 9 %}
+    {% when 'November' %}{% assign k = 10 %}
+    {% when 'December' %}{% assign k = 11 %}
+    {% endcase %}
+
+    <ul class="archive-sidebar">
+      {% for i in (1..k) %}
+        {% case month %}
+        {% when 'January' %}{% assign previous_month = 'December' %}
+        {% when 'February' %}{% assign previous_month = 'January' %}
+        {% when 'March' %}{% assign previous_month = 'February' %}
+        {% when 'April' %}{% assign previous_month = 'March' %}
+        {% when 'May' %}{% assign previous_month = 'April' %}
+        {% when 'June' %}{% assign previous_month = 'May' %}
+        {% when 'July' %}{% assign previous_month = 'June' %}
+        {% when 'August' %}{% assign previous_month = 'July' %}
+        {% when 'September' %}{% assign previous_month = 'August' %}
+        {% when 'October' %}{% assign previous_month = 'September' %}
+        {% when 'November' %}{% assign previous_month = 'October' %}
+        {% when 'December' %}{% assign previous_month = 'November' %}
+        {% endcase %}
+
+        
+          {% assign blogPresent = 0 %}
+          {% for article in blogs[blog.handle].articles limit: 10 %}
+          {% capture date %}
+          {{ article.published_at | date: "%B %Y" }}
+          {% endcapture %}
+          {% assign checkDate = month | append: ' ' | append: year %}
+          {% if date contains checkDate %}
+          {% assign blogPresent = 1 %}
+          {% endif %}
+          {% endfor %}
+          
+            {%- if blogPresent == 1 -%}
+            <h6>{{ month }} {{ year }}</h6>
+            {%- else -%}
+            {%- endif -%}
+
+        {% for article in blogs[blog.handle].articles limit: 10 %}
+        {% capture date %}
+        {{ article.published_at | date: "%B %Y" }}
+        {% endcapture %}
+        {% assign checkDate = month | append: ' ' | append: year %}
+        {% if date contains checkDate %}
+        <li>{{ article.title | link_to: article.url }}</li>
+        {% endif %}
+        {% endfor %}
+      
+
+        {% assign month = previous_month %}
+      {% endfor %}
+    </ul>
+
+    {% comment %}
+    {% assign prevYearsMonths = 'December' %}
+    {% assign year = year | minus: 1 %}
+    <ul class="archive-sidebar">
+      {% for y in (1..15) %}
+      {% for i in (1..12) %}
+      {% case prevYearsMonths %}
+      {% when 'January' %}{% assign previous_month = 'December' %}
+      {% when 'February' %}{% assign previous_month = 'January' %}
+      {% when 'March' %}{% assign previous_month = 'February' %}
+      {% when 'April' %}{% assign previous_month = 'March' %}
+      {% when 'May' %}{% assign previous_month = 'April' %}
+      {% when 'June' %}{% assign previous_month = 'May' %}
+      {% when 'July' %}{% assign previous_month = 'June' %}
+      {% when 'August' %}{% assign previous_month = 'July' %}
+      {% when 'September' %}{% assign previous_month = 'August' %}
+      {% when 'October' %}{% assign previous_month = 'September' %}
+      {% when 'November' %}{% assign previous_month = 'October' %}
+      {% when 'December' %}{% assign previous_month = 'November' %}
+      {% endcase %}
+
+        {% assign test = prevYearsMonths | append: ' ' | append: year %}
+        {% assign blogPresent = 0 %}
+        {% for article in blogs[blog.handle].articles limit: 10 %}
+        {% capture date %}
+        {{ article.published_at | date: "%B %Y" }}
+        {% endcapture %}
+        {% assign checkDate = prevYearsMonths | append: ' ' | append: year %}
+        {% if date contains checkDate %}
+        {% assign blogPresent = 1 %}
+        {% endif %}
+        {% endfor %}
+        {% if blogPresent == 1 %}
+        {{ prevYearsMonths }} {{year}}
+        {% else %}
+        {% endif %}
+        
+        {% for article in blogs[blog.handle].articles limit: 10 %}
+        {% capture date %}
+        {{ article.published_at | date: "%B %Y" }}
+        {% endcapture %}
+        {% if date contains test %}
+        <li>{{ article.title | link_to: article.url }}</li>
+        {% endif %}
+        {% endfor %}
+      {% assign prevYearsMonths = previous_month %}
+      {% endfor %}
+      {% assign year = year | minus: 1 %}
+      {% endfor %}
+    </ul>
+    {% endcomment %}
+  </div>
+  {% endif %}
+
+  {% if section.settings.recent_post_enable %}
+  <div class="blog-sidebar blog-sidebar-recent-post">
+    <h3 class="blog-sidebar-title">{{ settings.recent_title }}</h3>
+    {% assign recent_post_limit = settings.recent_post_limit_handle %}
+    {% for article in blogs[blog.handle].articles limit: recent_post_limit %}
+    <div class="sidbar-inner">
+      <div class="post-image">
+        <a href="{{ article.url }}"><img class="img-fluid" src="{{ article | img_url: '200x200' }}" alt="Recent Post"></a>
+      </div>
+      <div class="recent-blog-content">
+        <div class="post-box">
+          <span>{{ article.published_at | date: "%b %d, %Y" }}</span>
+        </div>
+        <h2>
+          <a href="{{ article.url }}">{{ article.title | truncate: 16 }}</a>
+        </h2>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if section.settings.tags_enable and blog.all_tags.size > 0 %}
+  <div class="blog-sidebar blog-tags">
+    <h3 class="blog-sidebar-title">{{ settings.blog_tags_title }}</h3>
+    <div class="sidebar-tag">
+      {% assign tags_list_limit = settings.tag_limit_handle %}
+      {% for tag in blog.all_tags limit: tags_list_limit %}
+      <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+</div>
+<!-- shop-sidebar-wrap end -->
+<style type="text/css">
+  .blog-sidebar-wrap {
+    position: sticky;
+    top: 0;
+}
+.blog-sidebar-wrap .blog-sidebar h3.blog-sidebar-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+.blog-sidebar-wrap .blog-sidebar .search-post form {
+    display: flex;
+    align-items: center;
+}
+.blog-sidebar-wrap .blog-sidebar .search-post input {
+    width: 100%;
+    border-radius: 50px;
+    font-size: 13px;
+    color: #aeaeae;
+}
+.blog-sidebar-wrap .blog-sidebar .search-post input::placeholder {
+    color: #aeaeae;
+}
+.blog-sidebar-wrap .blog-sidebar .search-post button {
+    position: absolute;
+    {% if settings.enable_rtl %}
+    left: 15px;
+{% else %}
+    right: 15px;
+{% endif %}
+    font-size: 16px;
+    color: #999;
+    background-color: transparent;
+    line-height: 0;
+}
+
+.blog-sidebar-wrap .blog-sidebar ul.archive-sidebar h6 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 10px;
+    {% if settings.enable_rtl %}
+    padding-right: 10px;
+{% else %}
+    padding-left: 10px;
+{% endif %}
+}
+.blog-sidebar-wrap .blog-sidebar ul.archive-sidebar li a:before{
+    font-family: "FontAwesome";
+    content: '\f061';
+    font-size: 12px;
+    line-height: 22px;
+    {% if settings.enable_rtl %}
+    margin-left: 5px;
+{% else %}
+    margin-right: 5px;
+{% endif %}
+}
+.blog-sidebar-wrap .blog-sidebar ul.archive-sidebar li a{
+    
+}
+.blog-sidebar-wrap .blog-sidebar ul.archive-sidebar li {
+    margin-top: 4px;
+    {% if settings.enable_rtl %}
+    padding-right: 20px;
+{% else %}
+    padding-left: 20px;
+{% endif %}
+}
+.blog-sidebar-wrap .blog-sidebar ul.archive-sidebar li:first-of-type{
+    margin-top: 8px;
+}
+.blog-sidebar-wrap .blog-sidebar .sidbar-inner {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+.blog-sidebar-wrap .blog-sidebar .sidbar-inner:last-child {
+    padding-bottom: 0px;
+    border-bottom: none;
+}
+.blog-sidebar-wrap .blog-sidebar .sidbar-inner .post-image {
+    width: 40%;
+}
+.blog-sidebar-wrap .blog-sidebar .sidbar-inner .recent-blog-content {
+    width: 60%;
+    {% if settings.enable_rtl %}
+    margin-right: 15px;
+{% else %}
+    margin-left: 15px;
+{% endif %}
+}
+.blog-sidebar-wrap .blog-sidebar .sidbar-inner .recent-blog-content h2 {
+    font-size: 14px;
+    
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.blog-sidebar-wrap .blog-sidebar .sidebar-tag {
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+.blog-sidebar-wrap .blog-sidebar .sidebar-tag a{
+    color: gray;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 5px 10px;
+    margin: 5px 0 0 5px;
+    border: 1px solid #eee;
+    border-radius: 0px;
+}
+.blog-sidebar-wrap .blog-sidebar .sidebar-tag a:hover{
+    color: #fff;
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+}
+.blog-sidebar-wrap .blog-sidebar.blog-sidebar-recent-post{
+    margin-top: 17px;
+}
+.blog-sidebar-wrap .blog-sidebar.blog-tags{
+    margin-top: 23px;
+}
+.blog-sidebar-wrap .blog-sidebar .search-post{
+    margin-top: 15px;
+    position: relative;
+}
+@media (max-width: 991px) {
+    .blog-sidebar-wrap .blog-sidebar h3.blog-sidebar-title {
+        font-size: 16px;
+    }
+    .blog-sidebar-wrap .blog-sidebar ul.archive-sidebar h6 {
+        font-size: 14px;
+    }
+    .blog-sidebar-wrap .blog-sidebar ul.archive-sidebar li a {
+        font-size: 13px;
+    }
+}
+@media (max-width: 767px) {
+    .blog-sidebar-wrap .blog-sidebar {
+        margin-bottom: 20px;
+    }
+    .blog-sidebar-wrap .blog-sidebar .sidbar-inner .post-image {
+        width: 35%;
+    }
+    .blog-sidebar-wrap .blog-sidebar .sidbar-inner .recent-blog-content {
+        width: 65%;
+    }
+    .blog-sidebar-wrap .blog-sidebar.blog-sidebar-recent-post{
+        margin-top: 16px;
+    }
+    .blog-sidebar-wrap .blog-sidebar.blog-tags{
+        margin-top: 22px;
+    }
+}
+</style>

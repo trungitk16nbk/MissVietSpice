@@ -1,0 +1,401 @@
+<div class="slider-content">
+    <div class="home-slider owl-carousel" id="home-slider">
+        {% for block in section.blocks %}
+        <div class="item">
+            <div class="slide-image">
+                <a class="desk-img" href="{{ block.settings.slider_button_url }}">
+                    <img class="img-fluid" src="{% if block.settings.slider_bg_img %}{{ block.settings.slider_bg_img | img_url: 'master' }}{% else %}https://via.placeholder.com/1920x770{% endif %}">
+                </a>
+                <a href="{{ block.settings.slider_button_url }}" class="mobile-img">
+                    <img class="img-fluid" src="{% if block.settings.slider_img %}{{ block.settings.slider_img | img_url: 'master' }}{% else %}https://via.placeholder.com/650x550{% endif %}">
+                </a>
+                <div class="slider-text-info {% if block.settings.slider_content_position == "right" %}slider-text-right{% elsif block.settings.slider_content_position == "center" %}slider-text-center{% else %}slider-text-left{% endif %}">
+                    {%if block.settings.slider_sub_title != '' %}
+                    <span style="color:{{ block.settings.slider_subtitle_color }};">{{ block.settings.slider_sub_title }}</span>
+                    {%endif%}
+                    {%if block.settings.slider_title != '' %}
+                    <h1 style="color:{{ block.settings.slider_title_color }};">
+                        <span>{{ block.settings.slider_title1 }}</span>
+                        <span>{{ block.settings.slider_title2 }}</span>
+                    </h1>
+                    {%endif%}
+                    {% if block.settings.slider_button != '' %}
+                    <a href="{{ block.settings.slider_button_url }}" class="btn-style3">{{ block.settings.slider_button }}</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Hero Section End -->
+<script>
+    addEventListener('DOMContentLoaded', (event) => {
+    $('#home-slider').owlCarousel({
+        loop: {{ section.settings.loop }},
+        items: 1,
+        {%- if settings.enable_rtl -%}
+        rtl: true,
+        {%- endif -%}
+        margin: 0,
+        nav: {{ section.settings.nav }},
+        dots: {{ section.settings.dots }},
+        navText : ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+        autoplay: {{ section.settings.autoplay }},
+        autoplayTimeout: {{ section.settings.autoplay_time }},
+        autoplayHoverPause: true
+    });
+    });
+</script>
+{% schema %}
+{
+    "name": "Slider",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Slider settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "loop",
+        "label": "Slider loop",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "autoplay",
+        "label": "Slider autoplay",
+        "default": true
+      },
+      {
+        "type": "number",
+        "id": "autoplay_time",
+        "label": "Slider timer out",
+        "default": 5000
+      },
+      {
+        "type": "checkbox",
+        "id": "nav",
+        "label": "Slider arrow",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "dots",
+        "label": "Slider dots",
+        "default": true
+      }
+    ],
+    "blocks":[
+        {
+            "type": "slide",
+            "name": "Slide",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "slider_bg_img",
+                    "label": "Image",
+                    "info": "Recommended Size: 1920 x 770px"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "slider_img",
+                    "label": "Mobile Image",
+                    "info": "Recommended Size: 650x550px"
+                },
+                {
+                    "type": "text",
+                    "id": "slider_sub_title",
+                    "label": "Sub Title",
+                    "default": "Top Selling!"
+                },
+                {
+                    "type": "color",
+                    "id": "slider_subtitle_color",
+                    "label": "Text color",
+                    "default": "#fff"
+                },
+                {
+                    "type": "text",
+                    "id": "slider_title1",
+                    "label": "Title",
+                    "default": "Organic Food"
+                },
+                {
+                    "type": "text",
+                    "id": "slider_title2",
+                    "label": "Title",
+                    "default": "& Heathy Tasty"
+                },
+                {
+                    "type": "color",
+                    "id": "slider_title_color",
+                    "label": "Text color",
+                    "default": "#fff"
+                },
+                {
+                    "type": "text",
+                    "id": "slider_button",
+                    "label": "Button Text",
+                    "default": "Shop Now"
+                },
+                {
+                    "type": "url",
+                    "id": "slider_button_url",
+                    "label": "Button URL"
+                },
+                {
+                    "type": "radio",
+                    "id": "slider_content_position",
+                    "label": "Content Position",
+                    "options": [
+                        {
+                            "label": "left",
+                            "value": "left"
+                        },
+                        {
+                            "label": "Right",
+                            "value": "right"
+                        },
+                        {
+                            "label": "Center",
+                            "value": "center"
+                        }
+                    ],
+                    "default": "left"
+                }
+            ]
+        }
+    ],
+    "presets":[
+        {
+            "name": "Slider"
+        }
+    ]
+}
+{% endschema %}
+<style type="text/css">
+.slider-content .home-slider .slide-image {
+  position: relative;
+}
+.slider-content .home-slider .slide-image .mobile-img{
+    display: none;
+}
+.slider-content .home-slider .slide-image .slider-text-info {
+  position: absolute;
+  bottom: 50%;
+  transform: translateY(50%);
+}
+.slider-content .home-slider .slide-image .slider-text-info.slider-text-left {
+  left: 10%;
+  text-align: left;
+}
+.slider-content .home-slider .slide-image .slider-text-info.slider-text-center {
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  text-align: center;
+}
+.slider-content .home-slider .slide-image .slider-text-info.slider-text-right {
+  right: 10%;
+  text-align: right;
+}
+.slider-content .home-slider .slide-image .slider-text-info > span {
+  font-size: 20px;
+  display: block;
+}
+.slider-content .home-slider .slide-image .slider-text-info h1 {
+  font-size: 70px;
+  font-weight: 800;
+  line-height: 1;
+  margin-top: 33px;
+}
+.slider-content .home-slider .slide-image .slider-text-info h1 span{
+  display: block;
+  font-weight: 300;
+  margin-top: 10px;
+}
+.slider-content .home-slider .slide-image .slider-text-info h1 span:first-child{
+  margin-top: 0;
+  font-weight: 700;
+}
+.slider-content .home-slider .slide-image .slider-text-info a {
+  margin-top: 39px;
+}
+.slider-content .home-slider .active .slide-image .slider-text-info span {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+  -webkit-animation-delay: 0.7s;
+  animation-delay: 0.7s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 0.7s;
+  animation-duration: 0.7s;
+}
+.slider-content .home-slider .active .slide-image .slider-text-info h1 {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+}
+.slider-content .home-slider .active .slide-image .slider-text-info a {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+  -webkit-animation-delay: 1.6s;
+  animation-delay: 1.6s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1.6s;
+  animation-duration: 1.6s;
+}
+
+@media (max-width: 1599px) {
+  .slider-content .home-slider .slide-image .slider-text-info h1{
+    font-size: 50px;
+  }
+}
+@media (max-width: 1199px) {
+  .slide-content .slider-element.slider-main{
+    width: 100%;
+  }
+  .slider-content .home-slider .slide-image .slider-text-info > span{
+    font-size: 16px;
+  }
+  .slider-content .home-slider .slide-image .slider-text-info h1 {
+    font-size: 40px;
+    margin-top: 15px;
+  }
+  .slider-content .home-slider .slide-image .slider-text-info a {
+    margin-top: 30px;
+  }
+}
+@media (max-width: 991px) {
+  .slider-content .home-slider .slide-image .slider-text-info{
+    width: 40%;
+  }
+  .slider-content .home-slider .slide-image .slider-text-info h1{
+    font-size: 30px;
+  }
+  .slider-content .home-slider .owl-nav button.owl-prev {
+    left: 15px;
+  }
+  .slider-content .home-slider .owl-nav button.owl-next {
+    right: 15px;
+  }
+}
+@media (max-width: 767px) {
+  .slider-content .home-slider .slide-image img{
+    height: 300px;
+    object-fit: cover;
+  }
+  .slider-content .home-slider .slide-image .slider-text-info {
+    width: 60%;
+  }
+  .slider-content .home-slider .slide-image .slider-text-info.slider-text-left {
+    left: 15px;
+  }
+  .slider-content .home-slider .slide-image .slider-text-info.slider-text-center {
+    left: 0;
+    right: 0;
+  }
+  .slider-content .home-slider .slide-image .slider-text-info.slider-text-right {
+    right: 15px;
+  }
+  .slider-content .home-slider .slide-image .slider-text-info > span{
+    font-size: 14px;
+  }
+  .slider-content .home-slider .slide-image .slider-text-info h1 {
+    font-size: 20px;
+    margin-top: 15px;
+  }
+  .slider-content .home-slider .slide-image .slider-text-info a {
+    margin-top: 20px;
+  }
+  .slider-content .home-slider .owl-nav {
+    display: none;
+  }
+}
+
+@media (max-width : 600px){
+    .slider-content .home-slider .slide-image .desk-img{
+        display: none;
+    }
+    .slider-content .home-slider .slide-image .mobile-img{
+        display: block;
+    }
+}
+
+.slider-content .home-slider .owl-nav {
+  margin-top: 0;
+}
+.slider-content .home-slider .owl-nav button {
+  line-height: 0;
+  margin: 0;
+  position: absolute;
+  bottom: 50%;
+  border-radius: 50%;
+  transform: translateY(50%);
+  font-size: 20px;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 2px solid #fff;
+  box-shadow: 0px 0px 12px 0px rgba(123, 190, 70, 0.1);
+}
+.slider-content .home-slider .owl-nav button:hover {
+  color: #fff;
+    background-color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+.slider-content .home-slider .owl-nav button.owl-next {
+  right: 30px;
+}
+.slider-content .home-slider .owl-nav button.owl-prev {
+  left: 30px;
+}
+
+.slider-content .home-slider .owl-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    line-height: 0;
+    text-align: center;
+}
+.home-slider.owl-carousel .owl-dots button:hover span,
+.home-slider.owl-carousel .owl-dots button.active span {
+    background-color: var(--color-secondary);
+}
+.home-slider.owl-carousel .owl-dots button span {
+    background-color: var(--color-primary);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+.slider-content .home-slider .owl-dots button {
+    {% if settings.enable_rtl %}
+    margin-left: 10px;
+    {% else %}
+    margin-right: 10px;
+    {% endif %}
+}
+.slider-content .home-slider .owl-dots button:last-child {
+    {% if settings.enable_rtl %}
+    margin-left: 0px;
+    {% else %}
+    margin-right: 0px;
+    {% endif %}
+}
+.slider-content .home-slider .owl-dots button span {
+    margin: 0;
+}
+
+</style>

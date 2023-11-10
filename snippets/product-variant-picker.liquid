@@ -1,19 +1,8 @@
-{% comment %}
-  Renders product variant-picker
-
-  Accepts:
-  - product: {Object} product object.
-  - block: {Object} passing the block information.
-  - product_form_id: {String} Id of the product form to which the variant picker is associated.
-  - update_url: {Boolean} whether or not to update url when changing variants. If false, the url isn't updated. Default: true (optional).
-  Usage:
-  {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
-{% endcomment %}
 {%- unless product.has_only_default_variant -%}
   {%- if block.settings.picker_type == 'button' -%}
-    <variant-radios
+    <pr-option
       id="variant-radios-{{ section.id }}"
-      class="no-js-hidden"
+      class="pr-option"
       data-section="{{ section.id }}"
       data-url="{{ product.url }}"
       {% if update_url == false %}
@@ -22,19 +11,24 @@
       {{ block.shopify_attributes }}
     >
       {%- for option in product.options_with_values -%}
-        <fieldset class="js product-form__input">
-          <legend class="form__label">{{ option.name }}</legend>
-          {% render 'product-variant-options', product: product, option: option, block: block %}
+        <fieldset class="js variant-option-block">
+          <h6 class="option-title">
+            {{ option.name }}:
+            <span class="current-option">{{ option.selected_value }}</span>
+          </h6>
+          <div class="option-block">
+            {% render 'product-variant-options', product: product, option: option, block: block %}
+          </div>
         </fieldset>
       {%- endfor -%}
       <script type="application/json">
         {{ product.variants | json }}
       </script>
-    </variant-radios>
+    </pr-option>
   {%- else -%}
     <variant-selects
       id="variant-selects-{{ section.id }}"
-      class="no-js-hidden"
+      class="pr-option"
       data-section="{{ section.id }}"
       data-url="{{ product.url }}"
       {% if update_url == false %}
@@ -43,11 +37,12 @@
       {{ block.shopify_attributes }}
     >
       {%- for option in product.options_with_values -%}
-        <div class="product-form__input product-form__input--dropdown">
-          <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
-            {{ option.name }}
-          </label>
-          <div class="select">
+        <div class="variant-option-block product-form__input--dropdown">
+          <h6 class="option-title" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+            {{ option.name }}:
+            <span class="current-option">{{ option.selected_value }}</span>
+          </h6>
+          <div class="option-block">
             <select
               id="Option-{{ section.id }}-{{ forloop.index0 }}"
               class="select__select"
@@ -56,7 +51,6 @@
             >
               {% render 'product-variant-options', product: product, option: option, block: block %}
             </select>
-            {% render 'icon-caret' %}
           </div>
         </div>
       {%- endfor -%}
@@ -69,10 +63,10 @@
 {%- endunless -%}
 
 <noscript class="product-form__noscript-wrapper-{{ section.id }}">
-  <div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
-    <label class="form__label" for="Variants-{{ section.id }}">
+  <div class="variant-option-block {% if product.has_only_default_variant %} hidden{% endif %}">
+    <h6 class="option-title" for="Variants-{{ section.id }}">
       {{- 'products.product.product_variants' | t -}}
-    </label>
+    </h6>
     <div class="select">
       <select
         name="id"
@@ -120,3 +114,121 @@
     </div>
   </div>
 </noscript>
+{% style %}
+.product_details_info .pr-op{
+  border-top: 1px solid rgb(20 20 20 / 10%);
+  padding-top: 30px; 
+}
+.product_details_info .pr-option .variant-option-block:not(:first-child){
+  margin-top: 20px;
+}
+.product_details_info .pr-option .option-title{
+  line-height: 1;
+  font-size: 14px;
+}
+.product_details_info .pr-option .option-title .current-option{
+  font-weight: 400;
+  font-size: 14px;
+  {% if settings.enable_rtl %}
+  margin-right: 15px;
+  {% else %}
+  margin-left: 15px;
+  {% endif %}
+}
+.product_details_info .pr-option .option-block{
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 10px;
+}
+.product_details_info .pr-option .option-block input{
+  display: none;
+}
+.product_details_info .pr-option .option-block input.disabled+.op-lb:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  width: 100%;
+  background-color: rgba(0,0,0,50%);
+}
+.product_details_info .pr-option .option-block .op-lb{
+  position: relative;
+  cursor: pointer;
+  font-size: 14px;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 8px 10px;
+  border: 1px solid transparent;
+  {% if settings.enable_rtl %}
+  margin-left: 8px;
+  {% else %}
+  margin-right: 8px;
+  {% endif %}
+  margin-top: 5px;
+  background-color: #f7f7f7;
+  transition: .2s ease-in;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product_details_info .pr-option .variant-option-block.Color .option-block .op-lb.color {
+  font-size: 0;
+  border: none;
+  height: 30px;
+  width: 30px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+.product_details_info .pr-option .option-block input:checked+.op-lb,
+.product_details_info .pr-option .option-block .op-lb:hover{
+  box-shadow: inset 0 0 0 1px #fff, 0 0 0 1px var(--color-primary);
+}
+.product_details_info .pr-option .variant-option-block.Color .option-block .op-lb.color:hover,
+.product_details_info .pr-option .variant-option-block.Color .option-block input:checked+.op-lb.color {
+  box-shadow: inset 0 0 0 1px #fff, 0 0 0 1px var(--heading-color);
+}
+
+.product_details_info .pr-option .variant-option-block.Color .op-lb.bg-img{
+  font-size: 0;
+  height: 40px;
+  width: 40px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid #fff;
+  padding: 0;
+}
+.product_details_info .pr-option .variant-option-block.Color .op-lb.bg-img:hover,
+.product_details_info .pr-option .variant-option-block.Color input:checked+.op-lb.bg-img{
+  box-shadow: inset 0 0 0 1px #fff, 0 0 0 1px var(--primary-color);
+}
+
+/* select box */
+.product_details_info .pr-option .option-block select{
+  border: 1px solid rgba(0 0 0 / 10%);
+  width: 100%;
+  height: 40px;
+  padding: 0 15px;
+  cursor: pointer;
+  position: relative;
+  text-transform: uppercase;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
+}
+.product_details_info .pr-option .option-block.select-box i{
+  color: var(--heading-color);
+  font-size: 12px;
+  font-weight: 600;
+  position: absolute;
+  {% if settings.enable_rtl %}
+  left: 15px;
+  {% else %}
+  right: 15px;
+  {% endif %}
+}  
+{% endstyle %}

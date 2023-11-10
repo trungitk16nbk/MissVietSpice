@@ -1,0 +1,96 @@
+{%- liquid
+ assign current_variant = product.selected_or_first_available_variant | default: product.variants.first
+ assign current_selling_plan_allocation = current_variant.selected_selling_plan_allocation
+
+ if current_selling_plan_allocation == nil and current_variant.requires_selling_plan
+  assign current_selling_plan_allocation = current_variant.selling_plan_allocations | first
+ endif
+
+ assign offer = current_selling_plan_allocation | default: current_variant
+-%}
+
+{% if product.selling_plan_groups.size > 0 %}
+  <div class="purchase-options-container">
+    <fieldset
+      class="selling-plan-fieldset"
+      data-product="{{ product | json }}"
+      id="product_form_id">
+      <legend>Purchase options</legend>
+
+      <div class="purchase-option">
+        <div class="purchase-option-container">
+          <input
+            type="radio"
+            name="purchase_option"
+            value="one_time_purchase">
+          <label for="one_time_purchase" class="purchase-label">One-time purchase</label>
+        </div>
+      </div>
+
+
+      <div class="purchase-option">
+        <div class="purchase-option-container">
+          <input
+            type="radio"
+            name="purchase_option"
+            value="subscribe_and_save"
+            checked>
+          <label for="subscribe_and_save" class="purchase-label">Subscribe and Save</label>
+        </div>
+
+
+        <div id="subscription_plans" style="display: block;">
+          <label for="selling_plans" class="plan-label">Select a plan:</label>
+          <select
+            name="selling_plan_id"
+            id="selling_plans"
+            class="plan-select">
+            {% for group in product.selling_plan_groups %}
+              {% for plan in group.selling_plans %}
+                {% comment %} {% assign plan_index = forloop.index0 %} {% endcomment %}
+                <option value="{{ plan.id }}">{{ plan.name }} - sale: {{ plan.price_adjustments[0].value }}%</option>
+              {% endfor %}
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+{% endif %}
+
+<style>
+  .purchase-options-container {
+    border: 1px solid #ccc;
+    padding: 20px !important;
+    margin: 20px 0 !important;
+  }
+
+
+  .purchase-option {
+    margin-bottom: 10px;
+  }
+
+
+  .purchase-option-container {
+    border: 1px solid #ddd; /* Add border for each option */
+    padding: 10px;
+  }
+
+
+  .purchase-label {
+    margin-left: 10px;
+  }
+
+
+  .plan-label {
+    display: block;
+    margin-top: 10px;
+  }
+
+
+  .plan-select {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+  }
+</style>

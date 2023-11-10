@@ -1,65 +1,13 @@
-{% comment %}
-  Renders product buy-buttons.
-  Accepts:
-  - product: {Object} product object.
-  - block: {Object} passing the block information.
-  - product_form_id: {String} product form id.
-  - section_id: {String} id of section to which this snippet belongs.
-  - show_pickup_availability: {Boolean} for the pickup availability. If true the pickup availability is rendered, false - not rendered (optional).
-
-  Usage:
-  {% render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true %}
-{% endcomment %}
 <div {{ block.shopify_attributes }}>
   {%- if product != blank -%}
-    {%- liquid
-      assign gift_card_recipient_feature_active = false
-      if block.settings.show_gift_card_recipient and product.gift_card?
-        assign gift_card_recipient_feature_active = true
-      endif
-
-      assign show_dynamic_checkout = false
-      if block.settings.show_dynamic_checkout and gift_card_recipient_feature_active == false
-        assign show_dynamic_checkout = true
-      endif
-    -%}
-
-    <product-form class="product-form" data-hide-errors="{{ gift_card_recipient_feature_active }}">
-      <div class="product-form__error-message-wrapper" role="alert" hidden>
-        <svg
-          aria-hidden="true"
-          focusable="false"
-          class="icon icon-error"
-          viewBox="0 0 13 13"
-        >
-          <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
-          <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
-          <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
-          <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
-        </svg>
-        <span class="product-form__error-message"></span>
+    <product-form class="product-form">
+      <div class="pr-form-error" role="alert" hidden>
+        <span class="pr-form-error-text"></span>
       </div>
-
-      {%- form 'product',
-        product,
-        id: product_form_id,
-        class: 'form',
-        novalidate: 'novalidate',
-        data-type: 'add-to-cart-form'
-      -%}
-        <input
-          type="hidden"
-          name="id"
-          value="{{ product.selected_or_first_available_variant.id }}"
-          disabled
-          class="product-variant-id"
-        >
-
-        {%- if gift_card_recipient_feature_active -%}
-          {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
-        {%- endif -%}
-
-        <div class="product-form__buttons">
+      {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" disabled class="product-variant-id">
+        <input type="hidden" name="selling_plan" value="">
+        <div class="pr-form-button">
           {%- liquid
             assign check_against_inventory = true
             if product.selected_or_first_available_variant.inventory_management != 'shopify' or  product.selected_or_first_available_variant.inventory_policy == 'continue'
@@ -69,35 +17,19 @@
               assign quantity_rule_soldout = true
             endif
           -%}
-          <button
-            id = "ProductSubmitButton-{{ section_id }}"
-            type="submit"
-            name="add"
-            class="product-form__submit button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
-            {% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout %}
-              disabled
-            {% endif %}
-          >
-            <span>
+          <button id = "ProductSubmitButton-{{ section_id }}" type="submit" name="add" class="ajax-cart-btn" {% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout %} disabled {% endif %}>
+            <span class="cart-title">
               {%- if product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
                 {{ 'products.product.sold_out' | t }}
               {%- else -%}
                 {{ 'products.product.add_to_cart' | t }}
               {%- endif -%}
             </span>
-            <div class="loading-overlay__spinner hidden">
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                class="spinner"
-                viewBox="0 0 66 66"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-              </svg>
+            <div class="ajax-loader hidden">
+             <span class="spinner-border"></span>
             </div>
           </button>
-          {%- if show_dynamic_checkout -%}
+          {%- if block.settings.show_dynamic_checkout -%}
             {{ form | payment_button }}
           {%- endif -%}
         </div>
@@ -105,48 +37,259 @@
     </product-form>
   {%- else -%}
     <div class="product-form">
-      <div class="product-form__buttons form">
-        <button
-          type="submit"
-          name="add"
-          class="product-form__submit button button--full-width button--primary"
-          disabled
-        >
+      <div class="pr-form-button form">
+        <button type="submit" name="add" class="" disabled>
           {{ 'products.product.sold_out' | t }}
         </button>
       </div>
     </div>
   {%- endif -%}
-
-  {%- if show_pickup_availability -%}
-    {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
-
-    {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities
-      | where: 'pick_up_enabled', true
-    -%}
-
-    <pickup-availability
-      class="product__pickup-availabilities no-js-hidden quick-add-hidden"
-      {% if product.selected_or_first_available_variant.available and pick_up_availabilities.size > 0 %}
-        available
-      {% endif %}
-      data-root-url="{{ routes.root_url }}"
-      data-variant-id="{{ product.selected_or_first_available_variant.id }}"
-      data-has-only-default-variant="{{ product.has_only_default_variant }}"
-    >
-      <template>
-        <pickup-availability-preview class="pickup-availability-preview">
-          {% render 'icon-unavailable' %}
-          <div class="pickup-availability-info">
-            <p class="caption-large">{{ 'products.product.pickup_availability.unavailable' | t }}</p>
-            <button class="pickup-availability-button link link--text underlined-link">
-              {{ 'products.product.pickup_availability.refresh' | t }}
-            </button>
-          </div>
-        </pickup-availability-preview>
-      </template>
-    </pickup-availability>
-
-    <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
-  {%- endif -%}
 </div>
+<style>
+.product_details_info .pr-form-button {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -15px 0 0 -15px;
+  padding-top: 30px;
+}
+.product_details_info .pr-form-button .ajax-cart-btn {
+  width: calc(50% - 15px);
+  margin: 15px 0 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border-radius: 3px;
+  background-color: var(--color-primary);
+}
+.product_details_info .pr-form-button .ajax-cart-btn:hover {
+  background-color: var(--color-secondary);
+}
+.product_details_info .pr-form-button .ajax-cart-btn .ajax-loader{
+  width: 15px;
+  height: 15px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.product_details_info .pr-form-button .ajax-cart-btn.loading .cart-title{ 
+  display: none;
+}
+.product_details_info .pr-form-button .ajax-cart-btn.loading .ajax-loader {
+  display: flex;
+}
+.product_details_info .pr-form-button .ajax-cart-btn .ajax-loader svg {
+  fill: #fff;
+}
+.product_details_info .pr-form-button .shopify-payment-button {
+  width: calc(50% - 15px);
+  margin: 15px 0 0 15px;
+}
+.product_details_info .pr-form-button .shopify-payment-button button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-secondary);
+  color: #fff;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 400;
+}
+.product_details_info .pr-form-button .shopify-payment-button button:hover {
+  background-color: var(--color-primary);
+}
+.product_details_info .pr-form-button .shopify-payment-button .shopify-payment-button__more-options {
+  display: none;
+}
+</style>
+
+
+<script>
+  function changePrice(productData) {
+    let selectedVariantId = parseInt(document.querySelector('input[name="id"]').value);
+   
+    let selectedVariant;  
+    for (var i = 0; i < productData.variants.length; i++) {
+      if (productData.variants[i].id === selectedVariantId) {
+        selectedVariant = productData.variants[i];
+        break;
+      }
+    }
+    let Price = selectedVariant.price;
+    if (selectedVariant.selling_plan_allocations.length) {
+      let planId = parseInt(document.querySelector('[name="selling_plan"]').value);
+      for (let i = 0; i < selectedVariant.selling_plan_allocations.length; i++) {
+        if (selectedVariant.selling_plan_allocations[i].selling_plan_id === planId) {
+          Price = selectedVariant.selling_plan_allocations[i].price;
+        }
+      }
+    }
+    const newPrice = Price / 100;
+
+    // Lấy phần tử span theo ID
+    const productPriceElement = document.querySelector(`#ProductPrice`);
+    if (productPriceElement) { // Cập nhật nội dung của thẻ span với giá tiền mới đã định dạng
+      productPriceElement.innerHTML = newPrice.toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD'
+      });;
+    }
+  }
+
+  function showSubsrciption() {
+    let productData = {{product | json}};
+    let changeTimeout;
+    let selectedSellingPlanId = '';
+    const sellingPlanContainer = document.querySelector('.selling-plan-fieldset');
+    const purchaseOptionsRadio = document.querySelectorAll('input[name="purchase_option"]');
+    const subscriptionPlansDiv = document.getElementById('subscription_plans');
+
+    if (subscriptionPlansDiv) {
+      selectedSellingPlanId = productData.selling_plan_groups[0].selling_plans[0].id;
+      document.querySelector('[name="selling_plan"]').value = selectedSellingPlanId;
+      changePrice(productData)
+    }
+
+    purchaseOptionsRadio.forEach((radio) => {
+      radio.addEventListener('change', () => {
+        if (radio.value === 'subscribe_and_save') {
+          subscriptionPlansDiv.style.display = 'block';
+          selectedSellingPlanId = document.getElementById('selling_plans').value;
+        } else {
+          subscriptionPlansDiv.style.display = 'none';
+          selectedSellingPlanId = '';
+        }
+        document.querySelector('[name="selling_plan"]').value = selectedSellingPlanId;
+        changePrice(productData)
+      });
+    });
+
+    // Watch for selling plan option change to update the selected selling plan
+    if (sellingPlanContainer){
+      sellingPlanContainer.querySelectorAll('select').forEach(function(optionSelector) {
+        optionSelector.addEventListener('change', function() {
+          selectedSellingPlanId = optionSelector.value;
+          selectedSellingPlanId = (typeof selectedSellingPlanId === 'undefined') ? '' : selectedSellingPlanId;
+          document.querySelector('[name="selling_plan"]').value = selectedSellingPlanId;
+          changePrice(productData)
+        });
+      });
+    }
+    if (document.querySelector(`.variant-option-block`)){
+      document.querySelector(`.variant-option-block`).addEventListener('change', function() {
+        clearTimeout(changeTimeout); // Xóa bất kỳ timeout nào còn đang chờ
+        changeTimeout = setTimeout(() => {
+          changePrice(productData)
+        }, 500);
+      });
+    }
+   
+  }
+
+  // quick view
+  function changePrice2(productData) {
+    const variantElement = document.querySelectorAll('input[name="id"]');
+    let selectedVariantId = parseInt(variantElement[variantElement.length - 1].value);
+
+    let selectedVariant;
+    for (var i = 0; i < productData.variants.length; i++) {
+      if (productData.variants[i].id === selectedVariantId) {
+        selectedVariant = productData.variants[i];
+        break;
+      }
+    }
+
+    if (!selectedVariant) {
+      selectedVariant = productData.variants[0];
+    }
+
+
+    let Price = selectedVariant.price;
+    if (selectedVariant.selling_plan_allocations.length) {
+      const sellingPlanElement = document.querySelectorAll('[name="selling_plan"]');
+      let planId = parseInt(sellingPlanElement[sellingPlanElement.length - 1].value);
+      for (let i = 0; i < selectedVariant.selling_plan_allocations.length; i++) {
+        if (selectedVariant.selling_plan_allocations[i].selling_plan_id === planId) {
+          Price = selectedVariant.selling_plan_allocations[i].price;
+        }
+      }
+    }
+
+    const newPrice = Price / 100;
+    // Lấy phần tử span theo ID
+    const productPriceElementAll = document.querySelectorAll(`#ProductPrice`);
+    const productPriceElement = productPriceElementAll[productPriceElementAll.length - 1];
+    if (productPriceElement) { // Cập nhật nội dung của thẻ span với giá tiền mới đã định dạng
+      productPriceElement.innerHTML = newPrice.toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD'
+      });;
+    }
+  }
+
+  function showSubsrciption2() {
+    let productData = {{product | json}};
+    let changeTimeout;
+    let selectedSellingPlanId = '';
+    const sellingPlanContainerAll = document.querySelectorAll('.selling-plan-fieldset');
+    const sellingPlanContainer = sellingPlanContainerAll[sellingPlanContainerAll.length - 1];
+    const purchaseOptionsRadio = sellingPlanContainer.querySelectorAll('input[name="purchase_option"]');
+    const subscriptionPlansDiv = sellingPlanContainer.querySelector('#subscription_plans');
+   
+
+
+    if (subscriptionPlansDiv) {
+      selectedSellingPlanId = productData.selling_plan_groups[0].selling_plans[0].id;
+      const sellingPlanElement = document.querySelectorAll('[name="selling_plan"]');
+      sellingPlanElement[sellingPlanElement.length - 1].value = selectedSellingPlanId;
+      changePrice2(productData);
+    }
+
+    purchaseOptionsRadio.forEach((radio) => {
+      radio.addEventListener('change', () => {
+        if (radio.value === 'subscribe_and_save') {
+          subscriptionPlansDiv.style.display = 'block';
+          selectedSellingPlanId = document.getElementById('selling_plans').value;
+        } else {
+          subscriptionPlansDiv.style.display = 'none';
+          selectedSellingPlanId = '';
+        }
+        const sellingPlanElement = document.querySelectorAll('[name="selling_plan"]');
+        sellingPlanElement[sellingPlanElement.length - 1].value = selectedSellingPlanId;
+        changePrice2(productData)
+      });
+    });
+
+
+    // Watch for selling plan option change to update the selected selling plan
+    if (sellingPlanContainer){
+      sellingPlanContainer.querySelectorAll('select').forEach(function(optionSelector) {
+        optionSelector.addEventListener('change', function() {
+          selectedSellingPlanId = optionSelector.value;
+          selectedSellingPlanId = (typeof selectedSellingPlanId === 'undefined') ? '' : selectedSellingPlanId;
+          const sellingPlanElement = document.querySelectorAll('[name="selling_plan"]');
+          sellingPlanElement[sellingPlanElement.length - 1].value = selectedSellingPlanId;
+          changePrice2(productData)
+        });
+      });
+      const variantOptionElement = document.querySelectorAll(`.variant-option-block`);
+      if (variantOptionElement){
+        variantOptionElement[variantOptionElement.length - 1].addEventListener('change', function() {
+          clearTimeout(changeTimeout); // Xóa bất kỳ timeout nào còn đang chờ
+          changeTimeout = setTimeout(() => {
+            changePrice2(productData)
+          }, 500);
+        });
+      }
+    }  
+  }
+
+  if (check) {
+    showSubsrciption2();
+  }
+  else {
+    showSubsrciption();
+  }
+
+
+</script> 

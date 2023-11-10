@@ -1,0 +1,45 @@
+<script type="text/javascript" src="{{ 'jquery-3.6.1.min.js' | asset_url }}" defer></script>
+<script type="text/javascript" src="{{ 'jquery-migrate-1.4.1.min.js' | asset_url }}" defer></script>
+<script type="text/javascript" src="{{ 'modernizr-2.8.3.min.js' | asset_url }}" defer></script>
+<script type="text/javascript" src="{{ 'bootstrap.bundle.min.js' | asset_url }}" defer></script>
+<script type="text/javascript" src="{{ 'owl.carousel.min.js' | asset_url }}" defer></script>
+<script type="text/javascript" src="{{ 'swiper-bundle.min.js' | asset_url }}" defer></script>
+<script type="text/javascript" src="{{ 'jquery.magnific-popup.min.js' | asset_url }}" defer></script>
+<script type="text/javascript" src="{{ 'imagesloaded.pkgd.min.js' | asset_url }}" defer></script>
+<script type="text/javascript" src="{{ 'jquery.isotope.min.js' | asset_url }}" defer></script>
+<script type="text/javascript" src="{{ 'jquery.lazyload.min.js' | asset_url }}" defer></script>
+<script type="text/javascript" src="{{ 'api.jquery.js' | shopify_asset_url }}" defer></script>
+<script type="text/javascript" src="{{ 'main.js' | asset_url }}" defer></script>
+<script>
+    let check = false;
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const modalOpenerButtons = document.querySelectorAll('.quick-view');
+    const modalCloseButtons = document.querySelectorAll('.modal-close');
+    const quickAddModals = document.querySelectorAll('.quickview-modal');
+
+    modalOpenerButtons.forEach(button => {
+      button.addEventListener('click', () => {
+
+      if (button.getAttribute('data-modal')){
+        check = true;
+      }
+      });
+    });
+
+    modalCloseButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        check = false;
+      });
+    });
+
+    // Bắt sự kiện khi nhấn ra ngoài modal để đóng modal
+    quickAddModals.forEach(modal => {
+      modal.addEventListener('click', (event) => {
+      check = false;
+      });
+    });
+
+  });
+</script>
+

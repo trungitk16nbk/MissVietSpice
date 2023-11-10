@@ -1,0 +1,30 @@
+{%- if settings.logo_header_svg_url != empty %}
+{%- assign logo_header_svg_url = settings.logo_header_svg_url | file_url -%}
+<a href="{{ shop.url }}" class="theme-header-logo">
+  <img src="{{ logo_header_svg_url }}" class="img-fluid" alt="{{ shop.name | escape }}" style="width: {{ settings.logo_header_max_width }}px;">
+</a>
+{%- elsif settings.logo_header -%}
+<a href="{{ shop.url }}" class="theme-header-logo">
+  <img src="{%- if settings.logo_header -%}{{ settings.logo_header | img_url: 'master' }}{% else %}https://dummyimage.com/107x26/f7f7f7/999999{% endif %}" class="img-fluid" alt="{{ settings.logo_header.alt | default: shop.name }}" style="width: {{ settings.logo_header_max_width }}px;">
+</a>
+{%- else -%}
+<a href="{{ shop.url }}" class="shop-header-name">
+  <span>{{ shop.name }}</span>
+</a>
+{%- endif -%}
+<style>
+  /* logo css */
+  a.theme-header-logo {
+    display: block;
+  }
+
+  /* store css */
+  a.shop-header-name {
+    display: block;
+  }
+  a.shop-header-name span {
+    color: var(--color-secondary);
+    font-size: 16px;
+    font-weight: 600;
+  }
+</style>

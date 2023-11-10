@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "privacy-policy": {
+      "type": "privacy-policy",
+      "settings": {
+        "privacy_policy_title": "Privacy policy"
+      }
+    }
+  },
+  "order": [
+    "privacy-policy"
+  ]
+}

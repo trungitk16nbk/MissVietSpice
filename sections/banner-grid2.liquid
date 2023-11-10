@@ -1,0 +1,254 @@
+<section class="banner-grid2">
+	<div class="container">
+		<div class="banner-main-area">
+			<div class="banner-img">
+				<img class="img-fluid" src="{% if section.settings.banner_img %}{{ section.settings.banner_img | img_url: 'master' }}{% else %}https://via.placeholder.com/680x540{% endif %}">
+			</div>
+			<div class="banner-text">
+				{%if section.settings.banner_label != '' %}
+				<span class="sub-title">{{ section.settings.banner_label }}</span>
+				{%endif%}
+				{%if section.settings.banner_title1 != '' %}
+				<h1 class="title">
+					<span class="bold-text">{{ section.settings.banner_title1 }}</span>
+					<span>{{ section.settings.banner_title2 }}</span>
+				</h1>
+				{%endif%}
+				{%if section.settings.banner_des != '' %}
+				<p class="description">{{ section.settings.banner_des }}</p>
+				{%endif%}
+				{%if bsectionlock.settings.banner_button_text != '' %}
+				<a href="{{ section.settings.banner_url }}" class="btn btn-style1">{{ section.settings.banner_button_text }}</a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</section>
+{% schema %}
+{
+	"name": "Banner Grid",
+	"settings": [
+	{
+      "type": "header",
+      "content": "Section Padding"
+  },
+  {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Section Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+  },
+  {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Section Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+  },
+  {
+      "type" : "paragraph",
+      "content" : "Mobile"
+  },
+  {
+      "type": "range",
+      "id": "section_padding_top_xs",
+      "label": "Section Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+  },
+  {
+      "type": "range",
+      "id": "section_padding_bottom_xs",
+      "label": "Section Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+  },
+	{
+		"type" : "header",
+		"content" : "section BG Color"
+	},
+	{
+		"type": "color",
+		"id": "section_bg_color",
+		"label": "Section BG Color",
+		"default": "#fff3ed"
+	},
+	{
+		"type": "image_picker",
+		"id": "banner_img",
+		"label": "Banner BG Image",
+		"info": "Recommended Size: 680px x 540px"
+	},
+	{
+		"type": "text",
+		"id": "banner_label",
+		"label": "Banner Label",
+		"default": "Fresh Food"
+	},
+	{
+		"type": "text",
+		"id": "banner_title1",
+		"label": "Banner Title",
+		"default": "fresh Organic"
+	},
+	{
+		"type": "text",
+		"id": "banner_title2",
+		"label": "Banner Title",
+		"default": "Grocery store"
+	},
+	{
+		"type": "textarea",
+		"id": "banner_des",
+		"label": "Banner Descriptionn",
+		"default": "Chair Collection"
+	},
+	{
+		"type": "text",
+		"id": "banner_button_text",
+		"label": "Button Text",
+		"default": "SHOP NOW"
+	},
+	{
+		"type": "url",
+		"id": "banner_url",
+		"label": "Button URL"
+	}
+	],
+	"presets":[
+	{
+		"name": "Banner Grid"
+	}
+	]
+}
+{% endschema %}
+<style>
+
+.banner-grid2 {
+	background-color: {{ section.settings.section_bg_color }};
+    padding-top: {{ section.settings.section_padding_top }}px;
+    padding-bottom: {{ section.settings.section_padding_bottom }}px;
+  }
+  @media(max-width: 1199px) {
+    .banner-grid2 {
+        padding-top: {{ section.settings.section_padding_top_xs }}px;
+        padding-bottom: {{ section.settings.section_padding_bottom_xs }}px;
+	}
+}
+
+.banner-grid2 .banner-main-area {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+}
+.banner-grid2 .banner-main-area .banner-img {
+	width: 50%;
+}
+.banner-grid2 .banner-main-area .banner-text {
+	width: calc(50% - 100px);
+	{%- if settings.enable_rtl -%}
+  	margin-right: 100px;
+  	{%- else -%}
+  	margin-left: 100px;
+  	{%- endif -%}
+}
+.banner-grid2 .banner-main-area .banner-text span.sub-title {
+	color: #333;
+    font-size: 20px;
+    margin-bottom: 40px;
+    line-height: 1;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.banner-grid2 .banner-main-area .banner-text h1.title {
+	color: #333;
+    font-size: 50px;
+    font-weight: 400;
+    line-height: 1;
+}
+.banner-grid2 .banner-main-area .banner-text h1.title span.bold-text {
+	display: block;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.banner-grid2 .banner-main-area .banner-text p.description {
+	color: #666;
+    font-size: 16px;
+    margin-top: 33px;
+    line-height: 30px;
+}
+.banner-grid2 .banner-main-area .banner-text a {
+	margin-top: 40px;
+}
+
+@media (max-width: 1199px) {
+	.banner-grid2 .banner-main-area .banner-text {
+		width: calc(50% - 50px);
+		{%- if settings.enable_rtl -%}
+	  	margin-right: 50px;
+	  	{%- else -%}
+	  	margin-left: 50px;
+	  	{%- endif -%}
+	}
+	.banner-grid2 .banner-main-area .banner-text span.sub-title{
+    	margin-bottom: 15px;
+    	font-size: 16px;
+	}
+	.banner-grid2 .banner-main-area .banner-text h1.title{
+		font-size: 40px;
+	}
+	.banner-grid2 .banner-main-area .banner-text p.description {
+    	margin-top: 15px;
+    	font-size: 14px;
+	}
+	.banner-grid2 .banner-main-area .banner-text a {
+    	margin-top: 15px;
+	}
+}
+@media (max-width: 991px) {
+	.banner-grid2 .banner-main-area .banner-img {
+		width: 100%;
+	}
+	.banner-grid2 .banner-main-area .banner-text {
+		width: calc(100% - 0px);
+		{%- if settings.enable_rtl -%}
+	  	margin-right: 0px;
+	  	{%- else -%}
+	  	margin-left: 0px;
+	  	{%- endif -%}
+	  	margin-top: 30px;
+	}
+}
+
+@media (max-width: 767px) {
+    .banner-grid2 .banner-main-area .banner-text span.sub-title {
+        font-size: 16px;
+        margin-bottom: 23px;
+    }
+    .banner-grid2 .banner-main-area .banner-text h1.title {
+        font-size: 32px;
+    }    
+    .banner-grid2 .banner-main-area .banner-text p.description {
+        font-size: 14px;
+        margin-top: 15px;
+    }
+    .banner-grid2 .banner-main-area .banner-text a {
+        margin-top: 20px;
+    }
+}
+
+</style>

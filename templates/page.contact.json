@@ -1,1 +1,55 @@
-{"sections":{"main":{"type":"main-page","settings":{"padding_top":36,"padding_bottom":36}},"form":{"type":"contact-form","settings":{"heading":"","heading_size":"h1","color_scheme":"background-1","padding_top":36,"padding_bottom":36}}},"order":["main","form"]}
+{
+  "sections": {
+    "contact-template": {
+      "type": "contact-template",
+      "blocks": {
+        "8b0a9725-41ab-4328-afbe-3cfefb9babab": {
+          "type": "contact_info",
+          "settings": {
+            "info_icon": "fa fa-street-view",
+            "info_title": "Address",
+            "info_des": "99P Đ. Cộng Hòa, Phường 4, Tân Bình, Thành phố Hồ Chí Minh, Việt Nam"
+          }
+        },
+        "3d75d57c-3745-4ec3-807e-1303d31cdfdb": {
+          "type": "contact_info",
+          "settings": {
+            "info_icon": "fa fa-phone",
+            "info_title": "Phone",
+            "info_des": "0934923053"
+          }
+        },
+        "03701ad4-b8ed-4b0a-adae-3c8a2f2eb5bb": {
+          "type": "contact_info",
+          "settings": {
+            "info_icon": "fa fa-envelope",
+            "info_title": "Email",
+            "info_des": "demo@demo.com"
+          }
+        }
+      },
+      "block_order": [
+        "8b0a9725-41ab-4328-afbe-3cfefb9babab",
+        "3d75d57c-3745-4ec3-807e-1303d31cdfdb",
+        "03701ad4-b8ed-4b0a-adae-3c8a2f2eb5bb"
+      ],
+      "settings": {
+        "contact_us_title": "Contact us",
+        "contact_us_des": "Got a question? we had love to hear from you. send us a message and we will respond as soon as possible.",
+        "contact_us_map_enable": true,
+        "contact_map": "<iframe src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m18!1m12!1m3!1d3919.1324528016453!2d106.6516262757523!3d10.801166058735435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752967243d0ad1%3A0x80d4f6f4312eb55!2sPearl%20Group%20Corporation%20%7C%20Gia%20V%E1%BB%8B%20Tr%C3%A2n%20Ch%C3%A2u!5e0!3m2!1svi!2s!4v1691749430225!5m2!1svi!2s\" width=\"100%\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"><\/iframe>",
+        "contact_drop_title": "Drop us message",
+        "name_placeholder": "Enter your name",
+        "email_placeholder": "Enter your emai address*",
+        "message_placeholder": "Your message here...",
+        "form_button_name": "Submit",
+        "form_btn_icon": "fa fa-arrow-right",
+        "contact_form_title": "Get in touch",
+        "contact_form_desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. rerum earum eveniet dolorum suscipit nesciunt incidunt animi repudiandae ab at, tenetur distinctio voluptate vel illo similique."
+      }
+    }
+  },
+  "order": [
+    "contact-template"
+  ]
+}

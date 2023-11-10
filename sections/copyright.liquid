@@ -1,0 +1,98 @@
+<footer class="footer-bottom-area">
+  <div class="container">
+    <ul class="footer-bottom">
+      <li class="ftlink-li">
+        <div class="copy-right">
+          <p>{{ section.settings.copy_right_text1 }}</p>
+        </div>
+      </li>
+      <li class="ftlink-li">
+        {% include 'payment-icon' %}
+      </li>
+    </ul>
+  </div>
+</footer>
+{% schema %}
+{
+  "name": "Copyright",
+  "settings": [
+    {
+      "type" : "header",
+      "content" : "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "foot_bt_padding_top",
+      "label": "Section Padding Top",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "foot_bt_padding_bottom",
+      "label": "Section Padding Bottom",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type" : "header",
+      "content" : "Background Color"
+    },
+    {
+      "type": "color",
+      "id": "foot_bt_bg_color",
+      "label": "Background Color",
+      "default": "#000"
+    },
+    {
+      "type" : "header",
+      "content" : "Copyright Text"
+    },
+    {
+      "type": "text",
+      "id": "copy_right_text1",
+      "label": "CopyRight Text1",
+      "default": "© 2020 theme powered by staffy All right reserved."
+    }
+  ],
+  "presets":[
+    {
+      "name": "Copyright"
+    }
+  ]
+}
+{% endschema %}
+<style>
+  .footer-bottom-area {
+    background-color: {{ section.settings.foot_bt_bg_color }};
+    padding-top: {{ section.settings.foot_bt_padding_top }}px;
+    padding-bottom: {{ section.settings.foot_bt_padding_bottom }}px;
+    border-top: 1px solid #e2e2e2;
+  }
+  /*footer bottom*/
+  ul.footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  ul.footer-bottom li.ftlink-li .copy-right p{
+    font-size: 14px;
+  }
+  @media(max-width: 767px){
+    ul.footer-bottom{
+      flex-direction: column;
+    }
+    ul.footer-bottom li:first-child{
+      margin-top: 0;
+    }
+    ul.footer-bottom li{
+      margin-top: 15px;
+    }
+  }
+</style>

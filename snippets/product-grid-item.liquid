@@ -1,0 +1,69 @@
+{%- assign variant = product.selected_or_first_available_variant -%}
+<div class="single-product-wrap">
+    <div class="{% if product.available %}product-image{% else %}product-image stock-out{% endif %}">
+        <a class="pro-img" href="{{ product.url | within: collection }}">
+            {% if settings.enable_hover_product %}
+            <img class="img-fluid img1" src="{{ product.featured_image.src | img_url : '590X668', crop: 'center' }}" alt="{{ image.alt | escape  }}">
+            <img class="img-fluid img2" src="{{ product.images[1] | img_url: '590X668', crop: 'center' }}" alt="{{ product.images.last.alt | escape }}" />
+            {% else %}
+            <img class="img-fluid img1" src="{{ product.featured_image.src | img_url : '390X468', crop: 'center' }}" alt="{{ image.alt | escape  }}">
+            {% endif %}
+        </a>
+        <div class="product-label">
+            {%- include 'product-label' -%}
+        </div>
+        <div class="product-action">
+            {% include 'wishlist-button' %}
+            
+            {% render 'quickview-button', product: product, section_id: section.id %}
+            
+        </div>
+        
+    </div>
+    <div class="product-content">
+        <a href="/collections/{{ collection.handle }}/vendor_{{ product.vendor | handle }}"class="pro-vendor">{{ product.vendor }}</a>
+        <div class="product-title">
+            <a href="{{ product.url | within: collection }}" title="{{ product.title }}">{{ product.title }}</a>
+        </div>
+        <div class="product-ratting">
+            <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+        </div>
+        <div class="product-description pro_details">
+            {{ product.metafields.my_fields.short_description }}
+        </div>
+        <div class="price-box">
+            <span class="new-price" id="ProductPrice">{{ product.selected_or_first_available_variant.price | money }}</span>
+            {%- if product.compare_at_price_max > product.price -%}
+            <span class="old-price" id="ComparePrice">{{ product.selected_or_first_available_variant.compare_at_price | money }}</span>
+            {%- endif -%}
+        </div>
+        {% render 'cart-button', product: product, section_id: section.id %}
+    </div>
+    <div class="list-content">
+        {{ product.vendor | link_to_vendor: class: 'product-vendor' }}
+        <div class="product-ratting">
+            <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+        </div>
+        <div class="product-title">
+           <a href="{{ product.url | within: collection }}" title="{{ product.title }}">{{ product.title | truncate: 30 }}</a>
+        </div>
+        <div class="price-box" id="ProductPrice">
+          <span class="new-price">{{ product.selected_or_first_available_variant.price | money }}</span>
+          {%- if product.compare_at_price_max > product.price -%}
+          <span class="old-price">{{ product.selected_or_first_available_variant.compare_at_price | money }}</span>
+          {%- endif -%}
+        </div>
+        {% if product.metafields.my_fields.short_description %}
+        <div class="product-description">
+            {{ product.metafields.my_fields.short_description | truncatewords: 35 }}
+        </div>
+        {% endif %}
+        <div class="product-action">
+            {% render 'quickview-button', product: product, section_id: section.id %}
+            {%- if settings.wishlist_enable -%}
+            {% include 'wishlist-button' %}
+            {%- endif -%}
+        </div>
+        {% render 'cart-button', product: product, section_id: section.id %}
+    </div>
+</div>

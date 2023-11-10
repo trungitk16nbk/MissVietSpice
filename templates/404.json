@@ -1,1 +1,22 @@
-{"sections":{"main":{"type":"main-404","settings":{}}},"order":["main"]}
+{
+  "sections": {
+    "404-template": {
+      "type": "404-template",
+      "settings": {
+        "heading_4041": "4",
+        "heading_4042": "0",
+        "heading_4043": "4",
+        "sub_text_4041": "Page",
+        "sub_text_4042": "not",
+        "sub_text_4043": "be",
+        "sub_text_4044": "found",
+        "desc_text_404": "Sorry but the page you are looking for does not exist, have been removed, name changed or is temporarity unavailable.",
+        "button_title": "Go to home page",
+        "button_url": "\/"
+      }
+    }
+  },
+  "order": [
+    "404-template"
+  ]
+}

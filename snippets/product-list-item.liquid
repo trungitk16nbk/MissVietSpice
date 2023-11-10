@@ -1,0 +1,59 @@
+{%- assign on_sale = false -%}
+{%- if product.compare_at_price > product.price -%}
+{%- assign on_sale = true -%}
+{%- endif -%}
+{%- assign sold_out = true -%}
+{%- if product.available -%}
+{%- assign sold_out = false -%}
+{%- endif -%}
+{%- assign variant = product.selected_or_first_available_variant -%}
+{%- if product.available -%}
+{%- assign func = "Shopify.addItem(" | append: variant.id | append: ", 1)" -%}
+{%- endif -%}
+<div class="single-product-wrap">
+    <div class="{% if product.available %}product-image{% else %}product-image stock-out{% endif %}">
+        <a class="pro-img" href="{{ product.url | within: collection }}">
+            {% if settings.enable_hover_product %}
+            <img class="img-fluid img1" src="{{ product.featured_image.src | img_url : '390X468', crop: 'center' }}" alt="{{ image.alt | escape  }}">
+            <img class="img-fluid img2" src="{{ product.images[1] | img_url: '390X468', crop: 'center' }}" alt="{{ product.images.last.alt | escape }}" />
+            {% else %}
+            <img class="hover-img1" src="{{ product.featured_image.src | img_url : '390X468', crop: 'center' }}" alt="{{ image.alt | escape  }}">
+            {% endif %}
+        </a>
+        <div class="product-label">
+            {%- include 'product-label' -%}
+        </div>
+    </div>
+    <div class="product-content">
+        <div class="product-title">
+            <a href="{{ product.url | within: collection }}" title="{{ product.title }}">{{ product.title | truncate: 30 }}</a>
+        </div>
+        <div class="product-ratting">
+            <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+        </div>
+        <div class="price-box">
+            <span class="new-price">{{ product.price | money }}</span>
+            {% if product.compare_at_price_max > product.price %}
+            <span class="old-price">{{ product.compare_at_price | money }}</span>
+            {% endif %}
+        </div>
+        <div class="product-action">
+            {% include 'wishlist-button' %}
+            {% if product.available %}
+            <a href="javascript:void(0);" onclick="{{ func }}; return false;" class="add-to-cart ajax-spin-cart" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ 'products.product.add_to_cart' | t }}">
+                <span class="cart-title"><i class="fa fa-shopping-bag"></i></span>
+                <span class="cart-loading ajax-loader"><span class="spinner-border"></span></span>
+                <span class="cart-added"><i class="ion-android-done"></i></span>
+                <span class="cart-unavailable"><i class="ion-android-alert"></i></span>
+            </a>
+            {% else %}
+            <a class="disabled-add-to-cart add-to-cart" href="#" title="{{ 'products.product.add_to_cart' | t }}">
+                <i class="fa fa-shopping-bag"></i>
+            </a>
+            {% endif %}
+            <a onclick="quiqview('{{ product.handle | handleize }}')" class="quick-view" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ settings.quickview_title }}">
+                <i class="fa fa-eye"></i>
+            </a>
+        </div>
+    </div>
+</div>

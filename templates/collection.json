@@ -1,1 +1,28 @@
-{"sections":{"banner":{"type":"main-collection-banner","settings":{"show_collection_description":true,"show_collection_image":false,"color_scheme":"background-1"}},"product-grid":{"type":"main-collection-product-grid","settings":{"products_per_page":16,"columns_desktop":4,"image_ratio":"adapt","image_shape":"default","show_secondary_image":false,"show_vendor":false,"show_rating":false,"enable_quick_add":false,"enable_filtering":true,"filter_type":"horizontal","enable_sorting":true,"columns_mobile":"2","padding_top":36,"padding_bottom":36}}},"order":["banner","product-grid"]}
+{
+  "sections": {
+    "collection-template": {
+      "type": "collection-template",
+      "settings": {
+        "collection_bgcolor": "rgba(0,0,0,0)",
+        "collection_bgcolor_enable": false,
+        "collection_categories_title": "Categories",
+        "collection_categories_enable": false,
+        "sidebar_banner_img": "shopify:\/\/shop_images\/www.vnspice.com.png",
+        "sidebar_banner_url": "shopify:\/\/collections\/all",
+        "sidebar_banner_enable": true,
+        "collection_info_enable": false,
+        "collection_image": "shopify:\/\/shop_images\/www.vnspice.com_2.png",
+        "collection_image_enable": false,
+        "collection_desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
+        "collection_desc_enable": true,
+        "tab_bar_enable": true,
+        "short_by_enable": true,
+        "sidebar_handle": "left_sidebar_handle",
+        "products_limit_handle": "24"
+      }
+    }
+  },
+  "order": [
+    "collection-template"
+  ]
+}

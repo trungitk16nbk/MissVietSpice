@@ -1,0 +1,231 @@
+<div class="recently-viewed-products">
+  <div class="container">
+    <h2>{{ section.settings.section_title }}</h2>
+    <div id="recently-viewed-carousel" class="owl-carousel">
+      {% for product_json in viewedProducts %}
+        {% assign product = product_json | parse_json %}
+        <div class="item">
+          <div class="single-product-wrap">
+            <a href="{{ product.url }}">
+              <img src="{{ product.featured_image.src | img_url }}" alt="{{ product.featured_image.alt }}">
+            </a>
+            <h3>
+              <a href="{{ product.url }}">{{ product.title }}</a>
+            </h3>
+            <p>{{ product.price | money }}</p>
+            <!-- Thêm thông tin sản phẩm khác ở đây -->
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  addEventListener('DOMContentLoaded', (event) => {
+  $(document).ready(function () {
+      var carouselElement = $('#recently-viewed-carousel');
+      var viewedProductsJson = localStorage.getItem("viewedProducts");
+      var viewedProducts = JSON.parse(viewedProductsJson) || [];
+  
+      var itemsToShow = 5; // Default number of items for desktop
+  
+      // Adjust number of items for different screen sizes
+      if (window.innerWidth < 768) {
+        itemsToShow = 2; // 2 items for mobile devices
+      }
+  
+      for (var i = 0; i < viewedProducts.length; i++) {
+        var product = viewedProducts[i];
+    
+        var itemDiv = document.createElement("div");
+        itemDiv.className = "item";
+    
+        var singleProductWrapDiv = document.createElement("div");
+        singleProductWrapDiv.className = "single-product-wrap";
+    
+        var productLink = document.createElement("a");
+        productLink.href = product.url;
+    
+        var productImage = document.createElement("img");
+        productImage.src = product.image;
+        productImage.alt = product.image;
+    
+        var productTitleLink = document.createElement("a");
+        productTitleLink.href = product.url;
+    
+        var productTitleHeading = document.createElement("p");
+        productTitleHeading.textContent = product.title;
+    
+    
+        productLink.appendChild(productImage);
+        productTitleLink.appendChild(productTitleHeading);
+    
+        singleProductWrapDiv.appendChild(productLink);
+        singleProductWrapDiv.appendChild(productTitleLink);
+    
+        itemDiv.appendChild(singleProductWrapDiv);
+    
+        carouselElement.append(itemDiv);
+      }
+  
+      carouselElement.owlCarousel({
+        loop: false,
+      rewind: true,
+      margin: 30,
+      nav: true,
+      navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+  dots: false,
+      autoplay: true,
+      sautoplayTimeout: 5000,
+      autoplayHoverPause: true,
+      responsive:{
+        0:{
+          items: 2,
+          margin: 15,
+        },
+        600:{
+          items: 3
+        },
+        768:{
+          items: 3
+        },
+        991:{
+          items: 4
+        },
+        1199:{
+          items: 5
+        }
+      }
+      });
+    });
+  });</script>
+
+
+{% schema %}
+  {
+    "name": "Recently Viewed Products",
+    "class": "index-section",
+    "presets": [
+      {
+        "name": "Recently Viewed Products run by rice",
+        "category": "Custom"
+      }
+    ],
+    "settings": [
+      {
+        "type": "text",
+        "label": "Section Title",
+        "id": "section_title",
+        "default": "Recently Viewed Products"
+      }
+    ]
+  }
+{% endschema %}
+
+
+<style>
+
+  {% comment %}
+    #recently-viewed-carousel {
+      padding: 0 15px;
+    }
+  {% endcomment %}
+
+  /* Đảm bảo sản phẩm và tên nằm trong cùng một hàng */
+  .single-product-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Căn giữa hình ảnh */
+  .single-product-wrap img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+
+  /* Căn giữa tên sản phẩm */
+  .single-product-wrap p {
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+
+  #recently-viewed-carousel .owl-nav {
+    margin-top: 0;
+  }
+  #recently-viewed-carousel .owl-nav button {
+    position: absolute;
+    bottom: 50%;
+    transform: translateY(50%);
+    margin: 0;
+    line-height: 0;
+    font-size: 20px;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #fff;
+    background-color: var(--color-primary);
+    box-shadow: 0 0 12px 0 rgba(123, 190, 70, 0.1);
+    transition: all 0.2s ease-in-out 0s;
+  }
+  #recently-viewed-carousel .owl-nav button:hover {
+    color: var(--color-primary);
+    background-color: #fff;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.1);
+  }
+  #recently-viewed-carousel .owl-nav button.owl-prev {
+    left: -10px;
+  }
+  #recently-viewed-carousel .owl-nav button.owl-next {
+    right: -10px;
+  }
+
+  .container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .recently-viewed-products .container > h2 {
+    letter-spacing: 0;
+    font-size: 40px !important;
+    font-weight: 600;
+    position: relative;
+    text-align: center;
+    line-height: 60px;
+    padding: 3% 0;
+  }
+
+  @media(max-width: 1599px) {
+    .recently-viewed-products .container > h2 {
+      font-size: 30px !important;
+      line-height: 40px;
+    }
+  }
+  @media(max-width: 1199px) {
+    .recently-viewed-products .container > h2 {
+      font-size: 26px !important;
+    }
+  }
+  @media(max-width: 767px) {
+    .recently-viewed-products .container > h2 {
+      font-size: 20px !important;
+      line-height: normal;
+    }
+  }
+
+  #recently-viewed-carousel p {
+    color: var(--color-secondary);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  #recently-viewed-carousel p:hover {
+    color: var(--color-primary);
+  }
+</style>

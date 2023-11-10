@@ -1,1 +1,1573 @@
-{"current":"Default","presets":{"Default":{"logo_width":90,"color_schemes":{"background-1":{"settings":{"background":"#FFFFFF","background_gradient":"","text":"#121212","button":"#121212","button_label":"#FFFFFF","secondary_button_label":"#121212","shadow":"#121212"}},"background-2":{"settings":{"background":"#F3F3F3","background_gradient":"","text":"#121212","button":"#121212","button_label":"#F3F3F3","secondary_button_label":"#121212","shadow":"#121212"}},"inverse":{"settings":{"background":"#242833","background_gradient":"","text":"#FFFFFF","button":"#FFFFFF","button_label":"#000000","secondary_button_label":"#FFFFFF","shadow":"#121212"}},"accent-1":{"settings":{"background":"#121212","background_gradient":"","text":"#FFFFFF","button":"#FFFFFF","button_label":"#121212","secondary_button_label":"#FFFFFF","shadow":"#121212"}},"accent-2":{"settings":{"background":"#334FB4","background_gradient":"","text":"#FFFFFF","button":"#FFFFFF","button_label":"#334FB4","secondary_button_label":"#FFFFFF","shadow":"#121212"}}},"type_header_font":"assistant_n4","heading_scale":100,"type_body_font":"assistant_n4","body_scale":100,"page_width":1200,"spacing_sections":0,"spacing_grid_horizontal":8,"spacing_grid_vertical":8,"animations_reveal_on_scroll":true,"animations_hover_elements":"none","buttons_border_thickness":1,"buttons_border_opacity":100,"buttons_radius":0,"buttons_shadow_opacity":0,"buttons_shadow_horizontal_offset":0,"buttons_shadow_vertical_offset":4,"buttons_shadow_blur":5,"variant_pills_border_thickness":1,"variant_pills_border_opacity":55,"variant_pills_radius":40,"variant_pills_shadow_opacity":0,"variant_pills_shadow_horizontal_offset":0,"variant_pills_shadow_vertical_offset":4,"variant_pills_shadow_blur":5,"inputs_border_thickness":1,"inputs_border_opacity":55,"inputs_radius":0,"inputs_shadow_opacity":0,"inputs_shadow_horizontal_offset":0,"inputs_shadow_vertical_offset":4,"inputs_shadow_blur":5,"card_style":"standard","card_image_padding":0,"card_text_alignment":"left","card_color_scheme":"background-2","card_border_thickness":0,"card_border_opacity":10,"card_corner_radius":0,"card_shadow_opacity":0,"card_shadow_horizontal_offset":0,"card_shadow_vertical_offset":4,"card_shadow_blur":5,"collection_card_style":"standard","collection_card_image_padding":0,"collection_card_text_alignment":"left","collection_card_color_scheme":"background-2","collection_card_border_thickness":0,"collection_card_border_opacity":10,"collection_card_corner_radius":0,"collection_card_shadow_opacity":0,"collection_card_shadow_horizontal_offset":0,"collection_card_shadow_vertical_offset":4,"collection_card_shadow_blur":5,"blog_card_style":"standard","blog_card_image_padding":0,"blog_card_text_alignment":"left","blog_card_color_scheme":"background-2","blog_card_border_thickness":0,"blog_card_border_opacity":10,"blog_card_corner_radius":0,"blog_card_shadow_opacity":0,"blog_card_shadow_horizontal_offset":0,"blog_card_shadow_vertical_offset":4,"blog_card_shadow_blur":5,"text_boxes_border_thickness":0,"text_boxes_border_opacity":10,"text_boxes_radius":0,"text_boxes_shadow_opacity":0,"text_boxes_shadow_horizontal_offset":0,"text_boxes_shadow_vertical_offset":4,"text_boxes_shadow_blur":5,"media_border_thickness":1,"media_border_opacity":5,"media_radius":0,"media_shadow_opacity":0,"media_shadow_horizontal_offset":0,"media_shadow_vertical_offset":4,"media_shadow_blur":5,"popup_border_thickness":1,"popup_border_opacity":10,"popup_corner_radius":0,"popup_shadow_opacity":0,"popup_shadow_horizontal_offset":0,"popup_shadow_vertical_offset":4,"popup_shadow_blur":5,"drawer_border_thickness":1,"drawer_border_opacity":10,"drawer_shadow_opacity":0,"drawer_shadow_horizontal_offset":0,"drawer_shadow_vertical_offset":4,"drawer_shadow_blur":5,"badge_position":"bottom left","badge_corner_radius":40,"sale_badge_color_scheme":"accent-2","sold_out_badge_color_scheme":"inverse","brand_headline":"","brand_description":"<p><\/p>","brand_image_width":100,"social_twitter_link":"","social_facebook_link":"","social_pinterest_link":"","social_instagram_link":"","social_tiktok_link":"","social_tumblr_link":"","social_snapchat_link":"","social_youtube_link":"","social_vimeo_link":"","predictive_search_enabled":true,"predictive_search_show_vendor":false,"predictive_search_show_price":false,"currency_code_enabled":true,"cart_type":"notification","show_vendor":false,"show_cart_note":false,"cart_drawer_collection":"","sections":{"main-password-header":{"type":"main-password-header","settings":{"color_scheme":"background-1"}},"main-password-footer":{"type":"main-password-footer","settings":{"color_scheme":"background-1"}}}}}}
+{
+  "current": {
+    "color_primary": "#ee6c4d",
+    "color_button": "#ffffff",
+    "color_secondary": "#232323",
+    "color_body_bg": "#fff",
+    "enable_rtl": false,
+    "body_font_handle": "poppins_n4",
+    "header_font_handle": "poppins_n5",
+    "other_font_handle": "poppins_n6",
+    "enable_box": false,
+    "body_bgcolor": "#ffffff",
+    "body_bgcolor_enable": true,
+    "body_bgimg": "shopify:\/\/shop_images\/box-bg.png",
+    "body_bgimg_enable": true,
+    "body_boxshadow_enable": true,
+    "google_analytic_enable": true,
+    "google_tracking_id": "UA-110326897-1",
+    "logo_header_max_width": 75,
+    "logo_header_svg_url": "logo_1.svg",
+    "logo_footer_max_width": 75,
+    "logo_footer_svg_url": "logo_1.svg",
+    "topbar_notification_enable": true,
+    "notification_text1": "<span>Free shipping <\/span> on all orders $120",
+    "notification_text2": "Call:  0932 088 478",
+    "notification_bg_image": "",
+    "notification_bg_color": "#232323",
+    "notification_text_color": "#ffffff",
+    "custom_link1": "About us",
+    "custom_link_url1": "shopify:\/\/pages\/about-us",
+    "custom_link2": "Contact us",
+    "custom_link_url2": "shopify:\/\/pages\/contact",
+    "favicon": "shopify:\/\/shop_images\/logo.png",
+    "newsletter_popup_enable": true,
+    "newletter_popup_title": "Become a subscriber",
+    "newsletter_text": "Subscribe to get the notification of latest posts",
+    "email_placeholder": "Your email address",
+    "newsletter_button_name": "Subscribe",
+    "payment_picker": "visa, paypal, master, google_pay, american_express",
+    "enable_hover_product": false,
+    "day_title": "Day",
+    "hour_title": "Hrs",
+    "minute_title": "Min",
+    "second_title": "sec",
+    "count_text_enable": true,
+    "section_subtitle": "Limited Quantities",
+    "section_title": "Deal of the Day",
+    "cart_type": "drawer",
+    "show_vendor": true,
+    "quickview_enable": true,
+    "quickview_title": "QuickView",
+    "breadcrumb_banner_enable": true,
+    "breadcrumb_padding_top": "10",
+    "breadcrumb_padding_bottom": "10",
+    "breadcrumb_padding_top_xs": "10",
+    "breadcrumb_padding_bottom_xs": "10",
+    "breadcrumb_banner_bg": "#fafafa",
+    "breadcrumb_banner_overlay_color": "#000000",
+    "breadcrumb_banner_opacity": 0,
+    "breadcurmb_title_color": "#717171",
+    "breadcurmb_page_title_color": "#717171",
+    "active_breadcurmb_page_title_color": "#80bb01",
+    "search_title": "Search",
+    "blog_search_placeholder": "Search blog",
+    "archive_title": "Archive",
+    "recent_title": "Recent post",
+    "recent_post_limit_handle": "5",
+    "blog_tags_title": "Tags",
+    "blog_tags_list_limit_handle": "15",
+    "blog_read_btn": "Read more",
+    "social_icon_1_name": "fa fa-facebook",
+    "social_icon_1_link": "https:\/\/www.facebook.com\/giavitranchau.vn\/",
+    "social_icon_2_name": "fa fa-twitter",
+    "social_icon_2_link": "https:\/\/giavitranchau.vn\/#",
+    "social_icon_3_name": "fa fa-instagram",
+    "social_icon_3_link": "#",
+    "social_icon_4_name": "fa fa-linkedin",
+    "social_icon_4_link": "https:\/\/giavitranchau.vn\/#",
+    "social_icon_5_name": "fa fa-youtube",
+    "social_icon_5_link": "https:\/\/www.youtube.com\/channel\/UC5bddHc8YuXfCjmoOCKrfiQ",
+    "social_icon_6_name": "",
+    "social_icon_6_link": "",
+    "social_icon_7_name": "",
+    "social_icon_7_link": "",
+    "wishlist_enable": true,
+    "add_wishlit_title": "Add wishlist",
+    "loading_wishlist": "Loding..",
+    "remove_wishlit_title": "Remove From wishlist",
+    "go_to_wishlit_title": "Go to wishlist",
+    "wishlist_empty_title1": "Your",
+    "wishlist_empty_title2": "wishlist",
+    "wishlist_empty_title3": "is currently",
+    "wishlist_empty_title4": "empty!",
+    "login_request_title": "Please login your account",
+    "login_sub_text": "Please login below account detail",
+    "dnt_acc_title": "Don't have an account?",
+    "acc_opacity": 0.1,
+    "log_term_con_syn": "*",
+    "log_term_con_text": "Terms & conditions.",
+    "log_term_con_url": "shopify:\/\/pages\/terms-conditions",
+    "log_pri_pol_desc": "Your privacy and security are important to us. For more information on how we use your data read our",
+    "log_pri_pol_text": "privacy policy",
+    "log_pri_pol_url": "shopify:\/\/pages\/privacy-policy",
+    "register_sub_text": "Please register below account detail",
+    "alredy_acc_title": "Already an account holder?",
+    "customer_logout_title": "Logout",
+    "section_padding_top": 80,
+    "section_padding_bottom": 80,
+    "section_padding_top_xs": 60,
+    "section_padding_bottom_xs": 60,
+    "checkout_logo_image": "shopify:\/\/shop_images\/logo_1_ba0cbba4-0518-44b6-80a4-5b9f8e7b8973.svg",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#5fa800",
+    "checkout_button_color": "#5fa800",
+    "checkout_error_color": "#e32c2b",
+    "cart_button_title": "Add to cart",
+    "unavailable_title": "Sold out",
+    "soldout_button_title": "Sold out",
+    "empty_cart": "No products in the cart.",
+    "shop_btn_url": "shopify:\/\/collections\/frontpage",
+    "shop_btn_text": "Countinue Shopping",
+    "cart_desc1": "There are",
+    "cart_desc2": "products",
+    "cart_sub_total": "Sub Total:",
+    "cart_view": "View Cart",
+    "cart_checkout": "Checkout",
+    "product_quickview_enalbe": true,
+    "opps_404": "",
+    "heading_4041": "4",
+    "heading_4042": "0",
+    "heading_4043": "4",
+    "sub_text_4041": "Page",
+    "sub_text_4042": "Not",
+    "sub_text_4043": "Be",
+    "sub_text_4044": "found",
+    "desc_text_404": "Sorry but the page you are looking for does not exist, have been removed, name changed or is temporarity unavailable.",
+    "button_title": "Go to home page",
+    "button_url": "\/",
+    "multi_currency_enable": false,
+    "enable_preloader": false,
+    "preloader_style": "Style_3",
+    "preloader_bg": "#ffffff",
+    "preloader_color": "#000000",
+    "preloader_border_color": "#ffffff",
+    "preloader_border_width": "5px",
+    "newsletter_action": "",
+    "one_day_popup_enable": true,
+    "newsletter_img": "shopify:\/\/shop_images\/logo9_bfa6e473-4d69-4196-b711-6125e0f83623.png",
+    "newsletter_overlay_bgcolor": "#ffffff",
+    "newsletter_overlay_opacicty": 0.1,
+    "popup_newsletter_title_color": "#cd7752",
+    "popup_newsletter_description_color": "#000000",
+    "input_fild_border_color": "#eee",
+    "input_fild_color": "#222222",
+    "new_title": "New",
+    "sale_title": "Sale",
+    "soldout_title": "Soldout",
+    "sale_percent_enable": true,
+    "successfull_note": "Added to cart successfully!",
+    "view_cart_button2": "View Cart",
+    "categories_title": "Categories",
+    "social_1_name": "",
+    "social_2_name": "",
+    "social_3_name": "",
+    "social_4_name": "",
+    "social_5_name": "",
+    "social_6_name": "",
+    "social_7_name": "",
+    "review_enable": true,
+    "custom_page_margin_top": "100",
+    "custom_page_margin_bottom": "100",
+    "section_margin_top_xs": "70",
+    "section_margin_bottom_xs": "70",
+    "wait_title": "",
+    "added_title": "",
+    "affiliate_cart_button_title": "",
+    "notification_text": "Free Shipping Orders From All item",
+    "qcv_add_to_cart_text": "",
+    "qcv_cart_added_text": "",
+    "qcv_cart_error_text": "",
+    "qcv_cart_wait_text": "",
+    "enable_growave": false,
+    "growave_social_login": false,
+    "wishlist_type": "1",
+    "review_app": "none",
+    "notification_button_name": "",
+    "notification_button_url": "",
+    "topbar_color_1": "rgba(0,0,0,0)",
+    "topbar_color_2": "rgba(0,0,0,0)",
+    "notification_overlay_color": "rgba(0,0,0,0)",
+    "categories_list_limit_hanlde": "50",
+    "vendors_title": "Vendors",
+    "vendors_list_limit_hanlde": "50",
+    "types_title": "Products Types",
+    "types_list_limit_hanlde": "50",
+    "color_title": "Color",
+    "color_picker": "DarkKhaki,\nBurlyWood,\nAntiqueWhite,\nGrey,\nLightSeaGreen,\nLightSalmon,\nFloralWhite,\nDarkSeaGreen,\nPaleVioletRed,\nPaleGoldenRod,\nMistyRose,\nSkyBlue,\nSilver,\nLinen,\nSkyBlue,\nSilver,\nSeaShell,\nTomato,\nThistle,\nSnow,\nWhite,\nSandyBrown,\nBlack,\nRosyBrown,\nPowderBlue,\nPapayaWhip,\nPink,\nRosyBrown,\nLinen,\nLightSlateGrey,\nMaroon,\nLightSteelBlue,\nWhite,\nBlack,",
+    "colors_list_limit_hanlde": "50",
+    "size_title": "Size",
+    "size_picker": "1\/kg,\n5\/kg,\n2\/kg,\n3\",\n4\",\n5\",\n9\",\n2.5\",\n8cm,\n9cm,\n10cm,\n15cm,\n9x6,\n12x10,\n5x5,\n30x30,\n18x18,\n20x20,\n15cm,\n6cm,\n2cm,\n30x30,\n35x35,\n15x24,\n1\/kg,\n2\/kg,\n5\/kg,\n11\",12\",8\",\n15\",16\",28\",\n12rose,\n24rose,\n48rose,",
+    "size_list_limit_hanlde": "50",
+    "tags_title": "Tags",
+    "tags_list_limit_hanlde": "50",
+    "best_product_limit_hanlde": "",
+    "best_product__title": "Best product",
+    "best_product_limit_hanlde5": "3",
+    "notification_overlay_opacity": 0,
+    "paragraph_font_handle": "poppins_n4",
+    "notificaction_button_bg_color": "#61ab00",
+    "notificaction_button_border_color": "#61ab00",
+    "notificaction_button_color": "#ffffff",
+    "notificaction_button_hover_bg_color": "rgba(0,0,0,0)",
+    "notificaction_button_hover_border_color": "#61ab00",
+    "notificaction_button_hover_color": "#61ab00",
+    "notificaction_close_button_bg_color": "",
+    "notificaction_close_button_border_color": "rgba(0,0,0,0)",
+    "notificaction_close_button_color": "#ffffff",
+    "notificaction_close_button_hover_bg_color": "rgba(0,0,0,0)",
+    "notificaction_close_button_hover_border_color": "rgba(0,0,0,0)",
+    "notificaction_close_button_hover_color": "#ffffff",
+    "heading_404": "404",
+    "sub_text_404": "PAGE NOT BE FOUND",
+    "button_name": "Subscribe",
+    "newsletter_overlay_color": "#000",
+    "newsletter_button_bg_color": "#d92542",
+    "newsletter_button_color": "#ffffff",
+    "newsletter_button_hover_bg_color": "#232323",
+    "newsletter_button_hover_color": "#fff",
+    "close_icon_color": "#ffffff",
+    "recent_post_title": "Recent post",
+    "wishlist_empty_title": "Your wishlist is currently empty!",
+    "currency_enable": true,
+    "supported_currencies": "USD, USD - US Dollar | EUR, EUR - Euro | GBP, GBP - British Pound | INR, INR - Indian Rupee | BDT, BDT - Bangladesh Taka | JPY, JPY - Japan Yen | CAD, CAD - Canada Dollar | AUD, AUD - Australian Dollar",
+    "supported_currencies_code": "USD, USD - US Dollar | EUR, EUR - Euro | GBP, GBP - British Pound",
+    "h_social_icon_1_name": "twitter",
+    "h_social_icon_2_name": "instagram",
+    "h_social_icon_3_name": "google-plus",
+    "h_social_icon_4_name": "linkedin",
+    "h_social_icon_5_name": "pinterest",
+    "h_social_icon_6_name": "",
+    "h_social_icon_7_name": "",
+    "notification_overlay_rgb_colo": "#000000",
+    "notification_overlay_rgb_color": "0, 0, 0",
+    "product_quickview_description_enable": true,
+    "paragraph_font": "raleway_n4",
+    "body_font": "alfie_n4",
+    "type_header_font": "abril_fatface_n4",
+    "heading_font": "alfie_n4",
+    "breadcrumb_banner_image_enable": false,
+    "cart_notes_enable": true,
+    "cart_vendor_enable": false,
+    "ajax_cart_method": "drawer",
+    "logo_use_image": false,
+    "logo_max_width": "450",
+    "favicon_enable": false,
+    "show_multiple_currencies": true,
+    "currency_format": "money_with_currency_format",
+    "default_currency": "USD",
+    "color_body_text": "#333333",
+    "color_borders": "#e5e5e5",
+    "color_footer_bg": "#f2f2f2",
+    "color_footer_social_link": "#bbbbbb",
+    "color_footer_text": "#636363",
+    "footer_newsletter_enable": true,
+    "footer_social_enable": true,
+    "social_facebook_link": "",
+    "social_twitter_link": "",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "sitcky_switch": true,
+          "main_menu_selected": "main-menu",
+          "searchbar_checkbox": true,
+          "user_checkbox": true,
+          "header_bgcolor": "rgba(0,0,0,0)",
+          "search_title": "search",
+          "account_title": "account",
+          "wishlist_title": "wishlist",
+          "cart_title": "mycart"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "1584526592848": {
+            "type": "footer_menu",
+            "settings": {
+              "footer_menu_title": "Services",
+              "footer_menu_handle": "main-menu"
+            }
+          },
+          "1584526598784": {
+            "type": "footer_menu",
+            "settings": {
+              "footer_menu_title": "Privacy & terms",
+              "footer_menu_handle": "privacy"
+            }
+          },
+          "1584526605479": {
+            "type": "footer_menu",
+            "settings": {
+              "footer_menu_title": "My account",
+              "footer_menu_handle": "account"
+            }
+          }
+        },
+        "block_order": [
+          "1584526592848",
+          "1584526598784",
+          "1584526605479"
+        ],
+        "settings": {
+          "section_padding_top": 80,
+          "section_padding_bottom": 80,
+          "section_padding_top_xs": 50,
+          "section_padding_bottom_xs": 50,
+          "footer_bg_img_enable": false,
+          "footer_bg_color": "#f6f6f6",
+          "logo_description": "Lorem Ipsum is simply dummy of the printing and typesetting industry lorem Ipsum",
+          "footer_newsletter_title": "Subscribe latest deal",
+          "footer_newsletter_des": "Subscribe to our newsletter to receive fashion store news on new update."
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "zoom_enable": true
+        }
+      },
+      "related-product": {
+        "type": "related-product",
+        "settings": {
+          "related_title": "Related Product",
+          "related_product_limit_handle": "500"
+        }
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "settings": {
+          "blog_news_column": "2",
+          "blog_news_limit_handle": "6",
+          "blog_news_cmt": "Comment",
+          "blog_news_sidebar_handle": "left_sidebar_handle",
+          "recent_post_enable": true,
+          "archive_enable": true,
+          "tags_enable": true
+        }
+      },
+      "article-template": {
+        "type": "article-template",
+        "settings": {
+          "article_through": "By",
+          "article_cmt": "Comments",
+          "article_cmt_send": "Sending",
+          "article_cmt_done": "Done!",
+          "article_avtar_enable": false,
+          "sidebar_handle": "left_sidebar_handle",
+          "recent_post_enable": true,
+          "archive_enable": true,
+          "tags_enable": true,
+          "comment_post_limit_handle": "5"
+        }
+      },
+      "brand-logo": {
+        "type": "brand-logo",
+        "blocks": {
+          "1578114441052": {
+            "type": "single_brand",
+            "settings": {
+              "brand_image": "shopify:\/\/shop_images\/l8.png"
+            }
+          },
+          "1578114454082": {
+            "type": "single_brand",
+            "settings": {
+              "brand_image": "shopify:\/\/shop_images\/l1.png"
+            }
+          },
+          "1578114460303": {
+            "type": "single_brand",
+            "settings": {
+              "brand_image": "shopify:\/\/shop_images\/l6.png"
+            }
+          },
+          "1578114465107": {
+            "type": "single_brand",
+            "settings": {
+              "brand_image": "shopify:\/\/shop_images\/l3.png"
+            }
+          },
+          "1578114470202": {
+            "type": "single_brand",
+            "settings": {
+              "brand_image": "shopify:\/\/shop_images\/l7.png"
+            }
+          }
+        },
+        "block_order": [
+          "1578114441052",
+          "1578114454082",
+          "1578114460303",
+          "1578114465107",
+          "1578114470202"
+        ],
+        "settings": {
+        }
+      },
+      "contact-template": {
+        "type": "contact-template",
+        "blocks": {
+          "1537611083413": {
+            "type": "contact_info",
+            "settings": {
+              "info_icon": "fa fa-street-view",
+              "info_title": "Address",
+              "info_des": "255 Parker St.\nEnglishtown, NJ 07726"
+            }
+          },
+          "1537611091444": {
+            "type": "contact_info",
+            "settings": {
+              "info_icon": "fa fa-phone",
+              "info_title": "Phone",
+              "info_des": "+1234568999"
+            }
+          },
+          "1537611143786": {
+            "type": "contact_info",
+            "settings": {
+              "info_icon": "fa fa-envelope",
+              "info_title": "Email",
+              "info_des": "yoursite@demo.com"
+            }
+          }
+        },
+        "block_order": [
+          "1537611083413",
+          "1537611091444",
+          "1537611143786"
+        ],
+        "settings": {
+          "contact_us_title": "Contact Us",
+          "contact_us_des": "",
+          "contact_us_map_enable": true,
+          "contact_drop_title": "Drop us message",
+          "name_placeholder": "Enter your name",
+          "email_placeholder": "Enter your email address",
+          "message_placeholder": "Your message here...",
+          "form_button_name": "Submit",
+          "form_btn_icon": "fa fa-arrow-right",
+          "contact_form_title": "Get in Touch",
+          "contact_form_desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum earum eveniet dolorum suscipit nesciunt incidunt animi repudiandae ab at, tenetur distinctio voluptate vel illo similique."
+        }
+      },
+      "faq": {
+        "type": "faq",
+        "blocks": {
+          "1537765826500": {
+            "type": "accordion_area",
+            "settings": {
+              "accordion_title": "What is Mikshaa’s return policy?",
+              "accordion_ans1": "Our 100% buyer protection program allows for easy returns Only for products not as per description\/photo on the website and products which you received in damaged\/defective\/broken\" condition."
+            }
+          },
+          "1584105510529": {
+            "type": "accordion_area",
+            "settings": {
+              "accordion_title": "How to raise dispute for an order?",
+              "accordion_ans1": "You can raise a dispute within 7 days of delivery, in either of by sending an email to support@mikshaa.com with images of broken\/defective\/damaged products within 7 days of delivery, please mention your order number in the email and sign into your Mikshaa account if you are a registered customer (Easy method)."
+            }
+          },
+          "1584105539331": {
+            "type": "accordion_area",
+            "settings": {
+              "accordion_title": "When will i be refunded?",
+              "accordion_ans1": "Reverse pickup orders We will initiate refund once the item is picked up by our courier partner."
+            }
+          },
+          "1584105624501": {
+            "type": "accordion_area",
+            "settings": {
+              "accordion_title": "What are the shipping charges?",
+              "accordion_ans1": "Delivery charge varies with each product. Most of product FREE delivery in India."
+            }
+          },
+          "1584105641154": {
+            "type": "accordion_area",
+            "settings": {
+              "accordion_title": "What is the estimated delivery time?",
+              "accordion_ans1": "The estimated time of delivery is within 7 working days for domestic orders and 15-20 working days for international orders. All orders get shipped within 4 to 5 days from the warehouse."
+            }
+          },
+          "1584105656048": {
+            "type": "accordion_area",
+            "settings": {
+              "accordion_title": "How will the delivery be done?",
+              "accordion_ans1": "We try to process all deliveries through reputed courier companies like Bluedart, Aramex,E-come, DTDC, DHL and Fedex. In some cases, your pincode is not serviceable by these courier companies, we use Indian Speed Post for those deliveries."
+            }
+          },
+          "1584105669751": {
+            "type": "accordion_area",
+            "settings": {
+              "accordion_title": "How are items packaged?",
+              "accordion_ans1": "All items are carefully packaged as to avoid any form of damage."
+            }
+          },
+          "1584105687854": {
+            "type": "accordion_area",
+            "settings": {
+              "accordion_title": "Who would be responsible for paying local taxes in countries outside of India?",
+              "accordion_ans1": "Customs duty & other international taxes etc. if applicable will have to be borne by the customer according to the laws of the land."
+            }
+          },
+          "1584105992587": {
+            "type": "accordion_area",
+            "settings": {
+              "accordion_title": "How do i pay for a Mikshaa’s purchase?",
+              "accordion_ans1": "Mikshaa offers you multiple payment methods. Whatever your online mode of payment, you can trust assured that Mikshaa's trusted payment gateway partners use secure encryption technology to keep your transaction details confidential at all times."
+            }
+          },
+          "1584106005312": {
+            "type": "accordion_area",
+            "settings": {
+              "accordion_title": "Can i make a credit\/debit card or Internet Banking payment through my mobile?",
+              "accordion_ans1": "Yes, you can make credit card payments through the Mikshaa mobile site. Mikshaa uses 256-bit encryption technology to protect your card information while securely transmitting it to the secure and trusted payment gateways managed by leading banks."
+            }
+          },
+          "1584106020747": {
+            "type": "accordion_area",
+            "settings": {
+              "accordion_title": "Is it safe to use my credit\/debit card on Mikshaa?",
+              "accordion_ans1": "Is it safe to use my credit\/debit card on Mikshaa?"
+            }
+          },
+          "1584106032104": {
+            "type": "accordion_area",
+            "settings": {
+              "accordion_title": "Does Craftsvilla store my credit card information?",
+              "accordion_ans1": "No, Mikshaa does not collect or store your account information at all. Your transaction is authorized at multiple points, first by EBS\/CCavenue and subsequently by Visa\/MasterCard\/Amex secure directly without any information passing through us."
+            }
+          }
+        },
+        "block_order": [
+          "1537765826500",
+          "1584105510529",
+          "1584105539331",
+          "1584105624501",
+          "1584105641154",
+          "1584105656048",
+          "1584105669751",
+          "1584105687854",
+          "1584105992587",
+          "1584106005312",
+          "1584106020747",
+          "1584106032104"
+        ],
+        "settings": {
+          "faq_title": "FAQ's"
+        }
+      },
+      "list-collection-template": {
+        "type": "list-collection-template",
+        "settings": {
+        }
+      },
+      "sitemap": {
+        "type": "sitemap",
+        "settings": {
+          "menu": "main-menu"
+        }
+      },
+      "copyright": {
+        "type": "copyright",
+        "settings": {
+          "foot_bt_padding_top": 20,
+          "foot_bt_padding_bottom": 20,
+          "foot_bt_bg_color": "#f6f6f6",
+          "copy_right_text1": "© 2023 Theme powered by missvietspice"
+        }
+      },
+      "about-template": {
+        "type": "about-template",
+        "blocks": {
+          "1584019336826": {
+            "type": "about-description",
+            "settings": {
+              "about_banner_des": "There is something about the saree that makes a woman look dignified, glorifying  and every bit stylish. Mikshaa was set up in the year 2017 with a motive to offer its designer collection at competitive price and merchantable quality to its whole  seller and worldwide online customer."
+            }
+          },
+          "1584019369779": {
+            "type": "about-description",
+            "settings": {
+              "about_banner_des": "No matter what your individual style may be, you are sure to find a beautiful saree that will match your taste, given the large collection of stunning Indian sarees that can be worn almost on all the occasions be it wedding, formal parties, Bridal, family get togethers and more!"
+            }
+          },
+          "1584019372626": {
+            "type": "about-description",
+            "settings": {
+              "about_banner_des": "Mikshaa is the trusted online ethnic wears store and feels proud in Indian heritage and cultural diversity in women wears. With so many different styles of drape, so many different patterns and fabric choices, sarees can fill every wardrobe with much needed variety. When in doubt, it’s your best bet at looking elegant and put-together. Every state in India and worldwide are put together to cater best in terms of Indian fashion trends and women clothing range."
+            }
+          },
+          "1584089892795": {
+            "type": "about-description",
+            "settings": {
+              "about_banner_des": "Mikshaa goals is the all worldwide delivered to ethnic wears for women. Celebrate big fat Indian occasions such as Diwali, Navratri, Durga Puja, Holi and marriage celebration with our evergreen collection of online Indian ethnic wears for women. A wide Variety of option are available at the click of mouse."
+            }
+          },
+          "1584089930264": {
+            "type": "about-description",
+            "settings": {
+              "about_banner_des": "Mikshaa is a great online destination to explore its extraordinary collection for sarees and other ehnic wears the best part is the site has the most competitive price and a wide eclectic range of products guaranteed to satisfy every customer. Mikshaa ensures excellent delivery services to its buyer in a good condition and in a prompt manner."
+            }
+          },
+          "1584089941943": {
+            "type": "about-description",
+            "settings": {
+              "about_banner_des": "Mikshaa collection is also available in the overseas market (USA, UK, Europe, Australia, Southeast Asia, Dubai, Srilanka and other countries) under the brand name of Mikshaa."
+            }
+          }
+        },
+        "block_order": [
+          "1584019336826",
+          "1584019369779",
+          "1584019372626",
+          "1584089892795",
+          "1584089930264",
+          "1584089941943"
+        ],
+        "settings": {
+          "about_product_title": "What We Do?",
+          "about_des": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed libero vel ex maximus vulputate nec eu ligula. Vestibulum elementum nisi ut fermentum lobortis. Sed quis iaculis felis.",
+          "about_banner_img": "shopify:\/\/shop_images\/about-page.jpg"
+        }
+      },
+      "our-services": {
+        "type": "our-services",
+        "blocks": {
+          "1584020358986": {
+            "type": "our_services",
+            "settings": {
+              "service_icon": "ti-truck",
+              "service_title": "Free Delivery"
+            }
+          },
+          "1584020378213": {
+            "type": "our_services",
+            "settings": {
+              "service_icon": "ti-money",
+              "service_title": "Return & refund"
+            }
+          },
+          "1584020412685": {
+            "type": "our_services",
+            "settings": {
+              "service_icon": "ti-headphone",
+              "service_title": "Quality Support"
+            }
+          },
+          "1584020427136": {
+            "type": "our_services",
+            "settings": {
+              "service_icon": "ti-email",
+              "service_title": "Join Newslleter"
+            }
+          }
+        },
+        "block_order": [
+          "1584020358986",
+          "1584020378213",
+          "1584020412685",
+          "1584020427136"
+        ],
+        "settings": {
+          "our_ser_bgcolor": "rgba(0,0,0,0)"
+        }
+      },
+      "payment-policy": {
+        "type": "payment-policy",
+        "blocks": {
+          "1584100339031": {
+            "type": "payment-policy",
+            "settings": {
+              "pay_policy_que": "How do i pay for a Vegist’s purchase?",
+              "pay_policy_ans1": "vegist offers you multiple payment methods. Whatever your online mode of payment, you can trust assured that Vegist's trusted payment gateway partners use secure encryption technology to keep your transaction details confidential at all times.",
+              "pay_policy_ans2": "You may use Internet Banking, Debit Card, Credit Card and Cash on Delivery to make your purchase. We also accept payments made using Visa, MasterCard, American Express and Any Club credit\/debit cards."
+            }
+          },
+          "1584100428640": {
+            "type": "payment-policy",
+            "settings": {
+              "pay_policy_que": "Can i make a credit\/debit card or Internet Banking payment through my mobile?",
+              "pay_policy_ans1": "Yes, you can make credit card payments through the Vegist mobile site. Vegist uses 256-bit encryption technology to protect your card information while securely transmitting it to the secure and trusted payment gateways managed by leading banks.",
+              "pay_policy_ans2": ""
+            }
+          },
+          "1584100489709": {
+            "type": "payment-policy",
+            "settings": {
+              "pay_policy_que": "Is it safe to use my credit\/debit card on Vegist?",
+              "pay_policy_ans1": "All Credit\/Debit card details remain confidential and private. Vegist and our trusted payment gateways use SSL encryption technology to protect your card information.",
+              "pay_policy_ans2": ""
+            }
+          },
+          "1584100780485": {
+            "type": "payment-policy",
+            "settings": {
+              "pay_policy_que": "Does Craftsvilla store my credit card information?",
+              "pay_policy_ans1": "No, Vegist does not collect or store your account information at all. Your transaction is authorized at multiple points, first by EBS\/CCavenue and subsequently by Visa\/MasterCard\/Amex secure directly without any information passing through us.",
+              "pay_policy_ans2": ""
+            }
+          }
+        },
+        "block_order": [
+          "1584100339031",
+          "1584100428640",
+          "1584100489709",
+          "1584100780485"
+        ],
+        "settings": {
+          "pay_policy_title": "Payment Policy"
+        }
+      },
+      "shipping-policy": {
+        "type": "shipping-policy",
+        "blocks": {
+          "1584101187274": {
+            "type": "shipping-policy",
+            "settings": {
+              "ship_policy_que": "What are the shipping charges?",
+              "ship_policy_ans1": "Delivery charge varies with each product. Most of product FREE delivery in India.",
+              "ship_policy_ans2": "Some items may have a shipping cost depending on the product."
+            }
+          },
+          "1584101354017": {
+            "type": "shipping-policy",
+            "settings": {
+              "ship_policy_que": "What is the estimated delivery time?",
+              "ship_policy_ans1": "The estimated time of delivery is within 7 working days for domestic orders and 15-20 working days for international orders. All orders get shipped within 4 to 5 days from the warehouse.",
+              "ship_policy_ans2": ""
+            }
+          },
+          "1584101368115": {
+            "type": "shipping-policy",
+            "settings": {
+              "ship_policy_que": "How will the delivery be done?",
+              "ship_policy_ans1": "We try to process all deliveries through reputed courier companies like Bluedart, Aramex,E-come, DTDC, DHL and Fedex. In some cases, your pincode is not serviceable by these courier companies, we use Indian Speed Post for those deliveries.",
+              "ship_policy_ans2": "If there is no courier service available in your area, we will get in touch with you and try to work out a convenient alternate delivery location that is serviced by our courier partners."
+            }
+          },
+          "1584101384736": {
+            "type": "shipping-policy",
+            "settings": {
+              "ship_policy_que": "How are items packaged?",
+              "ship_policy_ans1": "All items are carefully packaged as to avoid any form of damage.",
+              "ship_policy_ans2": ""
+            }
+          },
+          "1584101397220": {
+            "type": "shipping-policy",
+            "settings": {
+              "ship_policy_que": "Who would be responsible for paying local taxes in countries outside of India?",
+              "ship_policy_ans1": "Customs duty & other international taxes etc. if applicable will have to be borne by the customer according to the laws of the land.",
+              "ship_policy_ans2": ""
+            }
+          }
+        },
+        "block_order": [
+          "1584101187274",
+          "1584101354017",
+          "1584101368115",
+          "1584101384736",
+          "1584101397220"
+        ],
+        "settings": {
+          "ship_policy_title": "Shipping Policy"
+        }
+      },
+      "privacy-policy": {
+        "type": "privacy-policy",
+        "settings": {
+          "privacy_policy_title": "Privacy Policy"
+        }
+      },
+      "return-policy": {
+        "type": "return-policy",
+        "blocks": {
+          "1584101983799": {
+            "type": "return-policy",
+            "settings": {
+              "ret_policy_que": "What is Mikshaa’s return policy?",
+              "ret_policy_ans1": "Our 100% buyer protection program allows for easy returns Only for products not as per description\/photo on the website and products which you received in damaged\/defective\/broken\" condition.",
+              "ret_policy_ans2": "All products must be returned in their original condition along with the bills and labels."
+            }
+          },
+          "1584102004469": {
+            "type": "return-policy",
+            "settings": {
+              "ret_policy_que": "How to raise dispute for an order?",
+              "ret_policy_ans1": "You can raise a dispute within 7 days of delivery, in either of by sending an email to support@mikshaa.com with images of broken\/defective\/damaged products within 7 days of delivery, please mention your order number in the email and sign into your Mikshaa account if you are a registered customer (Easy method).",
+              "ret_policy_ans2": "Product After 7 days Of Delivery Return Can not accepted."
+            }
+          },
+          "1584102042271": {
+            "type": "return-policy",
+            "settings": {
+              "ret_policy_que": "When will i be refunded?",
+              "ret_policy_ans1": "Reverse pickup orders We will initiate refund once the item is picked up by our courier partner.",
+              "ret_policy_ans2": "Self ship orders We will refund when your item back from warehouse. The refund amount wii be credited within 3 to 5 working days in your Mikshaa Acoount."
+            }
+          }
+        },
+        "block_order": [
+          "1584101983799",
+          "1584102004469",
+          "1584102042271"
+        ],
+        "settings": {
+          "ret_policy_title": "Return Policy"
+        }
+      },
+      "slider": {
+        "type": "slider",
+        "blocks": {
+          "1595848291294": {
+            "type": "slide",
+            "settings": {
+              "slider_bg_img": "shopify:\/\/shop_images\/slider9.jpg",
+              "slider_sub_title": "Fresh Meant",
+              "slider_subtitle_color": "#222222",
+              "slider_title_color": "#222222",
+              "slider_button": "Shop Now",
+              "slider_button_url": "shopify:\/\/products\/hmd-colection-watch",
+              "slider_content_position": "left"
+            }
+          },
+          "1596173719352": {
+            "type": "slide",
+            "settings": {
+              "slider_bg_img": "shopify:\/\/shop_images\/slider7.jpg",
+              "slider_sub_title": "Top Selling!",
+              "slider_subtitle_color": "#000000",
+              "slider_title_color": "#232323",
+              "slider_button": "Shop Now",
+              "slider_content_position": "left"
+            }
+          },
+          "1595499013841": {
+            "type": "slide",
+            "settings": {
+              "slider_bg_img": "shopify:\/\/shop_images\/slider8.jpg",
+              "slider_sub_title": "Summer juice",
+              "slider_subtitle_color": "#000000",
+              "slider_title_color": "#000000",
+              "slider_button": "Shop Now",
+              "slider_button_url": "shopify:\/\/products\/orange-juice-5ltr",
+              "slider_content_position": "left"
+            }
+          }
+        },
+        "block_order": [
+          "1595848291294",
+          "1596173719352",
+          "1595499013841"
+        ],
+        "settings": {
+        }
+      },
+      "featured-product": {
+        "type": "featured-product",
+        "blocks": {
+          "1595502127128": {
+            "type": "product_tab",
+            "settings": {
+              "tab_product": "fruits"
+            }
+          },
+          "1595502134148": {
+            "type": "product_tab",
+            "settings": {
+              "tab_product": "salads"
+            }
+          },
+          "1595502144285": {
+            "type": "product_tab",
+            "settings": {
+              "tab_product": "frontpage"
+            }
+          }
+        },
+        "block_order": [
+          "1595502127128",
+          "1595502134148",
+          "1595502144285"
+        ],
+        "settings": {
+          "section_title": "Featured Products",
+          "featured_product_limit_handle": "10"
+        }
+      },
+      "blog-home": {
+        "type": "blog-home",
+        "settings": {
+          "blog_title1": "Recent News",
+          "blog_bgcolor": "rgba(0,0,0,0)"
+        }
+      },
+      "16074273321a68b44a": {
+        "type": "slider",
+        "blocks": {
+          "16074273321a68b44a-0": {
+            "type": "slide",
+            "settings": {
+              "slider_bg_img": "shopify:\/\/shop_images\/www.vnspice.com.png",
+              "slider_img": "shopify:\/\/shop_images\/www.vnspice.com_2_5868f468-553b-4971-9595-1829e80a1ace.png",
+              "slider_sub_title": "MissViet Spice",
+              "slider_subtitle_color": "#ee6c4d",
+              "slider_title1": "Good spice for life",
+              "slider_title2": "",
+              "slider_title_color": "#232323",
+              "slider_button": "Shop Now",
+              "slider_button_url": "shopify:\/\/collections\/all",
+              "slider_content_position": "left"
+            }
+          },
+          "e6886dc6-82df-4a3c-a0dc-c776063ad30c": {
+            "type": "slide",
+            "settings": {
+              "slider_bg_img": "shopify:\/\/shop_images\/www.vnspice.com_2.png",
+              "slider_img": "shopify:\/\/shop_images\/www.vnspice.com_2_2.png",
+              "slider_sub_title": "",
+              "slider_subtitle_color": "#ee6c4d",
+              "slider_title1": "",
+              "slider_title2": "",
+              "slider_title_color": "#ffffff",
+              "slider_button": "Shop now",
+              "slider_button_url": "shopify:\/\/collections\/all",
+              "slider_content_position": "left"
+            }
+          },
+          "dce68497-601e-4f37-9dcf-3f7c68aba8b3": {
+            "type": "slide",
+            "settings": {
+              "slider_bg_img": "shopify:\/\/shop_images\/slider12_778ed8e7-49ae-494f-b4d2-296da347b42d.jpg",
+              "slider_img": "shopify:\/\/shop_images\/slider12_778ed8e7-49ae-494f-b4d2-296da347b42d_1.jpg",
+              "slider_sub_title": "Fresh vegetable",
+              "slider_subtitle_color": "#232323",
+              "slider_title1": "COOKING",
+              "slider_title2": "vegetable",
+              "slider_title_color": "#232323",
+              "slider_button": "Shop now",
+              "slider_button_url": "shopify:\/\/collections\/all",
+              "slider_content_position": "left"
+            }
+          },
+          "a3380fb2-196b-4b8c-817a-61a886abcd8f": {
+            "type": "slide",
+            "settings": {
+              "slider_bg_img": "shopify:\/\/shop_images\/slider12_5aa8cd36-064b-4108-886d-de5534fda76b.webp",
+              "slider_img": "shopify:\/\/shop_images\/slider12_5aa8cd36-064b-4108-886d-de5534fda76b_1.jpg",
+              "slider_sub_title": "Top Selling!",
+              "slider_subtitle_color": "#232323",
+              "slider_title1": "Organic Food",
+              "slider_title2": "& Heathy Tasty",
+              "slider_title_color": "#232323",
+              "slider_button": "Shop Now",
+              "slider_button_url": "shopify:\/\/collections\/all",
+              "slider_content_position": "left"
+            }
+          }
+        },
+        "block_order": [
+          "16074273321a68b44a-0",
+          "e6886dc6-82df-4a3c-a0dc-c776063ad30c",
+          "dce68497-601e-4f37-9dcf-3f7c68aba8b3",
+          "a3380fb2-196b-4b8c-817a-61a886abcd8f"
+        ],
+        "settings": {
+          "loop": true,
+          "autoplay": true,
+          "autoplay_time": 5000,
+          "nav": true,
+          "dots": true
+        }
+      },
+      "16074273460650f878": {
+        "type": "our-services",
+        "blocks": {
+          "16074273460650f878-0": {
+            "type": "our_services",
+            "settings": {
+              "service_icon": "<svg viewbox=\"0 0 24 24\" width=\"24\" height=\"24\" stroke=\"currentColor\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"css-i6dzq1\"><path d=\"M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z\"><\/path><polyline points=\"3.27 6.96 12 12.01 20.73 6.96\"><\/polyline><line x1=\"12\" y1=\"22.08\" x2=\"12\" y2=\"12\"><\/line><\/svg>",
+              "service_title": "Free delivery"
+            }
+          },
+          "16074273460650f878-1": {
+            "type": "our_services",
+            "settings": {
+              "service_icon": "<svg viewbox=\"0 0 24 24\" width=\"24\" height=\"24\" stroke=\"currentColor\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"css-i6dzq1\"><line x1=\"12\" y1=\"1\" x2=\"12\" y2=\"23\"><\/line><path d=\"M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6\"><\/path><\/svg>",
+              "service_title": "Cash on delivery"
+            }
+          },
+          "47255695-0806-4e68-8abe-edd96ab7be12": {
+            "type": "our_services",
+            "settings": {
+              "service_icon": "<svg viewbox=\"0 0 24 24\" width=\"24\" height=\"24\" stroke=\"currentColor\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"css-i6dzq1\"><polyline points=\"1 4 1 10 7 10\"><\/polyline><path d=\"M3.51 15a9 9 0 1 0 2.13-9.36L1 10\"><\/path><\/svg>",
+              "service_title": "30 days returns"
+            }
+          },
+          "469bbfd1-73f3-47b4-8a88-c7e8dbad9820": {
+            "type": "our_services",
+            "settings": {
+              "service_icon": "<svg viewbox=\"0 0 24 24\" width=\"24\" height=\"24\" stroke=\"currentColor\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"css-i6dzq1\"><circle cx=\"12\" cy=\"12\" r=\"10\"><\/circle><line x1=\"2\" y1=\"12\" x2=\"22\" y2=\"12\"><\/line><path d=\"M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z\"><\/path><\/svg>",
+              "service_title": "Online support"
+            }
+          }
+        },
+        "block_order": [
+          "16074273460650f878-0",
+          "16074273460650f878-1",
+          "47255695-0806-4e68-8abe-edd96ab7be12",
+          "469bbfd1-73f3-47b4-8a88-c7e8dbad9820"
+        ],
+        "settings": {
+          "section_padding_top": 80,
+          "section_padding_bottom": 80,
+          "section_padding_top_xs": 50,
+          "section_padding_bottom_xs": 50,
+          "our_ser_bgcolor": "#f7f7f7"
+        }
+      },
+      "16206226140a8f05d0": {
+        "type": "catrgory-section",
+        "blocks": {
+          "80887ef4-9314-41a4-90c8-abb07ff666f2": {
+            "type": "product_tab",
+            "settings": {
+              "slider_category_handle": "usda-organic",
+              "collection_img": "shopify:\/\/shop_images\/partner-usda.jpg",
+              "item_title": "items"
+            }
+          },
+          "30af310e-9f15-468d-8a03-8c78a04a7f0b": {
+            "type": "product_tab",
+            "settings": {
+              "slider_category_handle": "rainforest-alliance-certified",
+              "collection_img": "shopify:\/\/shop_images\/partner-certificate.jpg",
+              "item_title": "items"
+            }
+          },
+          "a336f882-5d08-4e75-a5ca-c86cb8bf4ed4": {
+            "type": "product_tab",
+            "settings": {
+              "slider_category_handle": "organic-agriculture-europe",
+              "collection_img": "shopify:\/\/shop_images\/partner-star.jpg",
+              "item_title": "items"
+            }
+          },
+          "a4e2e306-b675-4ced-91d1-ef64bd46b066": {
+            "type": "product_tab",
+            "settings": {
+              "slider_category_handle": "brc-food",
+              "collection_img": "shopify:\/\/shop_images\/partner-sedex_60aea1bf-c9ed-403d-b831-af5601f62794.jpg",
+              "item_title": "items"
+            }
+          },
+          "0f06786a-3d5c-443d-ac1a-1da262de4971": {
+            "type": "product_tab",
+            "settings": {
+              "slider_category_handle": "sgs-haccp",
+              "collection_img": "shopify:\/\/shop_images\/partner-sgs2.jpg",
+              "item_title": "items"
+            }
+          },
+          "c3ff2589-4d92-4f73-a915-d44743d61a26": {
+            "type": "product_tab",
+            "settings": {
+              "slider_category_handle": "sgs-iso-9001-certification",
+              "collection_img": "shopify:\/\/shop_images\/partner-sgs.jpg",
+              "item_title": "items"
+            }
+          },
+          "7d723650-8209-41b8-a79d-c49ed0670c6a": {
+            "type": "product_tab",
+            "settings": {
+              "slider_category_handle": "brc-certification-body",
+              "collection_img": "shopify:\/\/shop_images\/partner-brc_ddb94a26-b2cb-4403-a52c-952f74e66bfe.jpg",
+              "item_title": "items"
+            }
+          },
+          "76409e57-81d3-404d-81e7-9de84b7f6c87": {
+            "type": "product_tab",
+            "settings": {
+              "slider_category_handle": "klbd-kosher-certificati",
+              "collection_img": "shopify:\/\/shop_images\/partner-lbd_fedeb312-7759-496e-bbff-6e024f64511d.jpg",
+              "item_title": "items"
+            }
+          },
+          "ccb02a43-6bd3-42c1-8423-66da46c1ace0": {
+            "type": "product_tab",
+            "settings": {
+              "slider_category_handle": "fda-certification",
+              "collection_img": "shopify:\/\/shop_images\/partner-fda.jpg",
+              "item_title": "items"
+            }
+          }
+        },
+        "block_order": [
+          "80887ef4-9314-41a4-90c8-abb07ff666f2",
+          "30af310e-9f15-468d-8a03-8c78a04a7f0b",
+          "a336f882-5d08-4e75-a5ca-c86cb8bf4ed4",
+          "a4e2e306-b675-4ced-91d1-ef64bd46b066",
+          "0f06786a-3d5c-443d-ac1a-1da262de4971",
+          "c3ff2589-4d92-4f73-a915-d44743d61a26",
+          "7d723650-8209-41b8-a79d-c49ed0670c6a",
+          "76409e57-81d3-404d-81e7-9de84b7f6c87",
+          "ccb02a43-6bd3-42c1-8423-66da46c1ace0"
+        ],
+        "settings": {
+          "section_padding_top": 70,
+          "section_padding_bottom": 70,
+          "section_padding_top_xs": 50,
+          "section_padding_bottom_xs": 50,
+          "our_ser_bgcolor": "rgba(0,0,0,0)",
+          "section_title": "The most delicious spices in the world",
+          "banner_img": "shopify:\/\/shop_images\/pngtree-bowls-of-spices-with-wooden-mortar-and-pestle-vector-picture-image_2283914_13966484-55b2-41d4-941c-b704b9976a6c.png",
+          "banner_url": "shopify:\/\/collections\/usda-organic"
+        }
+      },
+      "162168316980dc3aa5": {
+        "type": "brand-logo",
+        "blocks": {
+          "2fc2ef30-b418-43e7-abbe-30452c5dac57": {
+            "type": "single_brand",
+            "settings": {
+              "brand_image": "shopify:\/\/shop_images\/partner-brc.svg",
+              "brand_url": "shopify:\/\/collections\/brc-certification-body"
+            }
+          },
+          "d680a02f-5501-4f6b-ae0e-025cd64f2978": {
+            "type": "single_brand",
+            "settings": {
+              "brand_image": "shopify:\/\/shop_images\/partner-certificate.svg",
+              "brand_url": "shopify:\/\/collections\/rainforest-alliance-certified"
+            }
+          },
+          "497df9dc-32a2-41ec-928c-5208b380a76e": {
+            "type": "single_brand",
+            "settings": {
+              "brand_image": "shopify:\/\/shop_images\/partner-lbd.svg",
+              "brand_url": "shopify:\/\/collections\/klbd-kosher-certificati"
+            }
+          },
+          "f239422d-c82f-47d2-a323-24ea46c77611": {
+            "type": "single_brand",
+            "settings": {
+              "brand_image": "shopify:\/\/shop_images\/partner-sedex.svg",
+              "brand_url": "shopify:\/\/collections\/brc-food"
+            }
+          },
+          "ecef3230-3e25-4715-9221-479f7278adc5": {
+            "type": "single_brand",
+            "settings": {
+              "brand_image": "shopify:\/\/shop_images\/partner-sgs.svg",
+              "brand_url": "shopify:\/\/collections\/sgs-iso-9001-certification"
+            }
+          },
+          "a751b9be-e887-4f06-9dd4-64d68e035153": {
+            "type": "single_brand",
+            "settings": {
+              "brand_image": "shopify:\/\/shop_images\/partner-sgs2.svg",
+              "brand_url": "shopify:\/\/collections\/sgs-haccp"
+            }
+          },
+          "6f72ec26-2a2f-4b49-a92c-e4de5764b69d": {
+            "type": "single_brand",
+            "settings": {
+              "brand_image": "shopify:\/\/shop_images\/partner-star.svg",
+              "brand_url": "shopify:\/\/collections\/organic-agriculture-europe"
+            }
+          },
+          "336a3bcf-9453-4737-8025-fbdc19693f63": {
+            "type": "single_brand",
+            "settings": {
+              "brand_image": "shopify:\/\/shop_images\/partner-usda.svg",
+              "brand_url": "shopify:\/\/collections\/usda-organic"
+            }
+          },
+          "9121d64a-cb15-4d18-b49f-f1fadcc32ece": {
+            "type": "single_brand",
+            "settings": {
+              "brand_image": "shopify:\/\/shop_images\/partner-fda.svg",
+              "brand_url": "shopify:\/\/collections\/fda-certification"
+            }
+          }
+        },
+        "block_order": [
+          "2fc2ef30-b418-43e7-abbe-30452c5dac57",
+          "d680a02f-5501-4f6b-ae0e-025cd64f2978",
+          "497df9dc-32a2-41ec-928c-5208b380a76e",
+          "f239422d-c82f-47d2-a323-24ea46c77611",
+          "ecef3230-3e25-4715-9221-479f7278adc5",
+          "a751b9be-e887-4f06-9dd4-64d68e035153",
+          "6f72ec26-2a2f-4b49-a92c-e4de5764b69d",
+          "336a3bcf-9453-4737-8025-fbdc19693f63",
+          "9121d64a-cb15-4d18-b49f-f1fadcc32ece"
+        ],
+        "settings": {
+          "section_padding_top": 80,
+          "section_padding_bottom": 80,
+          "section_padding_top_xs": 50,
+          "section_padding_bottom_xs": 50
+        }
+      },
+      "404-template": {
+        "type": "404-template",
+        "settings": {
+        }
+      },
+      "terms-conditions": {
+        "type": "terms-conditions",
+        "settings": {
+          "terms_condi_title": "Terms & Conditions"
+        }
+      },
+      "wishlist": {
+        "type": "wishlist",
+        "settings": {
+          "wish_title": "My Wishlist:",
+          "wish_item_title": "Item",
+          "wish_cart_title": "Add to cart",
+          "wish_cart_loading": "ion-load-a",
+          "wish_cart_add": "Done!",
+          "wish_cart_unvlbe": "ion-android-alert",
+          "wish_cart_stock_out": "Out Of Stock",
+          "wish_buy_now": "Buy Now",
+          "wish_cart_conti": "Continue Shopping",
+          "wish_cart_clear": "Clear Wishlist"
+        }
+      },
+      "1622269286672952e3": {
+        "type": "blog-home",
+        "settings": {
+          "section_padding_top": 80,
+          "section_padding_bottom": 0,
+          "section_padding_top_xs": 50,
+          "section_padding_bottom_xs": 0,
+          "section_sub_title": "special idea",
+          "blog_title1": "Recent news",
+          "blog_bgcolor": "rgba(0,0,0,0)",
+          "blog": "news-1"
+        }
+      },
+      "password-header": {
+        "type": "password-header",
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/logo9_bfa6e473-4d69-4196-b711-6125e0f83623.png",
+          "pwd_heder_soon_title": "Coming soon"
+        }
+      },
+      "password-content": {
+        "type": "password-content",
+        "settings": {
+          "newsletter_enable": true,
+          "newsletter_form_heading": "Be the first to know when we launch.",
+          "newsletter_form_subheading": "Promotions, new products and sales. Directly to your inbox.",
+          "newsletter_placeholder": "Email address",
+          "newsletter_button_text": "Notify me"
+        }
+      },
+      "password-footer": {
+        "type": "password-footer",
+        "settings": {
+          "show_share_buttons": true,
+          "social_message": "Spread the word"
+        }
+      },
+      "16600468415b0935cc": {
+        "type": "new-product",
+        "settings": {
+          "section_padding_top": 80,
+          "section_padding_bottom": 30,
+          "section_padding_top_xs": 50,
+          "section_padding_bottom_xs": 20,
+          "section_sub_title": "",
+          "section_title": "Combo",
+          "category_product_limit_handle": "10",
+          "label_product": "combo"
+        }
+      },
+      "d5166478-55b4-49f2-b95d-689a482ea0a8": {
+        "type": "testimonial",
+        "blocks": {
+          "e8a0016a-63b3-4003-8046-b4d87ec02790": {
+            "type": "single_slide",
+            "settings": {
+              "testi_img": "shopify:\/\/shop_images\/bd8263ab5978304440a1bdfba0b35eaa_tn.jpg",
+              "testi_desc": "Full delivery, buy many times feel very delicious and delicious than many other brands will support next time",
+              "testi_authrname": "thao_shun"
+            }
+          },
+          "82202765-cef5-4d07-aadb-91640ad3f5f9": {
+            "type": "single_slide",
+            "settings": {
+              "testi_img": "shopify:\/\/shop_images\/411c3dc5c01c34d0e15d2d53031cba32_tn.png",
+              "testi_desc": "Write HePearl green chili salt 80g jar, with 70% chili, makes the dish delicious, used to dip barbecue, seafood\nThe shop packed the goods very carefully and delivered quickly, the product is exactly as pictured, not defective, worth the money. I will buy it again, everyone should buy it...",
+              "testi_authrname": "Jonh Henry"
+            }
+          },
+          "c20fe7b7-a6f5-4632-8d2c-8c6b194ce969": {
+            "type": "single_slide",
+            "settings": {
+              "testi_img": "shopify:\/\/shop_images\/970085aaabb81a0308023c5339075ee9_tn.jpg",
+              "testi_desc": "It's delicious, just follow the instructions and cook it. Salty salt is according to taste, through Malaysia selling very salty water, I eat it and it's delicious. I cook 1kg5 ribs, then play 2 packs + 5l water.",
+              "testi_authrname": "Thorcbr"
+            }
+          },
+          "204f7932-dffb-4473-a621-f8aedf9e329e": {
+            "type": "single_slide",
+            "settings": {
+              "testi_img": "shopify:\/\/shop_images\/ce250d1c4db63d2487e784377861ae71_tn.jpg",
+              "testi_desc": "The chili salt is heavy with a piece of lemon or kumquat, it can be used, dipped with grilled food, seafood is very delicious, the spicy taste is moderate and delicious.",
+              "testi_authrname": "Lin"
+            }
+          },
+          "c150a106-fb7f-4b41-8d90-a993174e403a": {
+            "type": "single_slide",
+            "settings": {
+              "testi_img": "shopify:\/\/shop_images\/284f890adebfec9beaffb88077cfcd10_tn.jpg",
+              "testi_desc": "Salt has a moderate salty taste, slightly sweet after. For the price, it's quite reasonable.",
+              "testi_authrname": "thaomy"
+            }
+          }
+        },
+        "block_order": [
+          "e8a0016a-63b3-4003-8046-b4d87ec02790",
+          "82202765-cef5-4d07-aadb-91640ad3f5f9",
+          "c20fe7b7-a6f5-4632-8d2c-8c6b194ce969",
+          "204f7932-dffb-4473-a621-f8aedf9e329e",
+          "c150a106-fb7f-4b41-8d90-a993174e403a"
+        ],
+        "settings": {
+          "section_padding_top": 70,
+          "section_padding_bottom": 70,
+          "section_padding_top_xs": 40,
+          "section_padding_bottom_xs": 40,
+          "our_ser_bgcolor": "#f7f7f7",
+          "testi_title": "Customer Reviews"
+        }
+      },
+      "f9ae22c0-7d43-4b37-85b9-ab1d067a890a": {
+        "type": "home-product",
+        "blocks": {
+          "52ee2ecd-ea50-4591-a5f5-e2a82dcc75a2": {
+            "type": "title_wrap",
+            "settings": {
+            }
+          },
+          "026d8c06-f480-4611-ba44-2e316f9c5e9a": {
+            "type": "product_ratting",
+            "settings": {
+            }
+          },
+          "abb9e9a9-068d-428c-a259-e735895fc1f5": {
+            "type": "inventory",
+            "settings": {
+              "availability_title": "Availability:",
+              "inventory_threshold": 10,
+              "show_inventory_quantity": true
+            }
+          },
+          "9ac9201e-f0f9-456f-b665-d1038f1aebbc": {
+            "type": "product_price",
+            "settings": {
+            }
+          },
+          "e691aadb-0491-4179-add5-e3f9c92aa000": {
+            "type": "short_description",
+            "settings": {
+              "short_description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+            }
+          },
+          "815c3447-fe9d-4b50-9184-9a7b91ad7112": {
+            "type": "swatch_option",
+            "settings": {
+              "picker_type": "button"
+            }
+          },
+          "4876c270-acd1-45e2-bb96-c82bbc526bca": {
+            "type": "quantity_selector",
+            "settings": {
+            }
+          },
+          "8a5dc548-9df8-4e2b-b29b-b4f7c7695147": {
+            "type": "Subscription",
+            "settings": {
+            }
+          },
+          "5150e658-e521-47d0-964b-db00e8a0602e": {
+            "type": "buy_buttons",
+            "settings": {
+              "show_dynamic_checkout": true
+            }
+          },
+          "0c90eae8-84c6-4343-9752-d907a493856c": {
+            "type": "social_icon",
+            "settings": {
+              "social_share_title": "Share:"
+            }
+          }
+        },
+        "block_order": [
+          "52ee2ecd-ea50-4591-a5f5-e2a82dcc75a2",
+          "026d8c06-f480-4611-ba44-2e316f9c5e9a",
+          "abb9e9a9-068d-428c-a259-e735895fc1f5",
+          "9ac9201e-f0f9-456f-b665-d1038f1aebbc",
+          "e691aadb-0491-4179-add5-e3f9c92aa000",
+          "815c3447-fe9d-4b50-9184-9a7b91ad7112",
+          "4876c270-acd1-45e2-bb96-c82bbc526bca",
+          "8a5dc548-9df8-4e2b-b29b-b4f7c7695147",
+          "5150e658-e521-47d0-964b-db00e8a0602e",
+          "0c90eae8-84c6-4343-9752-d907a493856c"
+        ],
+        "settings": {
+          "section_padding_top": 0,
+          "section_padding_bottom": 80,
+          "section_padding_top_xs": 0,
+          "section_padding_bottom_xs": 50,
+          "product": "muối-ớt-xanh",
+          "zoom_enable": false
+        }
+      },
+      "a419ded7-b47a-46df-8ed7-78b756fdef18": {
+        "type": "banner-grid",
+        "blocks": {
+          "e14f5322-e80a-4435-abed-a50ab4829a6a": {
+            "type": "full_width_banner",
+            "settings": {
+              "banner_img": "shopify:\/\/shop_images\/Grill_House_2.png",
+              "banner_subtitle_color": "#232323",
+              "banner_subtitle": "Hot category",
+              "banner_title_color": "#232323",
+              "banner_title": "Organic spice",
+              "banner_button_text": "Shop now",
+              "banner_url": "shopify:\/\/collections\/gia-vi-huu-co"
+            }
+          },
+          "c26c0ee5-05b2-44be-83fb-533aa1920ed6": {
+            "type": "full_width_banner",
+            "settings": {
+              "banner_img": "shopify:\/\/shop_images\/Grill_House_2.png",
+              "banner_subtitle_color": "#232323",
+              "banner_subtitle": "Hot category",
+              "banner_title_color": "#232323",
+              "banner_title": "Dry Seasonings",
+              "banner_button_text": "Shop now",
+              "banner_url": "shopify:\/\/collections\/dry-seasonings"
+            }
+          },
+          "55b33a62-4205-47d9-853d-3eb15b79bf0e": {
+            "type": "full_width_banner",
+            "settings": {
+              "banner_img": "shopify:\/\/shop_images\/Grill_House_720_x_340_px_2.png",
+              "banner_subtitle_color": "#ffffff",
+              "banner_subtitle": "Fresh farm vegetables",
+              "banner_title_color": "#ffffff",
+              "banner_title": "Vegetable supermarket",
+              "banner_button_text": "Shop now",
+              "banner_url": ""
+            }
+          }
+        },
+        "block_order": [
+          "e14f5322-e80a-4435-abed-a50ab4829a6a",
+          "c26c0ee5-05b2-44be-83fb-533aa1920ed6",
+          "55b33a62-4205-47d9-853d-3eb15b79bf0e"
+        ],
+        "settings": {
+          "section_padding_top": 80,
+          "section_padding_bottom": 80,
+          "section_padding_top_xs": 50,
+          "section_padding_bottom_xs": 50
+        }
+      },
+      "a6c6d244-7305-49c0-b2df-07c2b447e990": {
+        "type": "background-banner",
+        "settings": {
+          "section_padding_top": 0,
+          "section_padding_bottom": 20,
+          "section_padding_top_xs": 0,
+          "section_padding_bottom_xs": 20,
+          "banner_bgimg": "shopify:\/\/shop_images\/Ch_a_co_ten_960_x_540_px.png",
+          "banner_sub_title": "Total charity",
+          "banner_title1": "Total charity",
+          "banner_sub_title2": "We fight life-threatening hunger in 51 countries across Africa, Asia, Europe, Latin America and the Middle East.",
+          "banner_title2": "51 Countries",
+          "banner_url": "",
+          "banner_button": "shop now",
+          "banner_video_img": "shopify:\/\/shop_images\/savechildren_charity_95c73238-7c0c-4b59-886a-ff8e426e0dd3.jpg",
+          "video_title1": "",
+          "video_title2": "",
+          "video_url": "https:\/\/www.youtube.com\/embed\/ukHK1GVyr0I?si=l-GfApqNiZU_DpH5"
+        }
+      },
+      "dcdd2305-b736-47df-bb64-c660b214d1f3": {
+        "type": "best-seller-product",
+        "settings": {
+          "section_padding_top": 80,
+          "section_padding_bottom": 80,
+          "section_padding_top_xs": 50,
+          "section_padding_bottom_xs": 50,
+          "section_sub_title": "Special product",
+          "section_title": "Top selling product",
+          "category_product_limit_handle": "10",
+          "label_product": "best-seller"
+        }
+      },
+      "9bbeeb5f-12b6-49bd-a2e7-eafeca2f6cc7": {
+        "type": "recently-viewed-products",
+        "settings": {
+          "section_title": "Recently Viewed Products"
+        }
+      }
+    },
+    "content_for_index": [
+      "16074273321a68b44a",
+      "16206226140a8f05d0",
+      "dcdd2305-b736-47df-bb64-c660b214d1f3",
+      "16074273460650f878",
+      "16600468415b0935cc",
+      "a419ded7-b47a-46df-8ed7-78b756fdef18",
+      "f9ae22c0-7d43-4b37-85b9-ab1d067a890a",
+      "d5166478-55b4-49f2-b95d-689a482ea0a8",
+      "1622269286672952e3",
+      "162168316980dc3aa5",
+      "a6c6d244-7305-49c0-b2df-07c2b447e990",
+      "9bbeeb5f-12b6-49bd-a2e7-eafeca2f6cc7"
+    ]
+  },
+  "presets": {
+    "Default": {
+      "ajax_cart_method": "drawer",
+      "cart_notes_enable": true,
+      "color_body_bg": "#fff",
+      "color_body_text": "#333333",
+      "color_borders": "#e5e5e5",
+      "color_footer_bg": "#f2f2f2",
+      "color_footer_social_link": "#bbbbbb",
+      "color_footer_text": "#636363",
+      "color_primary": "#747474",
+      "color_secondary": "#bbb",
+      "favicon_enable": false,
+      "footer_newsletter_enable": true,
+      "footer_social_enable": true,
+      "logo_use_image": false,
+      "social_facebook_link": "",
+      "social_twitter_link": ""
+    }
+  },
+  "platform_customizations": {
+    "custom_css": [
+
+    ]
+  }
+}

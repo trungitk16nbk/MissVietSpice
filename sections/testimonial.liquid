@@ -1,0 +1,279 @@
+<!-- testimonial-area start -->
+<section class="testimonial-area">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="section-title">
+          {% if section.settings.testi_title != '' %}
+            <h2>{{ section.settings.testi_title }}</h2>
+          {% endif %}
+        </div>
+        <div class="testimonial-slider owl-carousel" id="testimonial-slider">
+          {% for block in section.blocks %}
+            <div class="testi-content">
+              <div class="author-detail">
+                <img class="img-fluid" src="{% if block.settings.testi_img %}{{ block.settings.testi_img | img_url: '100x' }}{% else %}https://via.placeholder.com/100x100{% endif %}">
+                <div class="review-detail">
+                  <h6>{{ block.settings.testi_authrname }}</h6>
+                  <span class="author-review">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                  </span>
+                </div>
+              </div>
+              <p>{{ block.settings.testi_desc }}</p>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  addEventListener('DOMContentLoaded', (event) => {
+    $('#testimonial-slider').owlCarousel({
+      loop: false,
+      rewind: true,
+      nav: true,
+      margin: 30,
+      autoHeight: true,
+      navText: [
+        '<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'
+      ],{%- if settings.enable_rtl -%}rtl : true,{%- endif -%}responsive: {
+        0: {
+          items: 1,
+          margin: 15
+        },
+        479: {
+          items: 1,
+          margin: 15
+        },
+        768: {
+          items: 2
+        },
+        979: {
+          items: 2
+        },
+        1199: {
+          items: 3
+        }
+      }
+    });
+  });
+</script>
+<script>
+  console.log({{ section.settings.section_padding_bottom_xs }});
+</script>
+{% schema %}
+  {
+    "name": "Testimonial",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section Padding"
+      },
+      {
+        "type": "range",
+        "id": "section_padding_top",
+        "label": "Section Padding Top",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "default": 80
+      },
+      {
+        "type": "range",
+        "id": "section_padding_bottom",
+        "label": "Section Padding Bottom",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "default": 80
+      },
+      {
+        "type": "paragraph",
+        "content": "Mobile"
+      }, {
+        "type": "range",
+        "id": "section_padding_top_xs",
+        "label": "Section Padding Top",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "default": 50
+      }, {
+        "type": "range",
+        "id": "section_padding_bottom_xs",
+        "label": "Section Padding Bottom",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "default": 50
+      }, {
+        "type": "color",
+        "id": "our_ser_bgcolor",
+        "label": "Background Color",
+        "default": "#fff"
+      }, {
+        "type": "text",
+        "id": "testi_title",
+        "label": "Section Title",
+        "default": "Customer Reviews"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "single_slide",
+        "name": "Testimonial Items",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "testi_img",
+            "label": "Reviewer image",
+            "info": "Recommended Size: 100x100px"
+          }, {
+            "type": "textarea",
+            "id": "testi_desc",
+            "label": "Review Content",
+            "default": "Write Here Customer Review"
+          }, {
+            "type": "text",
+            "id": "testi_authrname",
+            "label": "Reviewer Name",
+            "default": "XYZ"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Testimonial",
+        "category": "7. Testimonial"
+      }
+    ]
+  }
+{% endschema %}
+<style>
+  .testimonial-area {
+    background-color: {{ section.settings.our_ser_bgcolor }};
+    padding-top: {{ section.settings.section_padding_top }}px;
+    padding-bottom: {{ section.settings.section_padding_bottom }}px;
+  }
+  @media(max-width: 1199px) {
+    .testimonial-area {
+      padding-top: {{ section.settings.section_padding_top_xs }}px;
+      padding-bottom: {{ section.settings.section_padding_bottom_xs }}px;
+    }
+  }
+  .testimonial-area .testi-content {
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgb(0 0 0 / 5%);
+    height: 100%;
+  }
+  .testimonial-area .testi-content .author-detail {
+    display: flex;
+    align-items: center;
+  }
+  .testimonial-area .testi-content .author-detail img {
+    border-radius: 50px;
+    width: 80px;
+    height: 80px;
+  }
+  .testimonial-area .testi-content .review-detail {
+    {% if settings.enable_rtl %}
+      margin-right: 20px;
+    {% else %}
+      margin-left: 20px;
+    {% endif %}
+  }
+  .testimonial-area .testi-content .author-detail .author-review {
+    color: #ffb503;
+    margin-top: 5px;
+  }
+  .testimonial-area .testi-content .author-detail h6 {
+    font-size: 14px;
+  }
+  .testimonial-area .testi-content p {
+    color: #999;
+    font-size: 14px;
+    margin-top: 20px;
+  }
+  @media(max-width: 479px) {
+    .testimonial-area .testi-content {
+      margin: 0;
+    }
+  }
+
+  .testimonial-area .testimonial-slider .owl-dots {
+    text-align: center;
+    margin-top: 30px;
+    line-height: 0;
+  }
+  .testimonial-area .testimonial-slider .owl-dots button {
+    {% if settings.enable_rtl %}
+      margin-left: 10px;
+    {% else %}
+      margin-right: 10px;
+    {% endif %}
+  }
+  .testimonial-area .testimonial-slider .owl-dots button:last-child {
+    {% if settings.enable_rtl %}
+      margin-left: 0;
+    {% else %}
+      margin-right: 0;
+    {% endif %}
+  }
+  .testimonial-area .testimonial-slider.owl-carousel .owl-dots button span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+  }
+  .testimonial-area .testimonial-slider .owl-dots button:hover span,
+  .testimonial-area .testimonial-slider .owl-dots button.active span {
+    background-color: var(--color-secondary);
+  }
+  .testimonial-area .testimonial-slider .owl-nav button {
+    position: absolute;
+    bottom: 50%;
+    transform: translateY(50%);
+    margin: 0;
+    line-height: 0;
+    font-size: 20px;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    color: #fff;
+    background-color: var(--color-primary);
+    box-shadow: 0 0 12px 0 rgba(123, 190, 70, 0.1);
+    -webkit-transition: all 0.2s ease-in-out 0s;
+    -o-transition: all 0.2s ease-in-out 0s;
+    transition: all 0.2s ease-in-out 0s;
+  }
+  .testimonial-area .testimonial-slider .owl-nav button:hover {
+    color: #fff;
+    background-color: var(--color-primary);
+  }
+  .testimonial-area .testimonial-slider .owl-nav button.owl-prev {
+    left: -15px;
+  }
+  .testimonial-area .testimonial-slider .owl-nav button.owl-next {
+    right: -15px;
+  }
+  .testimonial-area .testimonial-slider .owl-nav button:hover {
+    background-color: #fff;
+    box-shadow: 0 0 12px 0 rgba(123, 190, 70, 0.1);
+    color: var(--color-secondary);
+  }
+</style>

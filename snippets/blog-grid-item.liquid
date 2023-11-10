@@ -1,0 +1,36 @@
+<div class="blog-post">
+  {% assign article_has_image = false %}
+  {% assign content = article.excerpt_or_content %}
+  {% if article.image %}
+  <div class="blog-post-image">
+    <a href="{{ article.url }}">
+      <img class="img-fluid" src="{{ article.image | img_url: '700x503', crop: 'center' }}" alt="{{ article.title | escape }}" class="img-fluid" />
+      <span class="date-time">{{ article.published_at | date: '%b %Y' }}</span>
+    </a>
+  </div>
+  {% endif %}
+  <div class="blog-post-content">
+    {% comment %}
+    <div class="blog-publish">
+      <span class="date-time"><i class="ti-calendar"></i> {{ article.published_at | date: '%b %d, %Y' }}</span>
+      <p class="blog-admin">
+        <i class="ti-user"></i>
+        <span>{{ article.author | truncatewords: 2 | remove: "." }}</span>
+      </p>
+      <a class="blog-comment" href="{{ article.comment_post_url }}">
+        <i class="ti-comment-alt"></i> {{ article.comments_count }}
+      </a>
+    </div>
+    {% endcomment %}
+    <h2 class="blog-title">
+      <a href="{{ article.url }}">{{ article.title | truncate: 50 }}</a>
+    </h2>
+    <p class="blog-desc">{{ article.content | strip_html | strip | truncate: 100 }}</p>
+    <div class="btn-view">
+      <a href="{{ article.url }}" class="read-btn" aria-label="Read more: {{ article.title }}">
+        <span>{{ settings.blog_read_btn }}</span>
+        <i class="fa fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</div>

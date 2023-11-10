@@ -1,0 +1,192 @@
+<section class="new-product">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12">
+        <div class="section-capture">
+          <div class="section-title">
+            {% if section.settings.section_sub_title !='' %}
+            <span class="sub-title">{{ section.settings.section_sub_title }}</span>
+            {% endif %}
+            {% if section.settings.section_title !='' %}
+            <h2>{{ section.settings.section_title }}</h2>
+            {% endif %}
+          </div>
+        </div>
+        {% assign category_product = collections[section.settings.label_product] %}
+        <div class="new-product-slider owl-carousel" id="new-pro-{{ section.id }}">
+          {% assign category_product_limit = section.settings.category_product_limit_handle %}
+          {% for product in category_product.products limit: category_product_limit %}
+          <div class="item">
+            {% include 'product-grid-item' %}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script type="text/javascript">
+addEventListener('DOMContentLoaded', (event) => {
+  $('#new-pro-{{ section.id }}').owlCarousel({
+    loop: false,
+    rewind: true,
+    margin: 30,
+    nav: true,
+    navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+    dots: false,
+    {%- if settings.enable_rtl -%}
+    rtl: true,
+    {%- endif -%}
+    autoplay: true,
+    sautoplayTimeout: 5000,
+    autoplayHoverPause: true,
+    responsive:{
+      0:{
+        items: 2,
+        margin: 15,
+      },
+      600:{
+        items: 3
+      },
+      768:{
+        items: 3
+      },
+      991:{
+        items: 4
+      },
+      1199:{
+        items: 5
+      }
+    }
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Combo",
+  "settings": [
+  {
+      "type": "header",
+      "content": "Section Padding"
+  },
+  {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Section Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+  },
+  {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Section Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+  },
+  {
+      "type" : "paragraph",
+      "content" : "Mobile"
+  },
+  {
+      "type": "range",
+      "id": "section_padding_top_xs",
+      "label": "Section Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+  },
+  {
+      "type": "range",
+      "id": "section_padding_bottom_xs",
+      "label": "Section Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+  },
+  {
+    "type": "text",
+    "id": "section_sub_title",
+    "label": "Section sub title",
+    "default": "SPECIAL DISHES"
+  },
+  {
+    "type": "text",
+    "id": "section_title",
+    "label": "Section title",
+    "default": "Today Chef Special"
+  },
+  {
+    "type": "text",
+    "id": "category_product_limit_handle",
+    "label": "Product Limit",
+    "default": "10"
+  },
+  {
+    "type" : "collection",
+    "id" : "label_product",
+    "label" : "New Product"
+  }
+  ],
+  "presets":[
+  {
+    "name": "Combo"
+  }
+  ]
+}
+{% endschema %}
+<style>
+.new-product {
+    padding-top: {{ section.settings.section_padding_top }}px;
+    padding-bottom: {{ section.settings.section_padding_bottom }}px;
+}
+@media(max-width: 1199px) {
+    .new-product {
+        padding-top: {{ section.settings.section_padding_top_xs }}px;
+        padding-bottom: {{ section.settings.section_padding_bottom_xs }}px;
+    }
+}
+
+.new-product .new-product-slider .owl-nav{
+    margin-top: 0;
+}
+.new-product .new-product-slider .owl-nav button{
+    position: absolute;
+    bottom: 50%;
+    transform: translateY(50%);
+    margin: 0;
+    line-height: 0;
+    font-size: 20px;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #fff;
+    background-color: var(--color-primary);
+    box-shadow: 0px 0px 12px 0px rgba(123, 190, 70, 0.1);
+    transition: all 0.2s ease-in-out 0s;
+}
+.new-product .new-product-slider .owl-nav button:hover {
+    color: var(--color-primary);
+    background-color: #fff;
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
+}
+.new-product .new-product-slider .owl-nav button.owl-prev{
+    left: -15px;
+}
+.new-product .new-product-slider .owl-nav button.owl-next{
+    right: -15px;
+}
+</style>

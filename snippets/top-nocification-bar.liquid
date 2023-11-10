@@ -1,0 +1,113 @@
+<div class="top-notification-bar">
+  <div class="container-fluid">
+    <ul class="notification-entry">
+      <li class="notify-wrap">
+        <p>
+          {{ settings.notification_text1 }}
+        </p>
+      </li>
+      <li class="notify-wrap center-side">
+        <p>
+          {{ settings.notification_text2 }}
+        </p>
+      </li>
+      <li class="notify-wrap right-side">
+        <div class="notification-option">
+          <div class="custom-link">
+            {% if settings.custom_link1 != '' %}
+            <a href="{{ settings.custom_link_url1 }}">{{ settings.custom_link1 }}</a>
+            {% endif %}
+            {% if settings.custom_link2 != '' %}
+            <a href="{{ settings.custom_link_url2 }}">{{ settings.custom_link2 }}</a>
+            {% endif %}
+            {% render 'multiple_languages' %}
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<style type="text/css">
+.top-notification-bar {
+    {% if settings.notification_bg_image %}
+    background-image: url("{{ settings.notification_bg_image | img_url: 'master' }}");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    {% else %}
+    background-color: {{ settings.notification_bg_color }};
+    {% endif %}
+}
+.top-notification-bar .notification-entry p span {
+    animation: blinker 0.7s infinite;
+    font-weight: 600;
+}
+@keyframes blinker {
+  50% {
+    color: var(--color-primary);
+  }
+}
+.top-notification-bar ul.notification-entry li a,
+.top-notification-bar ul.notification-entry li p{
+    color: {{ settings.notification_text_color }};
+}
+.top-notification-bar ul.notification-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+.top-notification-bar ul.notification-entry li.notify-wrap{
+  width: 33.33%;
+}
+.top-notification-bar ul.notification-entry li.notify-wrap.center-side{
+  text-align: center;
+}
+.top-notification-bar ul.notification-entry li.notify-wrap .social-icon li a{
+  font-size: 14px;
+}
+.top-notification-bar ul.notification-entry li.notify-wrap .social-icon{
+  margin-top: 0;
+  margin-right: 30px;
+}
+.top-notification-bar ul.notification-entry li p {
+  font-size: 14px;
+}
+.top-notification-bar ul.notification-entry li .notification-option {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.top-notification-bar ul.notification-entry li .notification-option .custom-link a:not(:last-child){
+  margin-right: 15px;
+}
+
+@media (max-width: 991px) {
+  .top-notification-bar ul.notification-entry li.notify-wrap{
+    width: 50%;
+  }
+  .top-notification-bar ul.notification-entry li.notify-wrap.center-side{
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  .top-notification-bar ul.notification-entry{
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  .top-notification-bar ul.notification-entry li .notification-option{
+    justify-content: center;
+  }
+  .top-notification-bar ul.notification-entry li.notify-wrap{
+    width: 100%;
+  }
+  .top-notification-bar ul.notification-entry li .notification-option .search-wrap {
+    display: block;
+  }
+  .notification-option .user-wrap .top-dropdown {
+    width: auto;
+  }
+}
+</style>

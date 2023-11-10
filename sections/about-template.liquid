@@ -1,0 +1,84 @@
+<section class="about-area section-ptb">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="about-content">
+                    <div class="content-main-title">
+                        {% if section.settings.about_product_title != '' %}
+                        <h2>{{ section.settings.about_product_title }}</h2>
+                        {% endif %}
+
+                        {% if section.settings.about_des != '' %}
+                        <p>{{ section.settings.about_des }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="abt-banner-area">
+                        <div class="single-banner">
+                            <a href="javascript:void(0)">
+                                <img src="{% if section.settings.about_banner_img %}{{ section.settings.about_banner_img | img_url: 'master' }}{% else %}https://via.placeholder.com/1920x1024{% endif %}">
+                            </a>
+                        </div>
+
+                        {% if block.settings.about_des != '' %}
+                        <div class="abt-banner-desc">
+                            {% for block in section.blocks %}
+                            <p>{{ block.settings.about_banner_des }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "About Product",
+    "settings": [
+    {
+        "type": "header",
+        "content": "Content"
+    },
+    {
+        "type": "text",
+        "id": "about_product_title",
+        "label": "Title",
+        "default": "What We Do?"
+    },
+    {
+        "type": "textarea",
+        "id": "about_des",
+        "label": "About Description",
+        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed libero vel ex maximus vulputate nec eu ligula. Vestibulum elementum nisi ut fermentum lobortis. Sed quis iaculis felis."
+    },
+    {
+        "type": "image_picker",
+        "id": "about_banner_img",
+        "label": "Image",
+        "info": "Recommended Size: 1920 x 1024px"
+    }
+    ],
+    "blocks":[
+    {
+        "type": "about-description",
+        "name": "About Description",
+        "settings": [
+        {
+            "type": "textarea",
+            "id": "about_banner_des",
+            "label": "Description",
+            "default": "There is something about the saree that makes a woman look dignified, glorifying and every bit stylish. a was set up in the year 2017 with a motive to offer its designer collection at competitive price and merchantable quality to its whole seller and worldwide online customer."
+        }
+        ]
+    }
+    ],
+    "presets":[
+    {
+        "name": "About us",
+        "category": "2. About us"
+    }
+    ]
+}
+{% endschema %}

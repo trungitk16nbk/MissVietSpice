@@ -1,0 +1,141 @@
+<!-- our-brand-area start -->
+<div class="our-brand-logo">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="brand-logo owl-carousel owl-theme" id="brand-logo-{{ section.id }}">
+          {% for block in section.blocks limit: item_limit %}
+          <div class="item">
+            <a href="{{ block.settings.brand_url }}" class="brand-img">
+              <img src="{% if block.settings.brand_image %}{{ block.settings.brand_image | img_url: 'master' }} {% else %}https://via.placeholder.com/170x82 {% endif %}" alt="{{ block.settings.brand_image.alt }}">
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- our-brand-area end -->
+<script>
+  addEventListener('DOMContentLoaded', (event) => {
+  $('#brand-logo-{{ section.id }}').owlCarousel({
+    loop: false,
+    rewind: true,
+    margin: 30,
+    nav: false,
+    dots: false,
+    {%- if settings.enable_rtl -%}
+    rtl: true,
+    {%- endif -%}
+    autoplay: true,
+    slideTransition: 'linear',
+    autoplaySpeed: 3000,
+    autoplayHoverPause: true,
+    responsive:{
+      0:{
+        items:2
+      },
+      479:{
+        items:2
+      },
+      768:{
+        items:5
+      },
+      979:{
+        items:6
+      },
+      1199:{
+        items:6
+      }
+    }
+  });
+  });
+</script>
+{% schema %}
+{
+  "name": "Brand Logo",
+  "settings": [
+  {
+      "type": "header",
+      "content": "Section Padding"
+  },
+  {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Section Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+  },
+  {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Section Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+  },
+  {
+      "type" : "paragraph",
+      "content" : "Mobile"
+  },
+  {
+      "type": "range",
+      "id": "section_padding_top_xs",
+      "label": "Section Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+  },
+  {
+      "type": "range",
+      "id": "section_padding_bottom_xs",
+      "label": "Section Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+  }
+  ],
+  "blocks":[
+  {
+    "type": "single_brand",
+    "name": "Single Brand Logo",
+    "settings": [
+    {
+      "type": "image_picker",
+      "id": "brand_image",
+      "label": "Brand Image",
+      "info": "Recommended Size: 170x82px"
+    },
+    {
+      "type": "url",
+      "id": "brand_url",
+      "label": "Brand url"
+    }
+    ]
+  }
+  ]
+}
+{% endschema %}
+<style>
+  .our-brand-logo {
+  padding-top: {{ section.settings.section_padding_top }}px;
+  padding-bottom: {{ section.settings.section_padding_bottom }}px;
+}
+@media(max-width: 1199px) {
+  .our-brand-logo  {
+      padding-top: {{ section.settings.section_padding_top_xs }}px;
+      padding-bottom: {{ section.settings.section_padding_bottom_xs }}px;
+  }
+}
+</style>
