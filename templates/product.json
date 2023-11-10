@@ -43,8 +43,8 @@
           "settings": {
           }
         },
-        "847e92b2-dd4a-46a8-b557-6789cc771c92": {
-          "type": "Subscription",
+        "6a16504c-79c8-4299-abb1-ccbdb353d851": {
+          "type": "shopify:\/\/apps\/appstle-subscriptions-app\/blocks\/appstle-subscription-product-page-widget\/fe257d39-6f88-4f35-ab08-bd437e3aa94e",
           "settings": {
           }
         },
@@ -81,7 +81,7 @@
         "short_description",
         "swatch_option",
         "1ed4d24d-bc31-4c23-a3b8-c8e6579a6c46",
-        "847e92b2-dd4a-46a8-b557-6789cc771c92",
+        "6a16504c-79c8-4299-abb1-ccbdb353d851",
         "547a63f9-fa26-4a74-a936-f2f9ba036fc8",
         "product_sku",
         "social_icon",
@@ -150,11 +150,6 @@
         "related_product_limit_handle": "10"
       }
     },
-    "169260726417b9b212": {
-      "type": "apps",
-      "settings": {
-      }
-    },
     "0760be07-3932-4fee-a5ec-e55f11d5aaf6": {
       "type": "recently-viewed-products",
       "settings": {
@@ -166,7 +161,6 @@
     "product-template",
     "single-product-tab",
     "related-product",
-    "169260726417b9b212",
     "0760be07-3932-4fee-a5ec-e55f11d5aaf6"
   ]
 }
